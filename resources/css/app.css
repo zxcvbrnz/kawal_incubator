@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Merubah warna batang progress */
+#nprogress .bar {
+    background: oklch(76.9% 0.188 70.08) !important; /* Ganti dengan kode warna Anda (misal: Merah Laravel) */
+}
+
+/* Merubah warna cahaya (glow) di ujung progress bar */
+#nprogress .peg {
+    box-shadow: 0 0 10px oklch(84.1% 0.238 128.85), 0 0 5px oklch(84.1% 0.238 128.85) !important;
+}
+
+/* Merubah warna spinner (jika aktif) */
+#nprogress .spinner-icon {
+    border-top-color: #ff2d20 !important;
+    border-left-color: #ff2d20 !important;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+.no-scrollbar {
+  -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+.line {
+        @apply absolute left-0 w-full h-0.5 bg-gray-800 transition-all duration-300;
+    }
+
+#slider {
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+}
+
+.card {
+    @apply
+    w-[calc(50%-12px)]        /* MOBILE: 2 box (gap 24 / 2) */
+    sm:w-[calc(33.333%-16px)] /* TABLET: 3 box */
+    lg:w-[220px]              /* DESKTOP: fixed */
+    h-[160px]
+    rounded-2xl
+    border border-gray-200
+    bg-white
+    flex flex-col
+    items-center
+    justify-center
+    text-center
+    gap-4
+    shadow-sm
+    shrink-0;
+}
+
+
+  .card p {
+    @apply text-gray-600 text-sm leading-relaxed;
+  }
+
+  .nav-btn {
+    @apply w-10 h-10 rounded-full border border-gray-300 
+           flex items-center justify-center hover:bg-gray-100 transition;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+@layer components {
+  .brands-wrapper {
+    @apply flex animate-infinite-scroll items-center justify-center md:justify-start [&_img]:max-w-none [&_li]:mx-2;
+  }
+}
+
+/* Tambahkan di file CSS Anda untuk merubah warna pagination default Tailwind */
+.pagination-amber nav span[aria-current="page"] > span {
+    @apply bg-amber-500 border-amber-500 text-white !important;
+}
+
+.pagination-amber nav a:hover {
+    @apply text-amber-600 bg-amber-50 !important;
+}
