@@ -40,7 +40,6 @@
                         <div class="h-8 w-1.5 bg-amber-500 rounded-full"></div>
                         <h2 class="text-xl font-bold text-gray-900">Another News</h2>
                     </div>
-
                     <div class="space-y-2">
                         @foreach ($recentPosts as $recent)
                             <a href="{{ route('new.show', $recent->slug) }}"
