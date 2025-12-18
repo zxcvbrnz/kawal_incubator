@@ -13,7 +13,7 @@
         @endif
 
         {{-- Pagination Elements --}}
-        <div class="hidden md:flex gap-1">
+        <div class="flex gap-1">
             @foreach ($elements as $element)
                 {{-- "Three Dots" Separator --}}
                 @if (is_string($element))
