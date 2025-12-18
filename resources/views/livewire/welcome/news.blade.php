@@ -27,7 +27,7 @@
                     Sharing Our Progress, Learnings, and Achievements
                 </h2>
                 <a href="{{ route('new') }}" wire:navigate
-                    class="hidden sm:inline-flex items-center gap-2 text-sm font-bold text-amber-600 hover:text-amber-700 transition">
+                    class="inline-flex items-center gap-2 text-sm font-bold text-amber-600 hover:text-amber-700 transition">
                     View More
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">

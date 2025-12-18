@@ -70,7 +70,7 @@
             <div class="flex items-center justify-between">
                 <h2 class="text-xl font-semibold text-gray-900">Built with Pride</h2>
                 <a href="{{ route('product') }}"
-                    class="hidden sm:inline-flex items-center gap-2 text-sm font-semibold text-amber-600 hover:text-amber-700 transition">
+                    class="inline-flex items-center gap-2 text-sm font-semibold text-amber-600 hover:text-amber-700 transition">
                     View More →
                 </a>
             </div>
