@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Welcome;
 
+use App\Models\Post;
 use Livewire\Component;
 
 class News extends Component
@@ -16,7 +17,7 @@ class News extends Component
     public function render()
     {
         return view('livewire.welcome.news', [
-            'posts' => \App\Models\Post::latest()->paginate(10)
+            'posts' => Post::latest()->paginate(10)
         ]);
     }
 }

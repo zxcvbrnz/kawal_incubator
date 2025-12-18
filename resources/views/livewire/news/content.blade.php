@@ -1,13 +1,6 @@
-<div class="min-h-screen py-20" x-on:page-changed.window="window.scrollTo({ top: 0, behavior: 'smooth' })">
-    <div class="max-w-7xl mx-auto px-6">
-
-        <div class="text-center mb-16">
-            <h1 class="text-4xl font-bold text-gray-900 tracking-tight">Latest News & Updates</h1>
-            <p class="mt-4 text-gray-600 max-w-2xl mx-auto">
-                Discover our latest stories, achievements, and technical insights from the world of innovation.
-            </p>
-            <div class="mt-6 h-1 w-24 bg-amber-500 mx-auto rounded-full"></div>
-        </div>
+<div>
+    <div>
+        <div class="mt-4 mb-16 h-1 w-24 bg-amber-500 rounded-full"></div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             @forelse($posts as $post)
                 <a href="{{ route('new.show', ['slug' => $post->slug]) }}" wire:navigate

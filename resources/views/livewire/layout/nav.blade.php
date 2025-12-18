@@ -13,6 +13,9 @@
                 <x-nav-link-2 :href="route('home')" :active="request()->routeIs('home')" wire:navigate>
                     {{ __('Home') }}
                 </x-nav-link-2>
+                <x-nav-link-2 :href="route('participant')" :active="request()->routeIs('participant')" wire:navigate>
+                    {{ __('Participants') }}
+                </x-nav-link-2>
                 <x-nav-link-2 :href="route('product')" :active="request()->routeIs('product')" wire:navigate>
                     {{ __('Products') }}
                 </x-nav-link-2>
@@ -28,9 +31,8 @@
                 <x-nav-link-2 :href="route('about')" :active="request()->routeIs('about')" wire:navigate>
                     {{ __('About') }}
                 </x-nav-link-2>
-
                 <a href="{{ route('contact') }}"
-                    class="px-4 py-2 rounded-lg bg-amber-500 text-white hover:bg-amber-500 transition">
+                    class="px-4 py-2 rounded-lg bg-amber-500 text-white hover:bg-amber-300 transition duration-150">
                     Contact Us
                 </a>
             </div>
@@ -57,6 +59,9 @@
         x-transition:leave-end="opacity-0 scale-95 -translate-y-2" class="md:hidden px-6 py-4 space-y-6">
         <x-nav-link-2 :href="route('home')" class="block" :active="request()->routeIs('home')" wire:navigate>
             {{ __('Home') }}
+        </x-nav-link-2>
+        <x-nav-link-2 :href="route('participant')" class="block" :active="request()->routeIs('participant')" wire:navigate>
+            {{ __('Participants') }}
         </x-nav-link-2>
         <x-nav-link-2 :href="route('product')" class="block" :active="request()->routeIs('product')" wire:navigate>
             {{ __('Products') }}

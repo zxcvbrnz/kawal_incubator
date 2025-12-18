@@ -19,6 +19,11 @@
                 </h3>
                 <ul class="space-y-3 text-sm">
                     <li>
+                        <a href="{{ route('participant') }}" class="text-gray-400 hover:text-amber-400 transition">
+                            Participants
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{ route('product') }}" class="text-gray-400 hover:text-amber-400 transition">
                             Products
                         </a>

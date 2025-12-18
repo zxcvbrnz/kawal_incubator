@@ -13,7 +13,7 @@
                 <div>
                     <span
                         class="inline-block mb-4 px-4 py-1 rounded-full bg-amber-500/10 text-amber-600 text-sm font-semibold">
-                        🚀 Solusi Digital Modern
+                        🚀 modern digital solutions
                     </span>
                     <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-gray-900">
                         Kawal
@@ -24,13 +24,13 @@
                         accusantium soluta.
                     </p>
                     <div class="mt-8 flex flex-wrap gap-4">
-                        <a href="#contact"
+                        <a href="{{ route('contact') }}"
                             class="px-6 py-3 rounded-xl bg-amber-500 text-white font-semibold hover:bg-amber-600 transition">
                             Contact Us
                         </a>
-                        <a href="#services"
+                        <a href="{{ route('participant') }}"
                             class="px-6 py-3 rounded-xl border border-amber-500 text-amber-600 font-semibold hover:bg-amber-500/10 transition">
-                            Lihat Layanan
+                            Our Participant's
                         </a>
                     </div>
                 </div>
