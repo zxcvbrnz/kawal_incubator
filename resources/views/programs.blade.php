@@ -2,7 +2,7 @@
     <x-slot name="title">
         Programs
     </x-slot>
-    <div class="min-h-screen py-20 bg-white px-4 sm:px-6 lg:px-8">
+    <div class="min-h-screen py-20" x-on:page-changed.window="window.scrollTo({ top: 0, behavior: 'smooth' })">
         <div class="max-w-7xl mx-auto px-6">
             <div class="gap-6 mb-12">
                 <div class="space-y-1 mt-2">
