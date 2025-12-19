@@ -12,6 +12,7 @@ Route::view('/programs', 'programs')->name('program');
 
 Route::view('/events', 'events')->name('event');
 Route::view('/events/journey', 'events')->name('event.journey');
+Route::view('/events/journey/{slug}', 'journey_show')->name('event.journey.show');
 
 Route::view('/news', 'news')->name('new');
 Route::view('/news/{slug}', 'news_show')->name('new.show');

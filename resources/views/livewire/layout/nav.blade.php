@@ -25,7 +25,7 @@
                 <x-nav-link-2 :href="route('event')" :active="request()->routeIs('event', 'event.*')" wire:navigate>
                     {{ __('Events') }}
                 </x-nav-link-2>
-                <x-nav-link-2 :href="route('new')" :active="request()->routeIs('new')" wire:navigate>
+                <x-nav-link-2 :href="route('new')" :active="request()->routeIs('new', 'new.*')" wire:navigate>
                     {{ __('News') }}
                 </x-nav-link-2>
                 <x-nav-link-2 :href="route('about')" :active="request()->routeIs('about')" wire:navigate>
@@ -60,7 +60,7 @@
         <x-nav-link-2 :href="route('home')" class="block" :active="request()->routeIs('home')" wire:navigate>
             {{ __('Home') }}
         </x-nav-link-2>
-        <x-nav-link-2 :href="route('participant')" class="block" :active="request()->routeIs('participant')" wire:navigate>
+        <x-nav-link-2 :href="route('participant')" class="block" :active="request()->routeIs('participant', 'participant.*')" wire:navigate>
             {{ __('Participants') }}
         </x-nav-link-2>
         <x-nav-link-2 :href="route('product')" class="block" :active="request()->routeIs('product')" wire:navigate>
@@ -69,10 +69,10 @@
         <x-nav-link-2 :href="route('program')" class="block" :active="request()->routeIs('program')" wire:navigate>
             {{ __('Programs') }}
         </x-nav-link-2>
-        <x-nav-link-2 :href="route('event')" class="block" :active="request()->routeIs('event')" wire:navigate>
+        <x-nav-link-2 :href="route('event')" class="block" :active="request()->routeIs('event', 'event.*')" wire:navigate>
             {{ __('Events') }}
         </x-nav-link-2>
-        <x-nav-link-2 :href="route('new')" class="block" :active="request()->routeIs('new')" wire:navigate>
+        <x-nav-link-2 :href="route('new')" class="block" :active="request()->routeIs('new', 'new.*')" wire:navigate>
             {{ __('News') }}
         </x-nav-link-2>
         <x-nav-link-2 :href="route('about')" class="block" :active="request()->routeIs('about')" wire:navigate>

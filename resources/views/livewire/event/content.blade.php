@@ -1,5 +1,5 @@
 <div class="min-h-screen bg-white pb-16">
-    <div class="max-w-7xl mx-auto px-6">
+    <div class="max-w-7xl mx-auto">
 
         <div class="mb-10">
             <h1 class="text-2xl font-black text-gray-900 tracking-tight uppercase">

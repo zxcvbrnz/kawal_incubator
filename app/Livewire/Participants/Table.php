@@ -12,7 +12,7 @@ class Table extends Component
     use WithPagination;
 
     // --- CUKUP UBAH INI ---
-    public $isDatabase = false;
+    public $isDatabase = true;
     // ----------------------
 
     public $search = '';

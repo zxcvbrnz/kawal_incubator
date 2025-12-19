@@ -24,7 +24,7 @@
                     </div>
                 </div>
 
-                <div class="w-full lg:w-2/5 space-y-4">
+                <div class="w-full lg:w-2/5 space-y-5">
                     <div class="space-y-1">
                         <span class="text-amber-500 font-bold text-[10px] uppercase tracking-widest italic">November
                             2025</span>
@@ -37,6 +37,15 @@
                         "Momen luar biasa di mana ribuan talenta lokal berkumpul untuk berbagi visi tentang masa depan
                         industri kreatif di Indonesia."
                     </p>
+
+                    <div class="pb-2">
+                        <a href="{{ route('event.journey.show', ['slug' => 'tes-slug']) }}" wire:navigate
+                            class="group/link inline-flex items-center gap-3">
+                            <span class="text-[10px] font-black uppercase tracking-[0.2em] text-gray-900">Explore
+                                Memories</span>
+                            <div class="h-px w-8 bg-amber-500 group-hover/link:w-12 transition-all duration-500"></div>
+                        </a>
+                    </div>
 
                     <div class="pt-4 border-t border-gray-100 flex items-center gap-3">
                         <div class="flex items-center gap-2 text-gray-400">
