@@ -26,7 +26,7 @@
                 </div>
             @empty
                 <div class="col-span-full text-center py-20">
-                    <p class="text-gray-400">No programs found.</p>
+                    <p class="text-gray-500 italic">No programs found...</p>
                 </div>
             @endforelse
         </div>

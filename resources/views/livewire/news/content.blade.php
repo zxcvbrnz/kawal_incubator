@@ -1,6 +1,5 @@
-<div>
-    <div>
-        <div class="mt-4 mb-16 h-1 w-24 bg-amber-500 rounded-full"></div>
+<div class="min-h-screen bg-white pt-4 pb-16">
+    <div class="max-w-7xl mx-auto">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             @forelse($posts as $post)
                 <a href="{{ route('new.show', ['slug' => $post->slug]) }}" wire:navigate

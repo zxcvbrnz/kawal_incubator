@@ -13,7 +13,7 @@
                 <x-nav-link-2 :href="route('home')" :active="request()->routeIs('home')" wire:navigate>
                     {{ __('Home') }}
                 </x-nav-link-2>
-                <x-nav-link-2 :href="route('participant')" :active="request()->routeIs('participant')" wire:navigate>
+                <x-nav-link-2 :href="route('participant')" :active="request()->routeIs('participant', 'participant.*')" wire:navigate>
                     {{ __('Participants') }}
                 </x-nav-link-2>
                 <x-nav-link-2 :href="route('product')" :active="request()->routeIs('product')" wire:navigate>
@@ -22,7 +22,7 @@
                 <x-nav-link-2 :href="route('program')" :active="request()->routeIs('program')" wire:navigate>
                     {{ __('Programs') }}
                 </x-nav-link-2>
-                <x-nav-link-2 :href="route('event')" :active="request()->routeIs('event')" wire:navigate>
+                <x-nav-link-2 :href="route('event')" :active="request()->routeIs('event', 'event.*')" wire:navigate>
                     {{ __('Events') }}
                 </x-nav-link-2>
                 <x-nav-link-2 :href="route('new')" :active="request()->routeIs('new')" wire:navigate>

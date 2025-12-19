@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Event extends Model
 {
@@ -14,6 +15,13 @@ class Event extends Model
         'name',
         'description',
         'start_at',
-        'location'
+        'end_at',
+        'location',
+        'status',
     ];
+
+    public function images(): HasMany
+    {
+        return $this->hasMany(EventImages::class);
+    }
 }

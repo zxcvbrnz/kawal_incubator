@@ -1,7 +1,7 @@
-<div class="min-h-screen bg-white mt-4 mb-16">
+<div class="min-h-screen bg-white pt-4 pb-16">
     <div class="max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-            @foreach ($products as $product)
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            @forelse ($products as $product)
                 <div
                     class="group bg-white rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl hover:shadow-amber-50/50 transition-all duration-500 overflow-hidden flex flex-col">
 
@@ -26,7 +26,11 @@
                         </div>
                     </div>
                 </div>
-            @endforeach
+            @empty
+                <div class="col-span-full text-center py-20">
+                    <p class="text-gray-500 italic">No products found...</p>
+                </div>
+            @endforelse
         </div>
 
         <div class="mt-20">

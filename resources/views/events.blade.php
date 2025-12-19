@@ -15,8 +15,24 @@
                 </div>
                 <div class="mt-4 h-1 w-24 bg-amber-500 rounded-full"></div>
             </div>
+            <div class="flex justify-center w-full mb-12">
+                <div class="flex gap-8 border-b border-gray-100 w-full max-w-md justify-center">
+
+                    <x-nav-event-link wire:navigate :active="request()->routeIs('event')" href="{{ route('event') }}">
+                        Upcoming Events
+                    </x-nav-event-link>
+
+                    <x-nav-event-link wire:navigate :active="request()->routeIs('event.journey')" href="{{ route('event.journey') }}">
+                        Our Journey
+                    </x-nav-event-link>
+                </div>
+            </div>
             <section id="content">
-                <livewire:event.content />
+                @if (request()->routeIs('event'))
+                    <livewire:event.content />
+                @elseif (request()->routeIs('event.journey'))
+                    <livewire:event.journey />
+                @endif
             </section>
         </div>
     </div>
