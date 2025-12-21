@@ -28,6 +28,7 @@ class Show extends Component
 
         // Ambil 2 event lain untuk sidebar
         $this->otherMemories = Event::where('id', '!=', $this->event->id)
+            ->where('status', true)
             ->latest()
             ->take(2)
             ->get();
