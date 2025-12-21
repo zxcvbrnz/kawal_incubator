@@ -71,7 +71,7 @@
                     <div class="space-y-8">
                         <div class="space-y-2">
                             <span class="text-amber-500 font-bold text-[10px] uppercase tracking-[0.3em] italic">
-                                Archive: {{ $event->start_at->format('M Y') }}
+                                Archive: {{ $event->start_at->format('d M Y') }}
                             </span>
                             <h1 class="text-4xl lg:text-5xl font-black text-gray-900 leading-none uppercase">
                                 {{ Str::beforeLast($event->name, ' ') }} <br>
@@ -113,15 +113,15 @@
 
                     <div class="space-y-4">
                         @foreach ($otherMemories as $memory)
-                            <a href="{{ route('event.show', $memory->slug) }}" wire:navigate
+                            <a href="{{ route('event.journey.show', $memory->slug) }}" wire:navigate
                                 class="group flex gap-4 items-center">
                                 <div class="w-20 h-20 flex-none rounded-2xl overflow-hidden shadow-sm bg-gray-200">
-                                    <img src="{{ asset('storage/' . $memory->image_url) }}"
+                                    <img src="{{ asset('storage/event/' . $memory->image_url) }}"
                                         class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                                 </div>
                                 <div class="space-y-1">
                                     <span
-                                        class="text-[9px] font-bold text-amber-600 uppercase italic">{{ $memory->start_at->format('M Y') }}</span>
+                                        class="text-[9px] font-bold text-amber-600 uppercase italic">{{ $memory->start_at->format('d M Y') }}</span>
                                     <h4
                                         class="text-xs font-black text-gray-900 uppercase leading-snug group-hover:text-amber-500 transition">
                                         {{ $memory->name }}
