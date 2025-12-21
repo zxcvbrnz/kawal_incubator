@@ -12,7 +12,7 @@
                 <article>
                     <div x-data="{
                         active: 0,
-                        total: 3,
+                        total: {{ count($allImages) }},
                         scrollTo(index) {
                             if (index < 0) index = this.total - 1;
                             if (index >= this.total) index = 0;
@@ -29,8 +29,10 @@
                             class="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white/80 backdrop-blur-md p-3 rounded-full shadow-lg text-gray-900 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-amber-500 hover:text-white">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
+
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M15 19l-7-7 7-7" />
+
                             </svg>
                         </button>
 
@@ -39,26 +41,21 @@
                             class="flex overflow-x-auto snap-x snap-mandatory gap-0 no-scrollbar rounded-[2.5rem] shadow-lg border border-gray-100"
                             style="scroll-behavior: smooth;">
 
-                            <div class="flex-none w-full snap-center aspect-video">
-                                <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=2012"
-                                    class="w-full h-full object-cover">
-                            </div>
-                            <div class="flex-none w-full snap-center aspect-video">
-                                <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?q=80&w=2070"
-                                    class="w-full h-full object-cover">
-                            </div>
-                            <div class="flex-none w-full snap-center aspect-video">
-                                <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=2070"
-                                    class="w-full h-full object-cover">
-                            </div>
+                            @foreach ($allImages as $img)
+                                <div class="flex-none w-full snap-center aspect-video">
+                                    <img src="{{ asset('storage/event/' . $img) }}" class="w-full h-full object-cover">
+                                </div>
+                            @endforeach
                         </div>
 
                         <button @click="scrollTo(active + 1)"
                             class="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white/80 backdrop-blur-md p-3 rounded-full shadow-lg text-gray-900 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-amber-500 hover:text-white">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
+
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M9 5l7 7-7 7" />
+
                             </svg>
                         </button>
 
@@ -73,11 +70,12 @@
 
                     <div class="space-y-8">
                         <div class="space-y-2">
-                            <span
-                                class="text-amber-500 font-bold text-[10px] uppercase tracking-[0.3em] italic">Archive:
-                                Nov 2025</span>
+                            <span class="text-amber-500 font-bold text-[10px] uppercase tracking-[0.3em] italic">
+                                Archive: {{ $event->start_at->format('M Y') }}
+                            </span>
                             <h1 class="text-4xl lg:text-5xl font-black text-gray-900 leading-none uppercase">
-                                Global Creative <br> <span class="text-amber-500 italic">Summit</span>
+                                {{ Str::beforeLast($event->name, ' ') }} <br>
+                                <span class="text-amber-500 italic">{{ Str::afterLast($event->name, ' ') }}</span>
                             </h1>
                         </div>
 
@@ -85,14 +83,7 @@
                             <h2 class="text-xl font-bold text-gray-900 uppercase tracking-tight">The Story Behind The
                                 Event</h2>
                             <p class="text-gray-500 leading-relaxed italic text-lg">
-                                "Momen luar biasa di mana ribuan talenta lokal berkumpul untuk berbagi visi tentang masa
-                                depan industri kreatif di Indonesia. Event ini menjadi tonggak sejarah kolaborasi kami."
-                            </p>
-                            <p class="text-gray-600 leading-relaxed text-sm">
-                                Sepanjang acara, kami menyaksikan bagaimana ide-ide brilian muncul dari diskusi panel
-                                dan workshop intensif. Antusiasme peserta membuktikan bahwa ekosistem kreatif kita
-                                sedang berada di puncaknya. Dari pagi hingga malam, energi tidak pernah surut,
-                                menciptakan koneksi yang akan bertahan bertahun-tahun ke depan.
+                                "{{ $event->description }}"
                             </p>
                         </div>
                     </div>
@@ -103,17 +94,13 @@
                 <div class="bg-gray-50 p-8 rounded-[2.5rem] border border-gray-100 space-y-6">
                     <h3 class="text-[10px] font-black text-gray-400 uppercase tracking-widest">Event Details</h3>
                     <ul class="space-y-4">
-                        <li class="flex items-center gap-4 text-xs font-bold text-gray-700">
+                        <li class="flex items-center gap-4 text-xs font-bold text-gray-700 uppercase">
                             <i class="bi bi-geo-alt text-amber-500 text-lg"></i>
-                            GBK, JAKARTA SELATAN
+                            {{ $event->location }}
                         </li>
-                        <li class="flex items-center gap-4 text-xs font-bold text-gray-700">
+                        <li class="flex items-center gap-4 text-xs font-bold text-gray-700 uppercase">
                             <i class="bi bi-calendar-check text-amber-500 text-lg"></i>
-                            24 NOVEMBER 2025
-                        </li>
-                        <li class="flex items-center gap-4 text-xs font-bold text-gray-700">
-                            <i class="bi bi-people text-amber-500 text-lg"></i>
-                            2.500+ PARTICIPANTS
+                            {{ $event->start_at->format('d F Y') }}
                         </li>
                     </ul>
                 </div>
@@ -125,37 +112,26 @@
                     </div>
 
                     <div class="space-y-4">
-                        <a href="#" class="group flex gap-4 items-center">
-                            <div class="w-20 h-20 flex-none rounded-2xl overflow-hidden shadow-sm">
-                                <img src="https://images.unsplash.com/photo-1540575861501-7ad05823c951?q=80"
-                                    class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                            </div>
-                            <div class="space-y-1">
-                                <span class="text-[9px] font-bold text-amber-600 uppercase italic">Oct 2025</span>
-                                <h4
-                                    class="text-xs font-black text-gray-900 uppercase leading-snug group-hover:text-amber-500 transition">
-                                    Tech Conference <span class="italic text-amber-500">2025</span>
-                                </h4>
-                            </div>
-                        </a>
-
-                        <a href="#" class="group flex gap-4 items-center">
-                            <div class="w-20 h-20 flex-none rounded-2xl overflow-hidden shadow-sm">
-                                <img src="https://images.unsplash.com/photo-1475721027185-40ea002d2810?q=80"
-                                    class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                            </div>
-                            <div class="space-y-1">
-                                <span class="text-[9px] font-bold text-amber-600 uppercase italic">Aug 2025</span>
-                                <h4
-                                    class="text-xs font-black text-gray-900 uppercase leading-snug group-hover:text-amber-500 transition">
-                                    Innovation <span class="italic text-amber-500">Night</span>
-                                </h4>
-                            </div>
-                        </a>
+                        @foreach ($otherMemories as $memory)
+                            <a href="{{ route('event.show', $memory->slug) }}" wire:navigate
+                                class="group flex gap-4 items-center">
+                                <div class="w-20 h-20 flex-none rounded-2xl overflow-hidden shadow-sm bg-gray-200">
+                                    <img src="{{ asset('storage/' . $memory->image_url) }}"
+                                        class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                                </div>
+                                <div class="space-y-1">
+                                    <span
+                                        class="text-[9px] font-bold text-amber-600 uppercase italic">{{ $memory->start_at->format('M Y') }}</span>
+                                    <h4
+                                        class="text-xs font-black text-gray-900 uppercase leading-snug group-hover:text-amber-500 transition">
+                                        {{ $memory->name }}
+                                    </h4>
+                                </div>
+                            </a>
+                        @endforeach
                     </div>
                 </div>
             </aside>
-
         </div>
     </div>
 </div>

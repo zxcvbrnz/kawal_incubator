@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->dateTime('start_at');
             $table->dateTime('end_at');
+            $table->string('image_url');
             $table->string('location');
             $table->boolean('status');
             $table->timestamps();

@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             ParticipantProductSeeder::class,
             PostSeeder::class,
             ProgramSeeder::class,
+            EventSeeder::class,
         ]);
     }
 }
