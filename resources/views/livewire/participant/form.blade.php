@@ -449,7 +449,6 @@
                 <input type="text" wire:model="captcha_code" placeholder="Ketik kode di atas"
                     class="w-full max-w-[200px] text-center bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-amber-500 uppercase font-black tracking-[0.2em] placeholder:tracking-normal placeholder:font-normal">
             </div>
-
             <button type="submit" wire:loading.attr="disabled"
                 class="w-full bg-amber-500 hover:bg-amber-600 text-white font-black py-5 rounded-[2rem] transition-all uppercase tracking-widest shadow-xl shadow-amber-200">
                 <span wire:loading.remove wire:target="save">Simpan Data Pendaftaran</span>
