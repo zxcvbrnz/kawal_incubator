@@ -17,7 +17,7 @@ class Carousel1 extends Component
                     return [
                         'name' => $product->name,
                         'image' => asset('storage/product/' . $product->image_url), // Sesuaikan path gambar
-                        'participant' => $product->participant->name ?? 'Unknown'
+                        'participant' => $product->participant->business_name ?? 'Unknown'
                     ];
                 })
         ]);

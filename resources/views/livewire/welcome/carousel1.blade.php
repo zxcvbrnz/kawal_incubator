@@ -93,7 +93,7 @@
                             <div class="px-4 py-2 flex-1 flex flex-col justify-between">
                                 <h3 class="font-semibold text-gray-800 text-sm mb-0.5 truncate" x-text="item.name"></h3>
                                 <div class="text-[10px] text-gray-400 uppercase tracking-wider">
-                                    Made by: <span class="text-amber-500 font-semibold"
+                                    Product by: <span class="text-amber-500 font-semibold"
                                         x-text="item.participant"></span>
                                 </div>
                             </div>

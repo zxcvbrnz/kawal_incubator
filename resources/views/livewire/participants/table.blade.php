@@ -1,11 +1,12 @@
 <div class="mt-8">
     <div class="mb-8 space-y-2">
-        <h2 class="text-2xl">Our proudly participants</h2>
-        <p class="text-gray-500">Discover the exceptional individuals who are driving innovation and excellence within
-            our community.</p>
+        <h2 class="text-2xl font-bold text-gray-800">Our Proudly Participants</h2>
+        <p class="text-gray-500">Discover the exceptional businesses driving innovation and excellence within our
+            community.</p>
     </div>
-    <div class="rounded-3xl border border-gray-100 shadow-xl shadow-gray-300 overflow-hidden">
-        <div class="p-6 bg-amber-200">
+
+    <div class="rounded-[2rem] border border-gray-100 shadow-xl shadow-gray-200 overflow-hidden bg-white">
+        <div class="p-6 bg-amber-50/50 border-b border-gray-100">
             <div class="relative max-w-md">
                 <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                     <svg class="h-5 w-5 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -13,61 +14,103 @@
                             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                     </svg>
                 </div>
-                <input wire:model.live.debounce.300ms="search" type="text" placeholder="Search name..."
-                    class="block w-full pl-11 pr-4 py-3 bg-white border border-gray-500 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all duration-300">
+                <input wire:model.live.debounce.300ms="search" type="text"
+                    placeholder="Search business, owner, or field..."
+                    class="block w-full pl-11 pr-4 py-3 bg-white border border-gray-200 rounded-2xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-300 shadow-sm">
             </div>
         </div>
+
         <div class="overflow-x-auto">
             <table class="w-full text-left">
                 <thead>
-                    <tr class="border-y border-gray-200 bg-gray-50/30">
-                        <th wire:click="sortBy('id')"
-                            class="px-8 py-4 text-xs font-bold text-gray-400 uppercase tracking-widest cursor-pointer hover:text-amber-600 transition-colors">
+                    <tr class="bg-gray-50/50">
+                        <th wire:click="sortBy('business_name')"
+                            class="px-8 py-4 text-[10px] font-black text-gray-400 uppercase tracking-widest cursor-pointer hover:text-amber-600 transition-colors">
                             <div class="flex items-center gap-2">
-                                <span>ID</span>
-                                @if ($sortField === 'id')
-                                    <span class="text-amber-500">{{ $sortDirection === 'asc' ? '↑' : '↓' }}</span>
+                                <span>Business Name</span>
+                                @if ($sortField === 'business_name')
+                                    <span
+                                        class="text-amber-500 text-base">{{ $sortDirection === 'asc' ? '↑' : '↓' }}</span>
                                 @endif
                             </div>
                         </th>
-                        <th wire:click="sortBy('name')"
-                            class="px-8 py-4 text-xs font-bold text-gray-400 uppercase tracking-widest cursor-pointer hover:text-amber-600 transition-colors">
+                        <th wire:click="sortBy('owner_name')"
+                            class="px-8 py-4 text-[10px] font-black text-gray-400 uppercase tracking-widest cursor-pointer hover:text-amber-600 transition-colors">
                             <div class="flex items-center gap-2">
-                                <span>Participant Name</span>
-                                @if ($sortField === 'name')
-                                    <span class="text-amber-500">{{ $sortDirection === 'asc' ? '↑' : '↓' }}</span>
+                                <span>Owner</span>
+                                @if ($sortField === 'owner_name')
+                                    <span
+                                        class="text-amber-500 text-base">{{ $sortDirection === 'asc' ? '↑' : '↓' }}</span>
+                                @endif
+                            </div>
+                        </th>
+                        <th wire:click="sortBy('business_field')"
+                            class="px-8 py-4 text-[10px] font-black text-gray-400 uppercase tracking-widest cursor-pointer hover:text-amber-600 transition-colors">
+                            <div class="flex items-center gap-2">
+                                <span>Business Field</span>
+                                @if ($sortField === 'business_field')
+                                    <span
+                                        class="text-amber-500 text-base">{{ $sortDirection === 'asc' ? '↑' : '↓' }}</span>
                                 @endif
                             </div>
                         </th>
                     </tr>
                 </thead>
 
-                <tbody class="divide-y divide-gray-100">
+                <tbody class="divide-y divide-gray-50">
                     @forelse($participants as $person)
                         <tr class="group hover:bg-amber-50/30 transition-colors">
                             <td class="px-8 py-5">
-                                <span
-                                    class="text-sm font-mono text-gray-400 group-hover:text-amber-600 transition-colors">
-                                    #{{ str_pad($person->id, 3, '0', STR_PAD_LEFT) }}
-                                </span>
-                            </td>
-                            <td class="px-8 py-5">
                                 <div class="flex items-center gap-4">
                                     <div
-                                        class="h-9 w-9 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-sm">
-                                        {{ substr($person->name, 0, 1) }}
+                                        class="h-12 w-12 rounded-2xl bg-amber-100 overflow-hidden flex-shrink-0 border border-amber-200 shadow-sm">
+                                        @if ($person->profile_photo)
+                                            <img src="{{ asset('storage/' . $person->profile_photo) }}"
+                                                class="h-full w-full object-cover">
+                                        @else
+                                            <div
+                                                class="h-full w-full flex items-center justify-center text-amber-700 font-black text-lg">
+                                                {{ substr($person->business_name, 0, 1) }}
+                                            </div>
+                                        @endif
                                     </div>
-                                    <span
-                                        class="text-sm font-bold text-gray-700 group-hover:text-amber-700 transition-colors">
-                                        {{ $person->name }}
-                                    </span>
+                                    <div class="flex flex-col">
+                                        <span
+                                            class="text-sm font-bold text-gray-700 group-hover:text-amber-700 transition-colors">
+                                            {{ $person->business_name }}
+                                        </span>
+                                        <span class="text-[10px] font-mono text-gray-400 uppercase">
+                                            #{{ str_pad($person->id, 3, '0', STR_PAD_LEFT) }}
+                                        </span>
+                                    </div>
                                 </div>
+                            </td>
+
+                            <td class="px-8 py-5">
+                                <span class="text-sm text-gray-600 font-medium">
+                                    {{ $person->owner_name }}
+                                </span>
+                            </td>
+
+                            <td class="px-8 py-5">
+                                <span
+                                    class="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-amber-50 text-amber-700 border border-amber-100">
+                                    {{ $person->business_field }}
+                                </span>
                             </td>
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="2" class="px-8 py-16 text-center">
-                                <p class="text-gray-400 italic">No participants found match your search.</p>
+                            <td colspan="3" class="px-8 py-20 text-center">
+                                <div class="flex flex-col items-center justify-center space-y-3">
+                                    <svg class="h-12 w-12 text-gray-200" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                            d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                                    </svg>
+                                    <p class="text-gray-400 font-medium italic">No businesses match your search
+                                        criteria.</p>
+                                </div>
                             </td>
                         </tr>
                     @endforelse

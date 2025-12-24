@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+.grecaptcha-badge { 
+        visibility: hidden; 
+}
+
+.required::after {
+        content: " *";
+        @apply text-red-600;
+}
+
 /* Merubah warna batang progress */
 #nprogress .bar {
     background: oklch(76.9% 0.188 70.08) !important; /* Ganti dengan kode warna Anda (misal: Merah Laravel) */

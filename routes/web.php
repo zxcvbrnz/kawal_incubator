@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\captchaController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome')->name('home');
 
 Route::view('/participants', 'participants')->name('participant');
+Route::view('/participants/join-participant', 'participant_form')->name('participant.form');
 
 Route::view('/products', 'products')->name('product');
 

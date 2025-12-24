@@ -15,7 +15,7 @@
                 </div>
                 <div class="mt-4 h-1 w-24 bg-amber-500 rounded-full"></div>
             </div>
-            <a href="#"
+            <a href="{{ route('participant.form') }}"
                 class="inline-flex items-center justify-center px-8 py-3.5 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-xl shadow-lg shadow-amber-200 transition-all duration-300 transform hover:-translate-y-1 active:scale-95 group">
                 <span>Let's, be a participant</span>
                 <svg xmlns="http://www.w3.org/2000/svg"

@@ -22,7 +22,8 @@
                             </h3>
                         </div>
                         <div class="text-[10px] text-gray-400 uppercase tracking-wider">
-                            Made by: <span class="text-amber-500 font-semibold">{{ $product->participant->name }}</span>
+                            Product by: <span
+                                class="text-amber-500 font-semibold">{{ $product->participant->business_name }}</span>
                         </div>
                     </div>
                 </div>

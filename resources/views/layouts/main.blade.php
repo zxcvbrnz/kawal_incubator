@@ -15,12 +15,11 @@
     <link
         href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
-
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-sans antialiased">
+<body data-success="{{ session('success') }}" data-error="{{ session('error') }}" class="font-sans antialiased">
     <div class="min-h-screen">
         <livewire:layout.nav />
 
