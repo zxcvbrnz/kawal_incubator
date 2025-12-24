@@ -47,7 +47,7 @@
         <div class="p-6 border-b border-gray-50">
             <h3 class="font-bold text-gray-800">Partisipan Aktif</h3>
         </div>
-        <table class="w-full text-left text-sm">
+        <table class="w-full text-left text-sm overflow-auto">
             <thead class="bg-gray-50 text-gray-400 uppercase text-[10px] tracking-widest">
                 <tr>
                     <th class="px-6 py-4">Bisnis</th>
@@ -58,7 +58,7 @@
             </thead>
             <tbody class="divide-y divide-gray-50">
                 @foreach ($participants as $p)
-                    <tr class="hover:bg-gray-50 transition">
+                    <tr wire:key="participant-{{ $p->id }}" class="hover:bg-gray-50 transition">
                         <td class="px-6 py-4">
                             <div class="font-bold text-gray-900">{{ $p->business_name }}</div>
                             <div class="text-[10px] text-gray-400">{{ $p->business_field }}</div>
@@ -80,15 +80,6 @@
                                         </path>
                                     </svg>
                                 </a>
-                                <button onclick="confirmDelete({{ $p->id }}, '{{ $p->business_name }}')"
-                                    class="text-red-400 hover:text-red-600 transition">
-                                    <svg class="w-5 h-5 inline" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
-                                        </path>
-                                    </svg>
-                                </button>
                             </div>
                         </td>
                     </tr>
@@ -96,26 +87,7 @@
             </tbody>
         </table>
         <div class="p-6">
-            {{ $participants->links() }}
+            {{ $participants->links('vendor.pagination.custom-amber') }}
         </div>
     </div>
-
-    <script>
-        function confirmDelete(id, name) {
-            Swal.fire({
-                title: 'Hapus Partisipan?',
-                text: "Anda akan menghapus data " + name + ". Tindakan ini tidak bisa dibatalkan!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#ef4444',
-                cancelButtonColor: '#9ca3af',
-                confirmButtonText: 'Ya, Hapus!',
-                cancelButtonText: 'Batal'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    @this.call('delete', id);
-                }
-            })
-        }
-    </script>
 </div>

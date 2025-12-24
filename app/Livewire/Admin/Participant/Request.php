@@ -3,6 +3,8 @@
 namespace App\Livewire\Admin\Participant;
 
 use App\Models\Participant;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Silvanix\Wablas\Message;
@@ -43,28 +45,14 @@ class Request extends Component
         ]);
     }
 
-    public function delete($id)
-    {
-        $participant = Participant::findOrFail($id);
-        $name = $participant->business_name;
-        $participant->delete();
-
-        $this->dispatch('swal', [
-            'type' => 'success',
-            'title' => 'Dihapus!',
-            'message' => "Data {$name} telah dihapus dari sistem."
-        ]);
-    }
-
     public function render()
     {
         return view('livewire.admin.participant.request', [
-            'requests' => Participant::where('status', false)
-                ->where('business_name', 'like', '%' . $this->search . '%')
-                ->latest()->get(),
+            'requests' => Participant::where('status', false)->get(),
+            // Pastikan search tidak menjadi null atau error saat event dipicu
             'participants' => Participant::where('status', true)
                 ->where('business_name', 'like', '%' . $this->search . '%')
-                ->latest()->paginate(10),
+                ->paginate(10)
         ]);
     }
 }

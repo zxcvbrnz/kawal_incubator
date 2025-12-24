@@ -1,16 +1,19 @@
 import './bootstrap';
-
 import Swal from 'sweetalert2';
 
-// 1. Menangani Event dari Livewire
-window.addEventListener('swal', (event) => {
-    const data = event.detail[0];
-    showSwal(data.type, data.title, data.message);
+// Pastikan Swal bisa diakses secara global jika dipanggil via onclick di blade
+window.Swal = Swal;
+
+document.addEventListener('livewire:init', () => {
+    // 1. Menangani Event dari Livewire 3 (PENTING!)
+    Livewire.on('swal', (event) => {
+        const data = event[0]; // Livewire 3 mengirim data dalam array
+        showSwal(data.type, data.title, data.message);
+    });
 });
 
 // 2. Menangani Session Flash otomatis saat halaman dimuat
 document.addEventListener('DOMContentLoaded', () => {
-    // Cari data session yang kita selipkan di body atau meta (lihat poin 2)
     const flash = document.body.dataset;
 
     if (flash.success) {
@@ -20,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Fungsi Helper agar kode tidak berulang
+// Fungsi Helper
 function showSwal(type, title, message) {
     Swal.fire({
         icon: type,

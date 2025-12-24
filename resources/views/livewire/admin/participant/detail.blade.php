@@ -264,7 +264,8 @@
                         </div>
                     </div>
                     @if ($participant->business_profile_file)
-                        <a href="{{ asset('storage/' . $participant->business_profile_file) }}" target="_blank"
+                        <a href="{{ asset('storage/participant/' . $participant->business_profile_file) }}"
+                            target="_blank"
                             class="px-6 py-3 bg-gray-900 text-white text-[10px] font-black uppercase rounded-xl hover:bg-black transition">
                             Buka Dokumen
                         </a>
