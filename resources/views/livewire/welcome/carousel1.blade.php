@@ -90,11 +90,16 @@
                         <div
                             class="min-w-[220px] bg-white rounded-2xl shadow-sm border border-amber-100 overflow-hidden flex flex-col">
                             <img :src="item.image" class="h-44 w-full object-cover" :alt="item.image" />
-                            <div class="px-4 py-2 flex-1 flex flex-col justify-between">
-                                <h3 class="font-semibold text-gray-800 text-sm mb-0.5 truncate" x-text="item.name"></h3>
-                                <div class="text-[10px] text-gray-400 uppercase tracking-wider">
-                                    Product by: <span class="text-amber-500 font-semibold"
-                                        x-text="item.participant"></span>
+                            <div class="px-4 py-2 flex-1 flex flex-col">
+                                <h3 class="font-semibold text-gray-800 text-sm mb-0.5 truncate block" x-text="item.name"
+                                    :title="item.name">
+                                </h3>
+                                <div
+                                    class="text-[10px] text-gray-400 uppercase tracking-wider flex items-center min-w-0">
+                                    <span class="whitespace-nowrap flex-shrink-0">Product by: &nbsp;</span>
+                                    <span class="text-amber-500 font-semibold truncate" x-text="item.participant"
+                                        :title="item.participant">
+                                    </span>
                                 </div>
                             </div>
                         </div>

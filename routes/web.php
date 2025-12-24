@@ -23,12 +23,16 @@ Route::view('/about', 'about')->name('about');
 
 Route::view('/contact-us', 'contact')->name('contact');
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+Route::middleware(['auth'])->group(function () {
 
-Route::view('profile', 'profile')
-    ->middleware(['auth'])
-    ->name('profile');
+    // Dashboard (khusus verified)
+    Route::view('dashboard', 'dashboard')
+        ->middleware(['verified'])
+        ->name('dashboard');
+
+    Route::view('/dashboard/participant/{id}', 'admin.participant_detail')->name('admin.participant.detail');
+    // Profile
+    Route::view('profile', 'profile')->name('profile');
+});
 
 require __DIR__ . '/auth.php';

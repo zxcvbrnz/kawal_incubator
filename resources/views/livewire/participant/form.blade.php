@@ -152,10 +152,10 @@
                         <select wire:model="omset"
                             class="w-full bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-amber-500">
                             <option value="">Pilih Range Omset</option>
-                            <option value="A">0 - 15.000.000 / bulan</option>
-                            <option value="B">15.000.001 - 50.000.000 / bulan</option>
-                            <option value="C">50.000.001 - 100.000.000 / bulan</option>
-                            <option value="D">100.000.001 +++</option>
+                            <option value="0 - 15.000.000 / bulan">0 - 15.000.000 / bulan</option>
+                            <option value="15.000.001 - 50.000.000 / bulan">15.000.001 - 50.000.000 / bulan</option>
+                            <option value="50.000.001 - 100.000.000 / bulan">50.000.001 - 100.000.000 / bulan</option>
+                            <option value="100.000.001 +++">100.000.001 +++</option>
                         </select>
                         @error('omset')
                             <span class="text-[10px] text-red-500 font-bold uppercase">{{ $message }}</span>

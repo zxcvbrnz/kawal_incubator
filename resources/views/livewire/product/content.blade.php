@@ -15,15 +15,16 @@
                     </div>
 
                     <div class="py-4 px-6 flex-1 flex flex-col">
-                        <div class="">
-                            <h3
-                                class="font-semibold text-sm text-gray-900 group-hover:text-amber-600 transition-colors duration-300 line-clamp-2">
-                                {{ $product->name }}
-                            </h3>
-                        </div>
-                        <div class="text-[10px] text-gray-400 uppercase tracking-wider">
-                            Product by: <span
-                                class="text-amber-500 font-semibold">{{ $product->participant->business_name }}</span>
+                        <h3 class="font-semibold text-sm text-gray-900 group-hover:text-amber-600 transition-colors duration-300 truncate"
+                            title="{{ $product->name }}">
+                            {{ $product->name }}
+                        </h3>
+                        <div class="text-[10px] text-gray-400 uppercase tracking-wider flex items-center min-w-0">
+                            <span class="flex-shrink-0">Product by:&nbsp;</span>
+                            <span class="text-amber-500 font-semibold truncate"
+                                title="{{ $product->participant->business_name }}">
+                                {{ $product->participant->business_name }}
+                            </span>
                         </div>
                     </div>
                 </div>
