@@ -23,7 +23,7 @@
         <div class="overflow-x-auto">
             <table class="w-full text-left">
                 <thead>
-                    <tr class="bg-gray-50/50">
+                    <tr class="bg-amber-200">
                         <th wire:click="sortBy('business_name')"
                             class="px-8 py-4 text-[10px] font-black text-gray-400 uppercase tracking-widest cursor-pointer hover:text-amber-600 transition-colors">
                             <div class="flex items-center gap-2">
