@@ -14,12 +14,17 @@
                     {{ $participant->updated_at->format('d/m/Y H:i') }}</p>
             </div>
         </div>
-        <div class="flex items-center gap-3">
+        <div class="flex flex-col items-end gap-2">
             <button wire:click="save" wire:loading.attr="disabled"
                 class="flex items-center justify-center gap-2 px-10 py-4 bg-amber-500 hover:bg-amber-600 text-white rounded-2xl font-black shadow-xl shadow-amber-200 transition-all active:scale-95 disabled:opacity-50">
                 <span wire:loading.remove>SIMPAN PERUBAHAN</span>
                 <span wire:loading>MEMPROSES...</span>
             </button>
+            {{-- Notifikasi Error Global jika ada validasi yang gagal --}}
+            @if ($errors->any())
+                <span class="text-red-500 text-[10px] font-black uppercase animate-bounce">Periksa kembali input yang
+                    merah!</span>
+            @endif
         </div>
     </div>
 
@@ -100,11 +105,17 @@
                         <label class="text-[10px] font-black text-gray-400 uppercase ml-2">Nama Owner</label>
                         <input type="text" wire:model="form.owner_name"
                             class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-amber-500">
+                        @error('form.owner_name')
+                            <span class="text-red-500 text-[10px] ml-2">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div>
                         <label class="text-[10px] font-black text-gray-400 uppercase ml-2">Kontak / HP</label>
                         <input type="text" wire:model="form.contact"
                             class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-amber-500">
+                        @error('form.contact')
+                            <span class="text-red-500 text-[10px] ml-2">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="md:col-span-2">
                         <label class="text-[10px] font-black text-gray-400 uppercase ml-2">Deskripsi Singkat
@@ -112,6 +123,9 @@
                         <textarea wire:model="form.description" rows="4"
                             class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-amber-500"
                             placeholder="Jelaskan produk atau visi usaha..."></textarea>
+                        @error('form.description')
+                            <span class="text-red-500 text-[10px] ml-2">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
             </div>
@@ -124,33 +138,51 @@
                     <div class="col-span-2">
                         <label class="text-[10px] font-black text-gray-400 uppercase ml-2">Provinsi</label>
                         <input type="text" wire:model="form.province"
-                            class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-amber-500">
+                            class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl">
+                        @error('form.province')
+                            <span class="text-red-500 text-[10px] ml-2">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="col-span-2">
                         <label class="text-[10px] font-black text-gray-400 uppercase ml-2">Kota/Kabupaten</label>
                         <input type="text" wire:model="form.city"
-                            class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-amber-500">
+                            class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl">
+                        @error('form.city')
+                            <span class="text-red-500 text-[10px] ml-2">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div>
                         <label class="text-[10px] font-black text-gray-400 uppercase ml-2">Kecamatan</label>
                         <input type="text" wire:model="form.district"
-                            class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-amber-500">
+                            class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl">
+                        @error('form.district')
+                            <span class="text-red-500 text-[10px] ml-2">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div>
                         <label class="text-[10px] font-black text-gray-400 uppercase ml-2">Desa/Kelurahan</label>
                         <input type="text" wire:model="form.village"
-                            class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-amber-500">
+                            class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl">
+                        @error('form.village')
+                            <span class="text-red-500 text-[10px] ml-2">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="col-span-2">
                         <label class="text-[10px] font-black text-gray-400 uppercase ml-2">Kode Pos</label>
                         <input type="text" wire:model="form.postal_code" maxlength="5"
-                            class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-amber-500">
+                            class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl">
+                        @error('form.postal_code')
+                            <span class="text-red-500 text-[10px] ml-2">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="col-span-full">
                         <label class="text-[10px] font-black text-gray-400 uppercase ml-2">Detail Alamat</label>
                         <input type="text" wire:model="form.address_detail"
-                            class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-amber-500"
+                            class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl"
                             placeholder="Jl. Nama Jalan, No Rumah, Blok, dll...">
+                        @error('form.address_detail')
+                            <span class="text-red-500 text-[10px] ml-2">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
             </div>
@@ -167,12 +199,18 @@
                             <label class="text-[10px] font-black text-gray-400 uppercase">Utama (Contoh: NIB)</label>
                             <input type="text" wire:model="form.legalitas"
                                 class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl">
+                            @error('form.legalitas')
+                                <span class="text-red-500 text-[10px]">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div>
                             <label class="text-[10px] font-black text-gray-400 uppercase tracking-tighter">Legalitas
                                 Lainnya</label>
                             <input type="text" wire:model="form.legalitas_other"
                                 class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl shadow-inner">
+                            @error('form.legalitas_other')
+                                <span class="text-red-500 text-[10px]">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                     <div class="space-y-4">
@@ -182,12 +220,18 @@
                             <label class="text-[10px] font-black text-gray-400 uppercase">Utama (Halal/PIRT)</label>
                             <input type="text" wire:model="form.certification"
                                 class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl">
+                            @error('form.certification')
+                                <span class="text-red-500 text-[10px]">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div>
                             <label class="text-[10px] font-black text-gray-400 uppercase tracking-tighter">Sertifikasi
                                 Lainnya</label>
                             <input type="text" wire:model="form.certification_other"
                                 class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl shadow-inner">
+                            @error('form.certification_other')
+                                <span class="text-red-500 text-[10px]">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                 </div>
@@ -202,6 +246,9 @@
                         <label class="text-[10px] font-black text-gray-400 uppercase ml-2">Omset per Bulan</label>
                         <input type="text" wire:model="form.omset"
                             class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl">
+                        @error('form.omset')
+                            <span class="text-red-500 text-[10px] ml-2">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div>
                         <label class="text-[10px] font-black text-gray-400 uppercase ml-2">Jangkauan Pasar</label>
@@ -211,6 +258,9 @@
                             <option value="Nasional">Nasional</option>
                             <option value="Ekspor">Ekspor</option>
                         </select>
+                        @error('form.market_reach')
+                            <span class="text-red-500 text-[10px] ml-2">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
 
@@ -229,16 +279,25 @@
                                     Penyelenggara</label>
                                 <input type="text" wire:model="form.incubation_institution"
                                     class="w-full mt-1 px-5 py-3 bg-white border-none rounded-2xl shadow-sm">
+                                @error('form.incubation_institution')
+                                    <span class="text-red-500 text-[10px] ml-2">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div>
                                 <label class="text-[10px] font-black text-amber-800 uppercase ml-2">Tgl Mulai</label>
                                 <input type="date" wire:model="form.incubation_start"
                                     class="w-full mt-1 px-5 py-3 bg-white border-none rounded-2xl shadow-sm text-sm">
+                                @error('form.incubation_start')
+                                    <span class="text-red-500 text-[10px] ml-2">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div>
                                 <label class="text-[10px] font-black text-amber-800 uppercase ml-2">Tgl Selesai</label>
                                 <input type="date" wire:model="form.incubation_end"
                                     class="w-full mt-1 px-5 py-3 bg-white border-none rounded-2xl shadow-sm text-sm">
+                                @error('form.incubation_end')
+                                    <span class="text-red-500 text-[10px] ml-2">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                     @endif

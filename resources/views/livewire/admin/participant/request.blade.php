@@ -67,7 +67,7 @@
                         <td class="px-6 py-4 text-gray-600">{{ $p->city }}, {{ $p->province }}</td>
                         <td class="px-6 py-4 text-center">
                             <div class="flex items-center justify-center gap-3">
-                                <a href="{{ route('admin.participant.detail', $p->id) }}"
+                                <a wire:navigate href="{{ route('admin.participant.detail', $p->id) }}"
                                     class="p-2 text-amber-500 hover:bg-amber-50 rounded-xl transition duration-300 group"
                                     title="Lihat Detail & Edit">
                                     <svg class="w-5 h-5 transition-transform group-hover:scale-110" fill="none"
