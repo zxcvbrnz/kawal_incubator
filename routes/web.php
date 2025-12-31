@@ -21,6 +21,8 @@ Route::view('/news/{slug}', 'news_show')->name('new.show');
 
 Route::view('/about', 'about')->name('about');
 
+Route::view('/toko', 'toko')->name('toko');
+
 Route::view('/contact-us', 'contact')->name('contact');
 
 Route::middleware(['auth'])->group(function () {
