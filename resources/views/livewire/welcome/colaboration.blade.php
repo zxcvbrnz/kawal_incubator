@@ -4,11 +4,11 @@
         <!-- Heading -->
         <div class="text-center max-w-2xl mx-auto mb-8">
             <h2 class="text-xl font-semibold text-gray-900">
-                Driving Innovation Together
+                Jejaring Strategis Kami
             </h2>
             <p class="mt-4 text-gray-500">
-                We collaborate with innovative companies and institutions
-                to create impactful digital solutions.
+                Membangun sinergi dengan berbagai institusi terpercaya untuk menciptakan ekosistem kewirausahaan yang
+                kokoh dan berkelanjutan.
             </p>
         </div>
 

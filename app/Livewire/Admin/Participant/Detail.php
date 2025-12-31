@@ -56,6 +56,7 @@ class Detail extends Component
             // Lainnya
             'form.description'   => 'nullable|string|min:20',
             'form.status'        => 'boolean',
+            'form.display'        => 'boolean',
         ];
     }
 

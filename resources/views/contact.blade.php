@@ -1,16 +1,16 @@
 <x-main-layout>
     <x-slot name="title">
-        Contact Us
+        Hubungi Kami
     </x-slot>
     <div class="min-h-screen py-20">
         <div class="max-w-7xl mx-auto px-6">
             <div class="gap-6 mb-12">
                 <div class="space-y-1 mt-2">
                     <h1 class="text-4xl font-bold text-gray-900 tracking-tight uppercase">
-                        Contact Us
+                        Hubungi Kami
                     </h1>
                     <p class="text-gray-500">
-                        Our doors are always open for new ideas and partnerships. Feel free to get in touch with us
+                        Pintu kami selalu terbuka untuk ide-ide baru dan kemitraan. Jangan ragu untuk menghubungi kami
                     </p>
                 </div>
                 <div class="mt-4 h-1 w-24 bg-amber-500 rounded-full"></div>
@@ -39,10 +39,10 @@
                                     </svg>
                                 </div>
                                 <div>
-                                    <h3 class="text-lg font-bold text-gray-900 uppercase tracking-tight">Visit Our
-                                        Office</h3>
+                                    <h3 class="text-lg font-bold text-gray-900 uppercase tracking-tight">Kunjungi Kantor
+                                        Kami</h3>
                                     <p class="text-gray-500 mt-2 leading-relaxed">
-                                        Jl. Inovasi No. 45, Tech District,<br>
+                                        Jl. Inovasi No. 45, Kawasan Teknologi,<br>
                                         Jakarta Selatan, Indonesia 12345
                                     </p>
                                 </div>
@@ -60,18 +60,18 @@
                                     </svg>
                                 </div>
                                 <div>
-                                    <h3 class="text-lg font-bold text-gray-900 uppercase tracking-tight">Direct Contact
+                                    <h3 class="text-lg font-bold text-gray-900 uppercase tracking-tight">Kontak Langsung
                                     </h3>
                                     <p class="text-gray-500 mt-2 leading-relaxed">
-                                        hello@yourdomain.com<br>
+                                        halo@domainanda.com<br>
                                         +62 812 3456 7890
                                     </p>
                                 </div>
                             </div>
 
                             <div class="pt-6 border-t border-gray-100">
-                                <h3 class="text-sm font-bold text-gray-400 uppercase tracking-[0.2em] mb-4">Follow Our
-                                    Journey</h3>
+                                <h3 class="text-sm font-bold text-gray-400 uppercase tracking-[0.2em] mb-4">Ikuti
+                                    Perjalanan Kami</h3>
                                 <div class="flex gap-4">
                                     <a href="#"
                                         class="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center text-gray-400 hover:bg-amber-500 hover:text-white transition-all duration-300">
@@ -107,41 +107,41 @@
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div class="space-y-2">
                                         <label
-                                            class="text-xs font-bold text-gray-400 uppercase tracking-wider ml-1">Full
-                                            Name</label>
-                                        <input type="text" placeholder="John Doe"
+                                            class="text-xs font-bold text-gray-400 uppercase tracking-wider ml-1">Nama
+                                            Lengkap</label>
+                                        <input type="text" placeholder="Budi Santoso"
                                             class="w-full px-5 py-4 bg-white border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition">
                                     </div>
                                     <div class="space-y-2">
                                         <label
-                                            class="text-xs font-bold text-gray-400 uppercase tracking-wider ml-1">Email
-                                            Address</label>
-                                        <input type="email" placeholder="john@example.com"
+                                            class="text-xs font-bold text-gray-400 uppercase tracking-wider ml-1">Alamat
+                                            Email</label>
+                                        <input type="email" placeholder="budi@contoh.com"
                                             class="w-full px-5 py-4 bg-white border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition">
                                     </div>
                                 </div>
 
                                 <div class="space-y-2">
                                     <label
-                                        class="text-xs font-bold text-gray-400 uppercase tracking-wider ml-1">Subject</label>
+                                        class="text-xs font-bold text-gray-400 uppercase tracking-wider ml-1">Subjek</label>
                                     <select
                                         class="w-full px-5 py-4 bg-white border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition appearance-none">
-                                        <option>General Inquiry</option>
-                                        <option>Partnership</option>
-                                        <option>Join Program</option>
+                                        <option>Pertanyaan Umum</option>
+                                        <option>Kemitraan</option>
+                                        <option>Bergabung Program</option>
                                     </select>
                                 </div>
 
                                 <div class="space-y-2">
-                                    <label class="text-xs font-bold text-gray-400 uppercase tracking-wider ml-1">Your
-                                        Message</label>
-                                    <textarea rows="4" placeholder="How can we help you?"
+                                    <label class="text-xs font-bold text-gray-400 uppercase tracking-wider ml-1">Pesan
+                                        Anda</label>
+                                    <textarea rows="4" placeholder="Bagaimana kami bisa membantu Anda?"
                                         class="w-full px-5 py-4 bg-white border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition resize-none"></textarea>
                                 </div>
 
                                 <button type="submit"
                                     class="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-4 rounded-2xl shadow-lg shadow-amber-200 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]">
-                                    SEND MESSAGE
+                                    KIRIM PESAN
                                 </button>
                             </form>
                         </div>
@@ -151,7 +151,7 @@
 
                 <div class="w-full h-96 bg-gray-100 grayscale hover:grayscale-0 transition-all duration-700">
                     <div class="w-full h-full flex items-center justify-center text-gray-400 italic">
-                        [Interactive Map Section]
+                        [Bagian Peta Interaktif]
                     </div>
                 </div>
             </div>

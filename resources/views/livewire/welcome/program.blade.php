@@ -4,11 +4,12 @@
         <!-- Heading -->
         <div class="max-w-2xl" data-aos="fade-up">
             <h2 class="text-xl font-semibold text-gray-900">
-                Programs That Make Impact
+                Pusat Inovasi & Kreativitas
             </h2>
             <p class="mt-4 text-gray-500">
-                Practical programs designed to build skills, creativity,
-                and real-world experience.
+                Kawal Incubator adalah ruang kolaborasi untuk para kreator dan wirausaha. Kami mendampingi Anda
+                mentransformasi ide kreatif menjadi bisnis yang berdaya saing global melalui ekosistem pendukung yang
+                komprehensif.
             </p>
         </div>
 
@@ -52,7 +53,7 @@
         <div class="mt-16 text-center" data-aos="zoom-in">
             <a href="{{ route('program') }}"
                 class="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-sm text-white font-semibold px-8 py-3 rounded-full transition shadow-md hover:shadow-lg">
-                View All Programs
+                Lihat Semua Program
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M13.172 12l-4.95-4.95 1.414-1.414L16 12l-6.364 6.364-1.414-1.414z" />
                 </svg>

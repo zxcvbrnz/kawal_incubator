@@ -13,28 +13,28 @@
                 <x-nav-link-2 :href="route('home')" :active="request()->routeIs('home')" wire:navigate>
                     {{ __('Home') }}
                 </x-nav-link-2>
+                <x-nav-link-2 :href="route('about')" :active="request()->routeIs('about')" wire:navigate>
+                    {{ __('Tentang Kami') }}
+                </x-nav-link-2>
                 <x-nav-link-2 :href="route('participant')" :active="request()->routeIs('participant', 'participant.*')" wire:navigate>
-                    {{ __('Participants') }}
+                    {{ __('Partisipan') }}
                 </x-nav-link-2>
                 <x-nav-link-2 :href="route('product')" :active="request()->routeIs('product')" wire:navigate>
-                    {{ __('Products') }}
+                    {{ __('Produk') }}
                 </x-nav-link-2>
                 <x-nav-link-2 :href="route('program')" :active="request()->routeIs('program')" wire:navigate>
-                    {{ __('Programs') }}
+                    {{ __('Program') }}
                 </x-nav-link-2>
                 <x-nav-link-2 :href="route('event')" :active="request()->routeIs('event', 'event.*')" wire:navigate>
-                    {{ __('Events') }}
+                    {{ __('Event') }}
                 </x-nav-link-2>
                 <x-nav-link-2 :href="route('new')" :active="request()->routeIs('new', 'new.*')" wire:navigate>
-                    {{ __('News') }}
+                    {{ __('Cerita') }}
                 </x-nav-link-2>
-                <x-nav-link-2 :href="route('about')" :active="request()->routeIs('about')" wire:navigate>
-                    {{ __('About') }}
-                </x-nav-link-2>
-                <a href="{{ route('contact') }}"
+                {{-- <a href="{{ route('contact') }}"
                     class="px-4 py-2 rounded-lg bg-amber-500 text-white hover:bg-amber-300 transition duration-150">
                     Contact Us
-                </a>
+                </a> --}}
             </div>
 
             <!-- Hamburger (Mobile) -->
@@ -60,26 +60,26 @@
         <x-nav-link-2 :href="route('home')" class="block" :active="request()->routeIs('home')" wire:navigate>
             {{ __('Home') }}
         </x-nav-link-2>
+        <x-nav-link-2 :href="route('about')" class="block" :active="request()->routeIs('about')" wire:navigate>
+            {{ __('Tentang Kami') }}
+        </x-nav-link-2>
         <x-nav-link-2 :href="route('participant')" class="block" :active="request()->routeIs('participant', 'participant.*')" wire:navigate>
-            {{ __('Participants') }}
+            {{ __('Partisipan') }}
         </x-nav-link-2>
         <x-nav-link-2 :href="route('product')" class="block" :active="request()->routeIs('product')" wire:navigate>
-            {{ __('Products') }}
+            {{ __('Produk') }}
         </x-nav-link-2>
         <x-nav-link-2 :href="route('program')" class="block" :active="request()->routeIs('program')" wire:navigate>
-            {{ __('Programs') }}
+            {{ __('Program') }}
         </x-nav-link-2>
         <x-nav-link-2 :href="route('event')" class="block" :active="request()->routeIs('event', 'event.*')" wire:navigate>
-            {{ __('Events') }}
+            {{ __('Event') }}
         </x-nav-link-2>
         <x-nav-link-2 :href="route('new')" class="block" :active="request()->routeIs('new', 'new.*')" wire:navigate>
-            {{ __('News') }}
+            {{ __('Cerita') }}
         </x-nav-link-2>
-        <x-nav-link-2 :href="route('about')" class="block" :active="request()->routeIs('about')" wire:navigate>
-            {{ __('About') }}
-        </x-nav-link-2>
-        <a href="{{ route('contact') }}" class="block text-center px-4 py-2 rounded-lg bg-amber-500 text-white">
+        {{-- <a href="{{ route('contact') }}" class="block text-center px-4 py-2 rounded-lg bg-amber-500 text-white">
             Contact Us
-        </a>
+        </a> --}}
     </div>
 </nav>

@@ -1,7 +1,7 @@
 <div class="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8 min-h-screen">
     <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10">
         <div class="flex items-center gap-5">
-            <a href="{{ route('dashboard') }}"
+            <a wire:navigate href="{{ route('dashboard') }}"
                 class="group p-3 bg-white rounded-2xl shadow-sm border border-gray-100 hover:bg-amber-500 transition-all">
                 <svg class="w-6 h-6 text-gray-400 group-hover:text-white" fill="none" stroke="currentColor"
                     viewBox="0 0 24 24">
@@ -48,13 +48,13 @@
                 <div class="p-4 bg-gray-50 rounded-3xl border border-gray-100 text-left">
                     <label class="text-[10px] font-black text-gray-400 uppercase ml-1">Status Publikasi</label>
                     <div class="flex items-center justify-between mt-1">
-                        <span class="text-sm font-bold {{ $form['status'] ? 'text-green-600' : 'text-gray-400' }}">
-                            {{ $form['status'] ? 'Aktif di Katalog' : 'Draft / Non-Aktif' }}
+                        <span class="text-sm font-bold {{ $form['display'] ? 'text-green-600' : 'text-gray-400' }}">
+                            {{ $form['display'] ? 'Aktif di Katalog' : 'Draft / Non-Aktif' }}
                         </span>
-                        <button wire:click="$set('form.status', {{ !$form['status'] }})"
-                            class="relative inline-flex h-6 w-11 items-center rounded-full transition {{ $form['status'] ? 'bg-amber-500' : 'bg-gray-200' }}">
+                        <button wire:click="$set('form.display', {{ !$form['display'] }})"
+                            class="relative inline-flex h-6 w-11 items-center rounded-full transition {{ $form['display'] ? 'bg-amber-500' : 'bg-gray-200' }}">
                             <span
-                                class="inline-block h-4 w-4 transform rounded-full bg-white transition {{ $form['status'] ? 'translate-x-6' : 'translate-x-1' }}"></span>
+                                class="inline-block h-4 w-4 transform rounded-full bg-white transition {{ $form['display'] ? 'translate-x-6' : 'translate-x-1' }}"></span>
                         </button>
                     </div>
                 </div>

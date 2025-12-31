@@ -54,6 +54,7 @@ return new class extends Migration
             $table->string('profile_photo')->nullable();
             $table->string('business_profile_file')->nullable();
             $table->boolean('status')->default(false);
+            $table->boolean('display')->default(false);
 
             $table->timestamps();
         });

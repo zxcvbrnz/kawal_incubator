@@ -1,23 +1,23 @@
 <x-main-layout>
     <x-slot name="title">
-        Participants
+        Peserta
     </x-slot>
     <div class="min-h-screen py-20" x-on:page-changed.window="window.scrollTo({ top: 0, behavior: 'smooth' })">
         <div class="max-w-7xl mx-auto px-6">
             <div class="gap-6 mb-12">
                 <div class="space-y-1 mt-2">
                     <h1 class="text-4xl font-bold text-gray-900 tracking-tight uppercase">
-                        Participants
+                        Partisipan
                     </h1>
                     <p class="text-gray-500">
-                        Join our growing community and connect with others.
+                        Bergabunglah dengan komunitas kami yang terus berkembang dan terhubung dengan sesama.
                     </p>
                 </div>
                 <div class="mt-4 h-1 w-24 bg-amber-500 rounded-full"></div>
             </div>
             <a href="{{ route('participant.form') }}"
                 class="inline-flex items-center justify-center px-8 py-3.5 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-xl shadow-lg shadow-amber-200 transition-all duration-300 transform hover:-translate-y-1 active:scale-95 group">
-                <span>Let's, be a participant</span>
+                <span>Jadilah Bagian dari Inovasi</span>
                 <svg xmlns="http://www.w3.org/2000/svg"
                     class="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none"
                     viewBox="0 0 24 24" stroke="currentColor">

@@ -68,14 +68,15 @@
     <div class="max-w-7xl mx-auto px-6">
         <div class="mb-8">
             <div class="flex items-center justify-between">
-                <h2 class="text-xl font-semibold text-gray-900">Built with Pride</h2>
+                <h2 class="text-xl font-semibold text-gray-900">Karya Unggulan Partisipan</h2>
                 <a href="{{ route('product') }}"
                     class="inline-flex items-center gap-2 text-sm font-semibold text-amber-600 hover:text-amber-700 transition">
                     View More →
                 </a>
             </div>
             <p class="mt-4 text-gray-500">
-                Discover our featured products designed for quality and performance.
+                Jelajahi berbagai produk inovatif hasil kurasi dan pengembangan intensif para wirausaha kreatif di Kawal
+                Incubator.
             </p>
         </div>
         <div class="relative flex justify-center">

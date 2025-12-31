@@ -24,7 +24,7 @@
         <div class="mb-10">
             <div class="flex items-center justify-between">
                 <h2 class="text-xl font-bold text-gray-900">
-                    Sharing Our Progress, Learnings, and Achievements
+                    Catatan Inovasi & Kreativitas
                 </h2>
                 <a href="{{ route('new') }}" wire:navigate
                     class="inline-flex items-center gap-2 text-sm font-bold text-amber-600 hover:text-amber-700 transition">
@@ -36,7 +36,8 @@
                     </svg>
                 </a>
             </div>
-            <p class="mt-4 text-gray-500">Latest Insights & Updates</p>
+            <p class="mt-4 text-gray-500">Simak kabar terbaru, cerita inspiratif dari para kreator, dan perkembangan
+                ekosistem Kawal Incubator</p>
         </div>
 
         <div class="relative">

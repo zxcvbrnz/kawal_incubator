@@ -39,6 +39,7 @@ class Participant extends Model
         'profile_photo',
         'business_profile_file',
         'status',
+        'display',
     ];
 
     /**

@@ -1,16 +1,17 @@
 <x-main-layout>
     <x-slot name="title">
-        About Us
+        Tentang Kami
     </x-slot>
     <div class="min-h-screen py-20">
         <div class="max-w-7xl mx-auto px-6">
             <div class="gap-6 mb-12">
                 <div class="space-y-1 mt-2">
                     <h1 class="text-4xl font-bold text-gray-900 tracking-tight uppercase">
-                        About Us
+                        Tentang Kami
                     </h1>
                     <p class="text-gray-500">
-                        Dedicated to empowering local talent through innovation, collaboration, and sustainable growth.
+                        Berdedikasi untuk memberdayakan talenta lokal melalui inovasi, kolaborasi, dan pertumbuhan yang
+                        berkelanjutan.
                     </p>
                 </div>
                 <div class="mt-4 h-1 w-24 bg-amber-500 rounded-full"></div>
@@ -28,20 +29,20 @@
                                         Kawal <span class="text-amber-500">Incubator</span>
                                     </h1>
                                     <p class="text-gray-400 font-medium tracking-widest uppercase text-sm italic">
-                                        Building the Future, Together.
+                                        Membangun Masa Depan, Bersama.
                                     </p>
                                 </div>
                                 <p class="text-gray-600 text-lg leading-relaxed max-w-xl">
-                                    Dedicated to empowering local talent through innovation, collaboration, and
-                                    sustainable growth. We believe that every great idea deserves the right ecosystem to
-                                    flourish.
+                                    Berdedikasi untuk memberdayakan talenta lokal melalui inovasi, kolaborasi, dan
+                                    pertumbuhan yang berkelanjutan. Kami percaya bahwa setiap ide hebat layak
+                                    mendapatkan ekosistem yang tepat untuk berkembang.
                                 </p>
                             </div>
                             <div class="flex-1 relative" data-aos="fade-left">
                                 <div
                                     class="aspect-video rounded-3xl overflow-hidden shadow-2xl shadow-amber-100 border-8 border-white relative z-10">
                                     <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80"
-                                        class="w-full h-full object-cover" alt="Our Team">
+                                        class="w-full h-full object-cover" alt="Tim Kami">
                                 </div>
                                 <div
                                     class="absolute -bottom-6 -right-6 w-64 h-64 bg-amber-100 rounded-full -z-0 opacity-50 blur-3xl">
@@ -57,9 +58,9 @@
                             <div class="space-y-4" data-aos="fade-up">
                                 <div
                                     class="inline-block px-4 py-1 rounded-full bg-amber-100 text-amber-700 text-xs font-bold uppercase tracking-widest">
-                                    Our Mission
+                                    Misi Kami
                                 </div>
-                                <h2 class="text-3xl font-bold text-gray-900">Empowering the next generation of creators.
+                                <h2 class="text-3xl font-bold text-gray-900">Memberdayakan generasi kreator berikutnya.
                                 </h2>
                                 <p class="text-gray-600 leading-relaxed">
                                     Misi kami adalah menyediakan akses ke sumber daya, mentoring, dan jaringan yang
@@ -70,10 +71,10 @@
                             <div class="space-y-4" data-aos="fade-up" data-aos-delay="200">
                                 <div
                                     class="inline-block px-4 py-1 rounded-full bg-amber-100 text-amber-700 text-xs font-bold uppercase tracking-widest">
-                                    Our Vision
+                                    Visi Kami
                                 </div>
-                                <h2 class="text-3xl font-bold text-gray-900">Becoming the global benchmark for
-                                    excellence.</h2>
+                                <h2 class="text-3xl font-bold text-gray-900">Menjadi tolok ukur global untuk keunggulan.
+                                </h2>
                                 <p class="text-gray-600 leading-relaxed">
                                     Visi kami adalah menjadi pusat inovasi terdepan yang tidak hanya menghasilkan produk
                                     berkualitas, tetapi juga melahirkan pemimpin industri yang berintegritas dan berjiwa
@@ -86,8 +87,8 @@
 
                 <div class="py-24">
                     <div class="max-w-7xl mx-auto px-6 text-center mb-16">
-                        <h2 class="text-4xl font-black text-gray-900 uppercase">Our Core <span
-                                class="text-amber-500">Values</span></h2>
+                        <h2 class="text-4xl font-black text-gray-900 uppercase">Nilai <span class="text-amber-500">Inti
+                                Kami</span></h2>
                     </div>
 
                     <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -105,7 +106,7 @@
                                     </path>
                                 </svg>
                             </div>
-                            <h3 class="text-xl font-bold text-gray-900 mb-3">Innovation</h3>
+                            <h3 class="text-xl font-bold text-gray-900 mb-3">Inovasi</h3>
                             <p class="text-gray-500 text-sm leading-relaxed">Kami terus mencari cara baru yang lebih
                                 efisien untuk memecahkan masalah kompleks di era digital.</p>
                         </div>
@@ -122,7 +123,7 @@
                                     </path>
                                 </svg>
                             </div>
-                            <h3 class="text-xl font-bold text-gray-900 mb-3">Community</h3>
+                            <h3 class="text-xl font-bold text-gray-900 mb-3">Komunitas</h3>
                             <p class="text-gray-500 text-sm leading-relaxed">Kolaborasi adalah kunci. Kami percaya bahwa
                                 kebersamaan menciptakan dampak yang lebih besar.</p>
                         </div>
@@ -141,7 +142,7 @@
                                     </path>
                                 </svg>
                             </div>
-                            <h3 class="text-xl font-bold text-gray-900 mb-3">Integrity</h3>
+                            <h3 class="text-xl font-bold text-gray-900 mb-3">Integritas</h3>
                             <p class="text-gray-500 text-sm leading-relaxed">Kejujuran dan etika kerja yang tinggi
                                 adalah fondasi dari setiap keputusan yang kami ambil.</p>
                         </div>

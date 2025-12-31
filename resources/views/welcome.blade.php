@@ -13,24 +13,25 @@
                 <div>
                     <span
                         class="inline-block mb-4 px-4 py-1 rounded-full bg-amber-500/10 text-amber-600 text-sm font-semibold">
-                        🚀 modern digital solutions
+                        🚀 Akselerator Bisnis Masa Depan
                     </span>
                     <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-gray-900">
                         Kawal
                         <span class="block text-amber-500">Incubator</span>
                     </h1>
                     <p class="mt-6 text-lg text-gray-600 max-w-xl">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente eius doloribus harum autem,
-                        accusantium soluta.
+                        Kawal Incubator hadir untuk memberdayakan inovator lokal melalui pendampingan intensif, akses
+                        jaringan strategis, dan sumber daya terpadu untuk mengakselerasi ide Anda menjadi bisnis yang
+                        berkelanjutan.
                     </p>
                     <div class="mt-8 flex flex-wrap gap-4">
-                        <a href="{{ route('contact') }}"
+                        <a wire:navigate href="{{ route('contact') }}"
                             class="px-6 py-3 rounded-xl bg-amber-500 text-white font-semibold hover:bg-amber-600 transition">
-                            Contact Us
+                            Hubungi Kami
                         </a>
-                        <a href="{{ route('participant') }}"
+                        <a wire:navigate href="{{ route('participant') }}"
                             class="px-6 py-3 rounded-xl border border-amber-500 text-amber-600 font-semibold hover:bg-amber-500/10 transition">
-                            Our Participant's
+                            Partisipan
                         </a>
                     </div>
                 </div>

@@ -39,10 +39,12 @@ class Table extends Component
             // Pencarian mencakup Nama Bisnis, Owner, dan Bidang Usaha
             $participants = Participant::query()
                 ->where('status', true)
+                ->where('display', true)
                 ->where(function ($query) {
                     $query->where('business_name', 'like', '%' . $this->search . '%')
                         ->orWhere('owner_name', 'like', '%' . $this->search . '%')
-                        ->orWhere('business_field', 'like', '%' . $this->search . '%');
+                        ->orWhere('business_field', 'like', '%' . $this->search . '%')
+                        ->orWhere('city', 'like', '%' . $this->search . '%');
                 })
                 ->orderBy($this->sortField, $this->sortDirection)
                 ->paginate(10);

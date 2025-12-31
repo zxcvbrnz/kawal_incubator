@@ -1,8 +1,9 @@
 <div class="mt-8">
     <div class="mb-8 space-y-2">
-        <h2 class="text-2xl font-bold text-gray-800">Our Proudly Participants</h2>
-        <p class="text-gray-500">Discover the exceptional businesses driving innovation and excellence within our
-            community.</p>
+        <h2 class="text-2xl font-bold text-gray-800">Partisipan Kebanggaan Kami</h2>
+        <p class="text-gray-500">
+            Jelajahi berbagai bisnis luar biasa yang mendorong inovasi dan keunggulan di dalam komunitas kami.
+        </p>
     </div>
 
     <div class="rounded-[2rem] border border-gray-100 shadow-xl shadow-gray-200 overflow-hidden bg-white">
@@ -27,7 +28,7 @@
                         <th wire:click="sortBy('business_name')"
                             class="px-8 py-4 text-[10px] font-black text-gray-400 uppercase tracking-widest cursor-pointer hover:text-amber-600 transition-colors">
                             <div class="flex items-center gap-2">
-                                <span>Business Name</span>
+                                <span>Nama Bisnis</span>
                                 @if ($sortField === 'business_name')
                                     <span
                                         class="text-amber-500 text-base">{{ $sortDirection === 'asc' ? '↑' : '↓' }}</span>
@@ -37,8 +38,18 @@
                         <th wire:click="sortBy('owner_name')"
                             class="px-8 py-4 text-[10px] font-black text-gray-400 uppercase tracking-widest cursor-pointer hover:text-amber-600 transition-colors">
                             <div class="flex items-center gap-2">
-                                <span>Owner</span>
+                                <span>Pemilik</span>
                                 @if ($sortField === 'owner_name')
+                                    <span
+                                        class="text-amber-500 text-base">{{ $sortDirection === 'asc' ? '↑' : '↓' }}</span>
+                                @endif
+                            </div>
+                        </th>
+                        <th wire:click="sortBy('city')"
+                            class="px-8 py-4 text-[10px] font-black text-gray-400 uppercase tracking-widest cursor-pointer hover:text-amber-600 transition-colors">
+                            <div class="flex items-center gap-2">
+                                <span>Kab/Kota</span>
+                                @if ($sortField === 'city')
                                     <span
                                         class="text-amber-500 text-base">{{ $sortDirection === 'asc' ? '↑' : '↓' }}</span>
                                 @endif
@@ -47,7 +58,7 @@
                         <th wire:click="sortBy('business_field')"
                             class="px-8 py-4 text-[10px] font-black text-gray-400 uppercase tracking-widest cursor-pointer hover:text-amber-600 transition-colors">
                             <div class="flex items-center gap-2">
-                                <span>Business Field</span>
+                                <span>Bidang Bisnis</span>
                                 @if ($sortField === 'business_field')
                                     <span
                                         class="text-amber-500 text-base">{{ $sortDirection === 'asc' ? '↑' : '↓' }}</span>
@@ -93,6 +104,12 @@
                             </td>
 
                             <td class="px-8 py-5">
+                                <span class="text-sm text-gray-600 font-medium">
+                                    {{ $person->city }}
+                                </span>
+                            </td>
+
+                            <td class="px-8 py-5">
                                 <span
                                     class="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-amber-50 text-amber-700 border border-amber-100">
                                     {{ $person->business_field }}
@@ -101,7 +118,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="3" class="px-8 py-20 text-center">
+                            <td colspan="4" class="px-8 py-20 text-center">
                                 <div class="flex flex-col items-center justify-center space-y-3">
                                     <svg class="h-12 w-12 text-gray-200" fill="none" viewBox="0 0 24 24"
                                         stroke="currentColor">

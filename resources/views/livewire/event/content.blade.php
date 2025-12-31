@@ -3,10 +3,10 @@
 
         <div class="mb-10">
             <h1 class="text-2xl font-black text-gray-900 tracking-tight uppercase">
-                Upcoming <span class="text-amber-500">Events</span>
+                Event <span class="text-amber-500">Mendatang</span>
             </h1>
             <p class="text-gray-500 mt-1 text-sm">
-                Stay updated with our latest activities.
+                Selalu update dengan aktivitas terbaru kami.
             </p>
         </div>
 
