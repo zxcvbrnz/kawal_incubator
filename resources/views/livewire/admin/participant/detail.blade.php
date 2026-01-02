@@ -36,7 +36,7 @@
                     <div
                         class="w-full h-full bg-amber-50 rounded-[2.5rem] flex items-center justify-center border-4 border-white shadow-lg overflow-hidden">
                         @if ($participant->profile_photo)
-                            <img src="{{ asset('storage/' . $participant->profile_photo) }}"
+                            <img src="{{ asset('storage/participant/image/' . $participant->profile_photo) }}"
                                 class="w-full h-full object-cover">
                         @else
                             <span
@@ -56,7 +56,8 @@
                         <span class="text-sm font-bold {{ $form['display'] ? 'text-green-600' : 'text-gray-400' }}">
                             {{ $form['display'] ? 'Aktif di Katalog' : 'Draft / Non-Aktif' }}
                         </span>
-                        <button wire:click="$set('form.display', {{ !$form['display'] }})"
+                        {{-- Panggil method toggleDisplay --}}
+                        <button type="button" wire:click="toggleDisplay"
                             class="relative inline-flex h-6 w-11 items-center rounded-full transition {{ $form['display'] ? 'bg-amber-500' : 'bg-gray-200' }}">
                             <span
                                 class="inline-block h-4 w-4 transform rounded-full bg-white transition {{ $form['display'] ? 'translate-x-6' : 'translate-x-1' }}"></span>

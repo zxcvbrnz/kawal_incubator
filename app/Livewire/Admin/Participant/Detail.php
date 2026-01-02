@@ -17,6 +17,9 @@ class Detail extends Component
     {
         $this->participant = Participant::findOrFail($id);
         $this->form = $this->participant->toArray();
+
+        $this->form['display'] = (bool) $this->form['display'];
+        $this->form['status'] = (bool) $this->form['status'];
     }
 
     protected function rules()
@@ -71,6 +74,12 @@ class Detail extends Component
             'title'   => 'Data Tersimpan!',
             'message' => 'Seluruh informasi partisipan berhasil diperbarui.'
         ]);
+    }
+
+    public function toggleDisplay()
+    {
+        // Memastikan nilai dibalik secara eksplisit
+        $this->form['display'] = !$this->form['display'];
     }
 
     public function render()

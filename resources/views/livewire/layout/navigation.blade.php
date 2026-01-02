@@ -32,6 +32,15 @@ new class extends Component {
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('admin.product')" :active="request()->routeIs('admin.product')" wire:navigate>
+                        {{ __('Product') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.event')" :active="request()->routeIs('admin.event')" wire:navigate>
+                        {{ __('Event') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.news')" :active="request()->routeIs('admin.news')" wire:navigate>
+                        {{ __('Cerita/BLog') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -91,6 +100,15 @@ new class extends Component {
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
                 {{ __('Dashboard') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.product')" :active="request()->routeIs('admin.product')" wire:navigate>
+                {{ __('Product') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.event')" :active="request()->routeIs('admin.event')" wire:navigate>
+                {{ __('Event') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.news')" :active="request()->routeIs('admin.news')" wire:navigate>
+                {{ __('Cerita/BLog') }}
             </x-responsive-nav-link>
         </div>
 

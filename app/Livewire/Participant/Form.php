@@ -173,8 +173,8 @@ class Form extends Component
             'incubation_start'       => $this->incubation_start,
             'incubation_end'         => $this->incubation_end,
             'description'   => $this->description,
-            'profile_photo' => $photoPath,
-            'business_profile_file' => $filePath,
+            'profile_photo' => $this->profile_photo,
+            'business_profile_file' => $this->business_profile_file,
         ]);
         $send = new Message();
 

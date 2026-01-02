@@ -28,11 +28,24 @@ Route::view('/contact-us', 'contact')->name('contact');
 Route::middleware(['auth'])->group(function () {
 
     // Dashboard (khusus verified)
-    Route::view('dashboard', 'dashboard')
+    Route::view('/admin/participant', 'dashboard')
         ->middleware(['verified'])
         ->name('dashboard');
 
-    Route::view('/dashboard/participant/{id}', 'admin.participant_detail')->name('admin.participant.detail');
+    Route::view('/admin/participant/{id}', 'admin.participant_detail')->name('admin.participant.detail');
+
+    Route::view('/admin/product', 'admin.product')->name('admin.product');
+    Route::view('/admin/product/create', 'admin.product_create')->name('admin.product.create');
+    Route::view('/admin/product/{id}/edit', 'admin.product_edit')->name('admin.product.edit');
+
+    Route::view('/admin/event', 'admin.event')->name('admin.event');
+    Route::view('/admin/event/create', 'admin.event_create')->name('admin.event.create');
+    Route::view('/admin/event/{id}/edit', 'admin.event_edit')->name('admin.event.edit');
+
+    Route::view('/admin/news', 'admin.news')->name('admin.news');
+    Route::view('/admin/news/create', 'admin.news_create')->name('admin.news.create');
+    Route::view('/admin/news/{id}/edit', 'admin.news_edit')->name('admin.news.edit');
+
     // Profile
     Route::view('profile', 'profile')->name('profile');
 });
