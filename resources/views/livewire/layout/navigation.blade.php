@@ -41,6 +41,9 @@ new class extends Component {
                     <x-nav-link :href="route('admin.news')" :active="request()->routeIs('admin.news')" wire:navigate>
                         {{ __('Cerita/BLog') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('admin.program')" :active="request()->routeIs('admin.program')" wire:navigate>
+                        {{ __('Program') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -109,6 +112,9 @@ new class extends Component {
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('admin.news')" :active="request()->routeIs('admin.news')" wire:navigate>
                 {{ __('Cerita/BLog') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.program')" :active="request()->routeIs('admin.program')" wire:navigate>
+                {{ __('Program') }}
             </x-responsive-nav-link>
         </div>
 

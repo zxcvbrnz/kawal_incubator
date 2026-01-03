@@ -50,8 +50,14 @@ class Request extends Component
         return view('livewire.admin.participant.request', [
             'requests' => Participant::where('status', false)->get(),
             // Pastikan search tidak menjadi null atau error saat event dipicu
-            'participants' => Participant::where('status', true)
-                ->where('business_name', 'like', '%' . $this->search . '%')
+            'participants' => Participant::query()
+                ->where('status', true)
+                ->where(function ($query) {
+                    $query->where('business_name', 'like', '%' . $this->search . '%')
+                        ->orWhere('owner_name', 'like', '%' . $this->search . '%')
+                        ->orWhere('business_field', 'like', '%' . $this->search . '%')
+                        ->orWhere('city', 'like', '%' . $this->search . '%');
+                })
                 ->paginate(10)
         ]);
     }

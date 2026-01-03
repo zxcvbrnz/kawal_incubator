@@ -46,7 +46,7 @@
                 @forelse($posts as $post)
                     <a href="{{ route('new.show', ['slug' => $post->slug]) }}" wire:navigate
                         class="group snap-start flex-none w-[calc(100%-40px)] sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] group relative aspect-[3/4] rounded-2xl overflow-hidden shadow-lg transition-all duration-500 hover:shadow-2xl">
-                        <img src="{{ $post->image_url }}" alt="{{ $post->title }}"
+                        <img src="{{ asset(path: 'storage/new/' . $post->image_url) }}" alt="{{ $post->title }}"
                             class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105">
                         <div
                             class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent group-hover:from-amber-900/80 transition-colors duration-500">

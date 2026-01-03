@@ -6,6 +6,6 @@
     </x-slot>
 
     <section>
-        <livewire:admin.news />
+        <livewire:admin.news.all />
     </section>
 </x-app-layout>

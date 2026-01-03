@@ -6,6 +6,6 @@
     </x-slot>
 
     <section>
-        <livewire:admin.event-create />
+        <livewire:admin.event.add />
     </section>
 </x-app-layout>

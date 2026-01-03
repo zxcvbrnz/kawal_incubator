@@ -1,8 +1,18 @@
 <div class="p-6 space-y-8 max-w-7xl mx-auto">
     <div class="flex justify-between items-center">
         <h2 class="text-2xl font-bold text-gray-800">Manajemen Partisipan</h2>
-        <input type="text" wire:model.live="search" placeholder="Cari nama bisnis..."
-            class="rounded-xl border-gray-200 focus:ring-amber-500 text-sm w-64">
+        {{-- <input type="text" wire:model.live="search" placeholder="Cari nama bisnis..."
+            class="rounded-xl border-gray-200 focus:ring-amber-500 text-sm w-64"> --}}
+        <div class="relative group w-full md:w-72">
+            <input type="text" wire:model.live.debounce.300ms="search" placeholder="Cari bisnis..."
+                class="w-full pl-12 pr-6 py-3 bg-white border border-gray-100 rounded-2xl focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all font-bold text-sm shadow-sm">
+            <div class="absolute left-4 top-3.5 text-gray-300 group-focus-within:text-amber-500 transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+            </div>
+        </div>
     </div>
 
     <div class="bg-amber-50 rounded-2xl p-6 border border-amber-100">
@@ -51,8 +61,9 @@
             <thead class="bg-gray-50 text-gray-400 uppercase text-[10px] tracking-widest">
                 <tr>
                     <th class="px-6 py-4">Bisnis</th>
-                    <th class="px-6 py-4">Kontak</th>
-                    <th class="px-6 py-4">Lokasi</th>
+                    <th class="px-6 py-4">Pemilik</th>
+                    <th class="px-6 py-4">Kota</th>
+                    <th class="px-6 py-4">Status</th>
                     <th class="px-6 py-4 text-center">Aksi</th>
                 </tr>
             </thead>
@@ -63,8 +74,14 @@
                             <div class="font-bold text-gray-900">{{ $p->business_name }}</div>
                             <div class="text-[10px] text-gray-400">{{ $p->business_field }}</div>
                         </td>
-                        <td class="px-6 py-4 text-gray-600">{{ $p->contact }}</td>
-                        <td class="px-6 py-4 text-gray-600">{{ $p->city }}, {{ $p->province }}</td>
+                        <td class="px-6 py-4 text-gray-600">{{ $p->owner_name }}</td>
+                        <td class="px-6 py-4 text-gray-600">{{ $p->city }}</td>
+                        <td class="px-6 py-4 text-gray-600">
+                            <span
+                                class="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-tighter {{ $p->display ? 'bg-green-100 text-green-600' : 'bg-gray-100 text-gray-400' }}">
+                                {{ $p->display ? 'Ditampilkan' : 'Draft' }}
+                            </span>
+                        </td>
                         <td class="px-6 py-4 text-center">
                             <div class="flex items-center justify-center gap-3">
                                 <a wire:navigate href="{{ route('admin.participant.detail', $p->id) }}"

@@ -76,7 +76,7 @@
                                     <div
                                         class="h-12 w-12 rounded-2xl bg-amber-100 overflow-hidden flex-shrink-0 border border-amber-200 shadow-sm">
                                         @if ($person->profile_photo)
-                                            <img src="{{ asset('storage/' . $person->profile_photo) }}"
+                                            <img src="{{ asset('storage/participant/image/' . $person->profile_photo) }}"
                                                 class="h-full w-full object-cover">
                                         @else
                                             <div

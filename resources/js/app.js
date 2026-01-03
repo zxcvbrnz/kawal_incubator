@@ -30,5 +30,11 @@ function showSwal(type, title, message) {
         title: title,
         text: message,
         confirmButtonColor: '#f59e0b', // Amber-500
+        showClass: {
+            popup: 'animate__animated animate__bounceIn animate__faster' // Efek bounce saat masuk
+        },
+        // hideClass: {
+        //     popup: 'animate__animated animate__bounceOut animate__faster' // Efek bounce saat keluar (opsional)
+        // }
     });
 }

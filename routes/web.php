@@ -46,6 +46,10 @@ Route::middleware(['auth'])->group(function () {
     Route::view('/admin/news/create', 'admin.news_create')->name('admin.news.create');
     Route::view('/admin/news/{id}/edit', 'admin.news_edit')->name('admin.news.edit');
 
+    Route::view('/admin/program', 'admin.program')->name('admin.program');
+    Route::view('/admin/program/create', 'admin.program_create')->name('admin.program.create');
+    Route::view('/admin/program/{id}/edit', 'admin.program_edit')->name('admin.program.edit');
+
     // Profile
     Route::view('profile', 'profile')->name('profile');
 });

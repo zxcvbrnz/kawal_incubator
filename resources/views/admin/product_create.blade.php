@@ -6,6 +6,6 @@
     </x-slot>
 
     <section>
-        <livewire:admin.product-create />
+        <livewire:admin.product.add />
     </section>
 </x-app-layout>

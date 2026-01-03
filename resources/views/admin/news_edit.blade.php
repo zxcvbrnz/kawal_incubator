@@ -6,6 +6,6 @@
     </x-slot>
 
     <section>
-        <livewire:admin.news-edit :id="$id" />
+        <livewire:admin.news.edit :id="$id" />
     </section>
 </x-app-layout>

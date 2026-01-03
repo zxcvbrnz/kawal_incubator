@@ -1,3 +1,119 @@
-<div>
-    {{-- Be like water. --}}
+<div class="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8 min-h-screen">
+    {{-- Header --}}
+    <div class="flex items-center gap-5 mb-10">
+        <a wire:navigate href="{{ route('admin.product') }}"
+            class="group p-3 bg-white rounded-2xl shadow-sm border border-gray-100 hover:bg-amber-500 transition-all">
+            <svg class="w-6 h-6 text-gray-400 group-hover:text-white" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+        </a>
+        <div>
+            <h1 class="text-3xl font-black text-gray-900 tracking-tight uppercase">Tambah Produk</h1>
+            <p class="text-sm text-gray-400">Daftarkan produk baru ke dalam katalog</p>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        {{-- Preview Gambar (Sisi Kiri) --}}
+        <div class="lg:col-span-4">
+            <div class="bg-white p-6 rounded-[2.5rem] shadow-sm border border-gray-100 text-center sticky top-6">
+                <label class="text-[10px] font-black text-gray-400 uppercase block mb-4">Preview Foto Produk</label>
+                <div class="relative group">
+                    <div
+                        class="w-full aspect-square bg-gray-50 rounded-[2rem] overflow-hidden border-4 border-white shadow-md flex items-center justify-center">
+                        @if ($image)
+                            <img src="{{ $image->temporaryUrl() }}" class="w-full h-full object-cover">
+                        @else
+                            <div class="text-center p-6">
+                                <svg class="w-12 h-12 text-gray-200 mx-auto mb-2" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
+                                    </path>
+                                </svg>
+                                <p class="text-[10px] font-black text-gray-300 uppercase italic">Belum ada foto</p>
+                            </div>
+                        @endif
+                    </div>
+                </div>
+
+                <div class="mt-6">
+                    <label
+                        class="cursor-pointer inline-block px-6 py-3 bg-gray-900 text-white text-[10px] font-black uppercase rounded-xl hover:bg-black transition w-full">
+                        Pilih Foto Produk
+                        <input type="file" wire:model="image" class="hidden">
+                    </label>
+                    @error('image')
+                        <p class="text-red-500 text-[10px] mt-2 font-bold uppercase">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div wire:loading wire:target="image"
+                    class="mt-2 text-[10px] font-bold text-amber-500 uppercase animate-pulse">
+                    Sedang mengunggah...
+                </div>
+            </div>
+        </div>
+
+        {{-- Form Input (Sisi Kanan) --}}
+        <div class="lg:col-span-8">
+            <form wire:submit="save" class="space-y-6">
+                <div class="bg-white p-8 rounded-[3rem] shadow-sm border border-gray-100">
+                    <div class="space-y-6">
+                        {{-- Nama Produk --}}
+                        <div>
+                            <label class="text-[10px] font-black text-gray-400 uppercase ml-2">Nama Produk</label>
+                            <input type="text" wire:model="name" placeholder="Masukkan nama produk..."
+                                class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-amber-500 font-bold text-gray-700">
+                            @error('name')
+                                <span class="text-red-500 text-[10px] ml-2 font-bold uppercase">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        {{-- Dropdown Partisipan --}}
+                        <div>
+                            <label class="text-[10px] font-black text-gray-400 uppercase ml-2">Pemilik Bisnis
+                                (Partisipan)</label>
+                            <select wire:model="participant_id"
+                                class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-amber-500 font-bold text-gray-700">
+                                <option value="">-- Pilih Partisipan --</option>
+                                @foreach (\App\Models\Participant::orderBy('business_name')->get() as $p)
+                                    <option value="{{ $p->id }}">{{ $p->business_name }} ({{ $p->owner_name }})
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('participant_id')
+                                <span class="text-red-500 text-[10px] ml-2 font-bold uppercase">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        {{-- Toggle Display --}}
+                        <div
+                            class="p-4 bg-amber-50 rounded-2xl border border-amber-100 flex items-center justify-between">
+                            <div>
+                                <p class="text-xs font-black text-amber-900 uppercase">Status Publikasi</p>
+                                <p class="text-[10px] text-amber-600 uppercase tracking-tighter italic">Langsung
+                                    tampilkan di katalog?</p>
+                            </div>
+                            <button type="button" wire:click="$toggle('display')"
+                                class="relative inline-flex h-6 w-11 items-center rounded-full transition {{ $display ? 'bg-amber-500' : 'bg-gray-300' }}">
+                                <span
+                                    class="inline-block h-4 w-4 transform rounded-full bg-white transition {{ $display ? 'translate-x-6' : 'translate-x-1' }}"></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    {{-- Action Button --}}
+                    <div class="mt-10 pt-6 border-t border-gray-50">
+                        <button type="submit" wire:loading.attr="disabled"
+                            class="w-full flex items-center justify-center gap-2 py-4 bg-amber-500 hover:bg-amber-600 text-white rounded-2xl font-black shadow-xl shadow-amber-200 transition-all active:scale-95 disabled:opacity-50 uppercase tracking-widest text-sm">
+                            <span wire:loading.remove>Daftarkan Produk</span>
+                            <span wire:loading>Memproses...</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
