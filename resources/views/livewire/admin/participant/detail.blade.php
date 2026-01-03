@@ -15,12 +15,20 @@
             </div>
         </div>
         <div class="flex flex-col items-end gap-2">
-            <button wire:click="save" wire:loading.attr="disabled"
-                class="flex items-center justify-center gap-2 px-10 py-4 bg-amber-500 hover:bg-amber-600 text-white rounded-2xl font-black shadow-xl shadow-amber-200 transition-all active:scale-95 disabled:opacity-50">
-                <span wire:loading.remove>SIMPAN PERUBAHAN</span>
-                <span wire:loading>MEMPROSES...</span>
-            </button>
-            {{-- Notifikasi Error Global jika ada validasi yang gagal --}}
+            <div class="flex gap-3">
+                {{-- Tombol Hapus --}}
+                {{-- <button type="button" onclick="confirmDelete({{ $participant->id }})"
+                    class="px-6 py-4 bg-white border-2 border-red-50 text-red-400 rounded-2xl font-black uppercase text-[10px] tracking-widest hover:bg-red-50 transition-all">
+                    Hapus
+                </button> --}}
+
+                {{-- Tombol Simpan --}}
+                <button wire:click="save" wire:loading.attr="disabled"
+                    class="flex items-center justify-center gap-2 px-10 py-4 bg-amber-500 hover:bg-amber-600 text-white rounded-2xl font-black shadow-xl shadow-amber-200 transition-all active:scale-95 disabled:opacity-50">
+                    <span wire:loading.remove>SIMPAN PERUBAHAN</span>
+                    <span wire:loading>MEMPROSES...</span>
+                </button>
+            </div>
             @if ($errors->any())
                 <span class="text-red-500 text-[10px] font-black uppercase animate-bounce">Periksa kembali input yang
                     merah!</span>
@@ -29,26 +37,55 @@
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-
+        {{-- Sisi Kiri --}}
         <div class="lg:col-span-4 space-y-6">
             <div class="bg-white p-8 rounded-[3rem] shadow-sm border border-gray-100 text-center">
-                <div class="relative w-32 h-32 mx-auto mb-6">
+                <div class="relative w-40 h-40 mx-auto mb-6 group">
                     <div
                         class="w-full h-full bg-amber-50 rounded-[2.5rem] flex items-center justify-center border-4 border-white shadow-lg overflow-hidden">
-                        @if ($participant->profile_photo)
+                        {{-- Preview New Photo OR Old Photo OR Initial --}}
+                        @if ($new_photo)
+                            <img src="{{ $new_photo->temporaryUrl() }}" class="w-full h-full object-cover">
+                        @elseif ($participant->profile_photo)
                             <img src="{{ asset('storage/participant/image/' . $participant->profile_photo) }}"
                                 class="w-full h-full object-cover">
                         @else
                             <span
-                                class="text-5xl font-black text-amber-500 uppercase">{{ substr($participant->business_name, 0, 1) }}</span>
+                                class="text-5xl font-black text-amber-500 uppercase">{{ substr($form['business_name'], 0, 1) }}</span>
                         @endif
+
+                        {{-- Loading Overlay --}}
+                        <div wire:loading wire:target="new_photo"
+                            class="absolute inset-0 bg-white/80 flex items-center justify-center">
+                            <div
+                                class="w-6 h-6 border-4 border-amber-500 border-t-transparent rounded-full animate-spin">
+                            </div>
+                        </div>
                     </div>
+
+                    {{-- Input File Hidden --}}
+                    <label
+                        class="absolute -bottom-2 -right-2 p-3 bg-gray-900 text-white rounded-2xl cursor-pointer hover:scale-110 transition shadow-xl border-4 border-white">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z">
+                            </path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                        <input type="file" wire:model="new_photo" class="hidden" accept="image/*">
+                    </label>
                 </div>
+
                 <h2 class="text-xl font-black text-gray-900 leading-tight mb-1">{{ $form['business_name'] }}</h2>
                 <div
                     class="inline-block px-4 py-1 bg-amber-100 text-amber-600 text-[10px] font-black uppercase rounded-full tracking-widest mb-6">
                     {{ $form['business_field'] }}
                 </div>
+
+                @error('new_photo')
+                    <p class="text-red-500 text-[9px] font-black uppercase mb-4">{{ $message }}</p>
+                @enderror
 
                 <div class="p-4 bg-gray-50 rounded-3xl border border-gray-100 text-left">
                     <label class="text-[10px] font-black text-gray-400 uppercase ml-1">Status Publikasi</label>
@@ -56,7 +93,6 @@
                         <span class="text-sm font-bold {{ $form['display'] ? 'text-green-600' : 'text-gray-400' }}">
                             {{ $form['display'] ? 'Aktif di Katalog' : 'Draft / Non-Aktif' }}
                         </span>
-                        {{-- Panggil method toggleDisplay --}}
                         <button type="button" wire:click="toggleDisplay"
                             class="relative inline-flex h-6 w-11 items-center rounded-full transition {{ $form['display'] ? 'bg-amber-500' : 'bg-gray-200' }}">
                             <span
@@ -76,19 +112,16 @@
                             <label
                                 class="text-[10px] text-gray-500 font-bold uppercase ml-1">{{ $label }}</label>
                             <input type="text" wire:model="form.{{ $key }}"
-                                class="w-full mt-1 bg-gray-800 border-none rounded-xl text-white text-sm focus:ring-amber-500 placeholder-gray-600"
-                                placeholder="Username/Link...">
-                            @error('form.' . $key)
-                                <span class="text-red-400 text-[9px] ml-1">{{ $message }}</span>
-                            @enderror
+                                class="w-full mt-1 bg-gray-800 border-none rounded-xl text-white text-sm focus:ring-amber-500 placeholder-gray-600">
                         </div>
                     @endforeach
                 </div>
             </div>
         </div>
 
+        {{-- Sisi Kanan --}}
         <div class="lg:col-span-8 space-y-8">
-
+            {{-- Informasi Utama --}}
             <div class="bg-white p-8 rounded-[3rem] shadow-sm border border-gray-100">
                 <h3 class="text-amber-500 text-xs font-black uppercase tracking-widest mb-8 flex items-center gap-2">
                     <span class="w-8 h-px bg-amber-200"></span> Informasi Utama Bisnis
@@ -98,39 +131,27 @@
                         <label class="text-[10px] font-black text-gray-400 uppercase ml-2">Nama Bisnis</label>
                         <input type="text" wire:model="form.business_name"
                             class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-amber-500">
-                        @error('form.business_name')
-                            <span class="text-red-500 text-[10px] ml-2">{{ $message }}</span>
-                        @enderror
                     </div>
                     <div>
                         <label class="text-[10px] font-black text-gray-400 uppercase ml-2">Nama Owner</label>
                         <input type="text" wire:model="form.owner_name"
                             class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-amber-500">
-                        @error('form.owner_name')
-                            <span class="text-red-500 text-[10px] ml-2">{{ $message }}</span>
-                        @enderror
                     </div>
                     <div>
                         <label class="text-[10px] font-black text-gray-400 uppercase ml-2">Kontak / HP</label>
                         <input type="text" wire:model="form.contact"
                             class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-amber-500">
-                        @error('form.contact')
-                            <span class="text-red-500 text-[10px] ml-2">{{ $message }}</span>
-                        @enderror
                     </div>
                     <div class="md:col-span-2">
                         <label class="text-[10px] font-black text-gray-400 uppercase ml-2">Deskripsi Singkat
                             Usaha</label>
                         <textarea wire:model="form.description" rows="4"
-                            class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-amber-500"
-                            placeholder="Jelaskan produk atau visi usaha..."></textarea>
-                        @error('form.description')
-                            <span class="text-red-500 text-[10px] ml-2">{{ $message }}</span>
-                        @enderror
+                            class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-amber-500"></textarea>
                     </div>
                 </div>
             </div>
 
+            {{-- Alamat --}}
             <div class="bg-white p-8 rounded-[3rem] shadow-sm border border-gray-100">
                 <h3 class="text-amber-500 text-xs font-black uppercase tracking-widest mb-8 flex items-center gap-2">
                     <span class="w-8 h-px bg-amber-200"></span> Lokasi & Alamat
@@ -140,54 +161,36 @@
                         <label class="text-[10px] font-black text-gray-400 uppercase ml-2">Provinsi</label>
                         <input type="text" wire:model="form.province"
                             class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl">
-                        @error('form.province')
-                            <span class="text-red-500 text-[10px] ml-2">{{ $message }}</span>
-                        @enderror
                     </div>
                     <div class="col-span-2">
                         <label class="text-[10px] font-black text-gray-400 uppercase ml-2">Kota/Kabupaten</label>
                         <input type="text" wire:model="form.city"
                             class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl">
-                        @error('form.city')
-                            <span class="text-red-500 text-[10px] ml-2">{{ $message }}</span>
-                        @enderror
                     </div>
                     <div>
                         <label class="text-[10px] font-black text-gray-400 uppercase ml-2">Kecamatan</label>
                         <input type="text" wire:model="form.district"
                             class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl">
-                        @error('form.district')
-                            <span class="text-red-500 text-[10px] ml-2">{{ $message }}</span>
-                        @enderror
                     </div>
                     <div>
                         <label class="text-[10px] font-black text-gray-400 uppercase ml-2">Desa/Kelurahan</label>
                         <input type="text" wire:model="form.village"
                             class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl">
-                        @error('form.village')
-                            <span class="text-red-500 text-[10px] ml-2">{{ $message }}</span>
-                        @enderror
                     </div>
                     <div class="col-span-2">
                         <label class="text-[10px] font-black text-gray-400 uppercase ml-2">Kode Pos</label>
                         <input type="text" wire:model="form.postal_code" maxlength="5"
                             class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl">
-                        @error('form.postal_code')
-                            <span class="text-red-500 text-[10px] ml-2">{{ $message }}</span>
-                        @enderror
                     </div>
                     <div class="col-span-full">
                         <label class="text-[10px] font-black text-gray-400 uppercase ml-2">Detail Alamat</label>
                         <input type="text" wire:model="form.address_detail"
-                            class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl"
-                            placeholder="Jl. Nama Jalan, No Rumah, Blok, dll...">
-                        @error('form.address_detail')
-                            <span class="text-red-500 text-[10px] ml-2">{{ $message }}</span>
-                        @enderror
+                            class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl">
                     </div>
                 </div>
             </div>
 
+            {{-- Legalitas --}}
             <div class="bg-white p-8 rounded-[3rem] shadow-sm border border-gray-100">
                 <h3 class="text-amber-500 text-xs font-black uppercase tracking-widest mb-8 flex items-center gap-2">
                     <span class="w-8 h-px bg-amber-200"></span> Legalitas & Sertifikasi
@@ -196,60 +199,32 @@
                     <div class="space-y-4">
                         <p class="text-xs font-bold text-gray-900 border-l-4 border-amber-500 pl-3 uppercase">Legalitas
                             Usaha</p>
-                        <div>
-                            <label class="text-[10px] font-black text-gray-400 uppercase">Utama (Contoh: NIB)</label>
-                            <input type="text" wire:model="form.legalitas"
-                                class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl">
-                            @error('form.legalitas')
-                                <span class="text-red-500 text-[10px]">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div>
-                            <label class="text-[10px] font-black text-gray-400 uppercase tracking-tighter">Legalitas
-                                Lainnya</label>
-                            <input type="text" wire:model="form.legalitas_other"
-                                class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl shadow-inner">
-                            @error('form.legalitas_other')
-                                <span class="text-red-500 text-[10px]">{{ $message }}</span>
-                            @enderror
-                        </div>
+                        <input type="text" wire:model="form.legalitas"
+                            class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl" placeholder="NIB">
+                        <input type="text" wire:model="form.legalitas_other"
+                            class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl" placeholder="Lainnya">
                     </div>
                     <div class="space-y-4">
                         <p class="text-xs font-bold text-gray-900 border-l-4 border-amber-500 pl-3 uppercase">
                             Sertifikasi Produk</p>
-                        <div>
-                            <label class="text-[10px] font-black text-gray-400 uppercase">Utama (Halal/PIRT)</label>
-                            <input type="text" wire:model="form.certification"
-                                class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl">
-                            @error('form.certification')
-                                <span class="text-red-500 text-[10px]">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div>
-                            <label class="text-[10px] font-black text-gray-400 uppercase tracking-tighter">Sertifikasi
-                                Lainnya</label>
-                            <input type="text" wire:model="form.certification_other"
-                                class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl shadow-inner">
-                            @error('form.certification_other')
-                                <span class="text-red-500 text-[10px]">{{ $message }}</span>
-                            @enderror
-                        </div>
+                        <input type="text" wire:model="form.certification"
+                            class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl" placeholder="Halal/PIRT">
+                        <input type="text" wire:model="form.certification_other"
+                            class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl" placeholder="Lainnya">
                     </div>
                 </div>
             </div>
 
+            {{-- Inkubasi & Berkas --}}
             <div class="bg-white p-8 rounded-[3rem] shadow-sm border border-gray-100">
                 <h3 class="text-amber-500 text-xs font-black uppercase tracking-widest mb-8 flex items-center gap-2">
-                    <span class="w-8 h-px bg-amber-200"></span> Data Operasional
+                    <span class="w-8 h-px bg-amber-200"></span> Operasional & Inkubasi
                 </h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                     <div>
                         <label class="text-[10px] font-black text-gray-400 uppercase ml-2">Omset per Bulan</label>
                         <input type="text" wire:model="form.omset"
                             class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl">
-                        @error('form.omset')
-                            <span class="text-red-500 text-[10px] ml-2">{{ $message }}</span>
-                        @enderror
                     </div>
                     <div>
                         <label class="text-[10px] font-black text-gray-400 uppercase ml-2">Jangkauan Pasar</label>
@@ -259,47 +234,27 @@
                             <option value="Nasional">Nasional</option>
                             <option value="Ekspor">Ekspor</option>
                         </select>
-                        @error('form.market_reach')
-                            <span class="text-red-500 text-[10px] ml-2">{{ $message }}</span>
-                        @enderror
                     </div>
                 </div>
 
-                <div class="bg-amber-50 p-6 rounded-[2rem] border border-amber-100 space-y-6">
-                    <div class="flex items-center gap-3">
+                <div class="bg-amber-50 p-6 rounded-[2rem] border border-amber-100">
+                    <div class="flex items-center gap-3 mb-6">
                         <input type="checkbox" wire:model.live="form.has_incubated" id="inc_check"
-                            class="w-5 h-5 text-amber-500 rounded-lg focus:ring-amber-500 border-gray-300">
-                        <label for="inc_check" class="text-xs font-black text-amber-900 uppercase">Pernah Mengikuti
-                            Program Inkubasi?</label>
+                            class="w-5 h-5 text-amber-500 rounded-lg focus:ring-amber-500">
+                        <label for="inc_check" class="text-xs font-black text-amber-900 uppercase">Program
+                            Inkubasi?</label>
                     </div>
-
                     @if ($form['has_incubated'])
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 animate-fadeIn">
                             <div class="md:col-span-2">
-                                <label class="text-[10px] font-black text-amber-800 uppercase ml-2">Lembaga
-                                    Penyelenggara</label>
+                                <label class="text-[10px] font-black text-amber-800 uppercase ml-2">Lembaga</label>
                                 <input type="text" wire:model="form.incubation_institution"
                                     class="w-full mt-1 px-5 py-3 bg-white border-none rounded-2xl shadow-sm">
-                                @error('form.incubation_institution')
-                                    <span class="text-red-500 text-[10px] ml-2">{{ $message }}</span>
-                                @enderror
                             </div>
-                            <div>
-                                <label class="text-[10px] font-black text-amber-800 uppercase ml-2">Tgl Mulai</label>
-                                <input type="date" wire:model="form.incubation_start"
-                                    class="w-full mt-1 px-5 py-3 bg-white border-none rounded-2xl shadow-sm text-sm">
-                                @error('form.incubation_start')
-                                    <span class="text-red-500 text-[10px] ml-2">{{ $message }}</span>
-                                @enderror
-                            </div>
-                            <div>
-                                <label class="text-[10px] font-black text-amber-800 uppercase ml-2">Tgl Selesai</label>
-                                <input type="date" wire:model="form.incubation_end"
-                                    class="w-full mt-1 px-5 py-3 bg-white border-none rounded-2xl shadow-sm text-sm">
-                                @error('form.incubation_end')
-                                    <span class="text-red-500 text-[10px] ml-2">{{ $message }}</span>
-                                @enderror
-                            </div>
+                            <input type="date" wire:model="form.incubation_start"
+                                class="w-full px-5 py-3 bg-white border-none rounded-2xl shadow-sm text-sm">
+                            <input type="date" wire:model="form.incubation_end"
+                                class="w-full px-5 py-3 bg-white border-none rounded-2xl shadow-sm text-sm">
                         </div>
                     @endif
                 </div>
@@ -312,27 +267,24 @@
                         <div class="p-3 bg-amber-100 rounded-2xl">
                             <svg class="w-8 h-8 text-amber-600" fill="none" stroke="currentColor"
                                 viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                <path
                                     d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z">
                                 </path>
                             </svg>
                         </div>
                         <div>
                             <p class="text-sm font-bold text-gray-900">Dokumen Profil Bisnis (PDF)</p>
-                            <p class="text-[10px] text-gray-400">Path:
+                            <p class="text-[10px] text-gray-400">
                                 {{ $participant->business_profile_file ?? 'Belum diunggah' }}</p>
                         </div>
                     </div>
                     @if ($participant->business_profile_file)
                         <a href="{{ asset('storage/participant/' . $participant->business_profile_file) }}"
                             target="_blank"
-                            class="px-6 py-3 bg-gray-900 text-white text-[10px] font-black uppercase rounded-xl hover:bg-black transition">
-                            Buka Dokumen
-                        </a>
+                            class="px-6 py-3 bg-gray-900 text-white text-[10px] font-black uppercase rounded-xl hover:bg-black transition">Buka</a>
                     @endif
                 </div>
             </div>
-
         </div>
     </div>
 </div>

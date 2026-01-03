@@ -5,6 +5,8 @@ namespace App\Livewire\Admin\Participant;
 use App\Models\Participant;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Storage;
+use Livewire\Attributes\On;
 
 class Detail extends Component
 {
@@ -12,6 +14,7 @@ class Detail extends Component
 
     public Participant $participant;
     public $form = [];
+    public $new_photo; // Properti untuk upload foto baru
 
     public function mount($id)
     {
@@ -43,7 +46,7 @@ class Detail extends Component
             'form.omset'         => 'required|string',
             'form.market_reach'  => 'required|in:Lokal,Nasional,Ekspor',
 
-            // Media Sosial (Nullable tapi validasi format)
+            // Media Sosial
             'form.ig'            => 'nullable|string|max:50',
             'form.tiktok'        => 'nullable|string|max:50',
             'form.fb'            => 'nullable|string|max:50',
@@ -60,6 +63,9 @@ class Detail extends Component
             'form.description'   => 'nullable|string|min:20',
             'form.status'        => 'boolean',
             'form.display'        => 'boolean',
+
+            // Validasi Foto
+            'new_photo'          => 'nullable|image|max:2048', // Max 2MB
         ];
     }
 
@@ -67,7 +73,23 @@ class Detail extends Component
     {
         $this->validate();
 
+        // Cek jika ada upload foto baru
+        if ($this->new_photo) {
+            // Hapus foto lama jika ada
+            if ($this->participant->profile_photo) {
+                Storage::disk('public')->delete('participant/image/' . $this->participant->profile_photo);
+            }
+
+            // Simpan foto baru
+            $filename = time() . '_' . $this->participant->id . '.' . $this->new_photo->getClientOriginalExtension();
+            $this->new_photo->storeAs('participant/image', $filename, 'public');
+
+            // Masukkan nama file ke array form
+            $this->form['profile_photo'] = $filename;
+        }
+
         $this->participant->update($this->form);
+        $this->new_photo = null; // Reset input file
 
         $this->dispatch('swal', [
             'type'    => 'success',
@@ -78,9 +100,23 @@ class Detail extends Component
 
     public function toggleDisplay()
     {
-        // Memastikan nilai dibalik secara eksplisit
         $this->form['display'] = !$this->form['display'];
     }
+
+    // #[On('delete')]
+    // public function delete()
+    // {
+    //     // Hapus file fisik
+    //     if ($this->participant->profile_photo) {
+    //         Storage::disk('public')->delete('participant/image/' . $this->participant->profile_photo);
+    //     }
+    //     if ($this->participant->business_profile_file) {
+    //         Storage::disk('public')->delete('participant/' . $this->participant->business_profile_file);
+    //     }
+
+    //     $this->participant->delete();
+    //     return redirect()->route('dashboard')->with('success', 'Data partisipan telah dihapus.');
+    // }
 
     public function render()
     {
