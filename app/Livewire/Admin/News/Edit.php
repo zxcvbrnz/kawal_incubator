@@ -35,7 +35,7 @@ class Edit extends Component
         if ($this->new_image) {
             Storage::disk('public')->delete('new/' . $this->post->image_url);
             $name = time() . '.' . $this->new_image->extension();
-            $this->new_image->storeAs('posts', $name, 'public');
+            $this->new_image->storeAs('new', $name, 'public');
             $data['image_url'] = $name;
         }
 

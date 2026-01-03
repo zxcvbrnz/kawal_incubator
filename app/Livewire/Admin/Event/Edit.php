@@ -52,7 +52,7 @@ class Edit extends Component
         if ($this->new_cover) {
             Storage::disk('public')->delete('event/' . $this->event->image_url);
             $fileName = time() . '_cover.' . $this->new_cover->extension();
-            $this->new_cover->storeAs('events', $fileName, 'public');
+            $this->new_cover->storeAs('event', $fileName, 'public');
             $data['image_url'] = $fileName;
         }
 
@@ -71,7 +71,7 @@ class Edit extends Component
 
         foreach ($this->gallery_photos as $photo) {
             $fileName = uniqid() . '.' . $photo->extension();
-            $photo->storeAs('event_gallery', $fileName, 'public');
+            $photo->storeAs('event', $fileName, 'public');
 
             $this->event->images()->create([
                 'image_url' => $fileName,
@@ -86,7 +86,7 @@ class Edit extends Component
     public function deleteImage($imageId)
     {
         $image = EventImages::find($imageId);
-        Storage::disk('public')->delete('event_gallery/' . $image->image_url);
+        Storage::disk('public')->delete('event/' . $image->image_url);
         $image->delete();
     }
     public function render()
@@ -98,12 +98,12 @@ class Edit extends Component
     public function delete()
     {
         foreach ($this->event->images as $img) {
-            Storage::disk('public')->delete('event_gallery/' . $img->image_url);
+            Storage::disk('public')->delete('event/' . $img->image_url);
         }
         $this->event->images()->delete();
 
         if ($this->event->image_url) {
-            Storage::disk('public')->delete('events/' . $this->event->image_url);
+            Storage::disk('public')->delete('event/' . $this->event->image_url);
         }
 
         $this->event->delete();
