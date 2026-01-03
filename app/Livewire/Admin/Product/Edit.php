@@ -5,6 +5,7 @@ namespace App\Livewire\Admin\Product;
 use App\Models\Participant;
 use App\Models\Product;
 use Illuminate\Support\Facades\Storage;
+use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -65,6 +66,7 @@ class Edit extends Component
         ]);
     }
 
+    #[On('delete')]
     public function delete()
     {
         // Hapus file dari storage
@@ -74,7 +76,7 @@ class Edit extends Component
 
         $this->product->delete();
 
-        session()->flash('success', 'Produk telah dihapus selamanya.');
+        session()->flash('success', 'Berhasil menghapus produk!');
         return redirect()->route('admin.product');
     }
     public function render()

@@ -6,6 +6,7 @@ use App\Models\Program;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Livewire\Attributes\On;
 
 class Edit extends Component
 {
@@ -45,10 +46,12 @@ class Edit extends Component
         ]);
     }
 
-    public function delete()
+    #[On('delete')]
+    public function delete($id = null)
     {
         Storage::disk('public')->delete('program/' . $this->program->image_url);
         $this->program->delete();
+        session()->flash('success', 'Berhasil menghapus program!');
         return redirect()->route('admin.program');
     }
     public function render()

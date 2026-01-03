@@ -4,6 +4,7 @@ namespace App\Livewire\Admin\News;
 
 use App\Models\Post;
 use Illuminate\Support\Facades\Storage;
+use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -46,12 +47,14 @@ class Edit extends Component
         ]);
     }
 
+    #[On('delete')]
+
     public function delete()
     {
         Storage::disk('public')->delete('new/' . $this->post->image_url);
         $this->post->delete();
         session()->flash('success', 'Cerita berhasil dihapus!');
-        return redirect()->route('admin.post');
+        return redirect()->route('admin.news');
     }
     public function render()
     {

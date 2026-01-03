@@ -100,8 +100,7 @@
                         <span wire:loading>MENYIMPAN...</span>
                     </button>
 
-                    <button wire:click="delete"
-                        wire:confirm="PERHATIAN! Produk ini akan dihapus secara permanen. Lanjutkan?"
+                    <button type="button" onclick="confirmDelete({{ $product->id }})"
                         class="w-full py-4 bg-white border-2 border-red-50 text-red-400 rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] hover:bg-red-50 hover:border-red-100 transition-all">
                         Hapus Produk Selamanya
                     </button>

@@ -41,7 +41,7 @@
                 <button wire:click="update"
                     class="w-full py-4 bg-amber-500 text-white rounded-2xl font-black shadow-xl shadow-amber-200 uppercase text-xs tracking-widest">Update
                     Program</button>
-                <button wire:click="delete" wire:confirm="Hapus program ini secara permanen?"
+                <button type="button" onclick="confirmDelete({{ $program->id }})"
                     class="w-full py-4 bg-white border-2 border-red-50 text-red-400 rounded-2xl font-black uppercase text-[10px] tracking-widest">Hapus
                     Program</button>
             </div>

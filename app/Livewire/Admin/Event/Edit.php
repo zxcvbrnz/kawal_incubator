@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Livewire\Attributes\On;
 
 class Edit extends Component
 {
@@ -91,5 +92,22 @@ class Edit extends Component
     public function render()
     {
         return view('livewire.admin.event.edit');
+    }
+
+    #[On('delete')]
+    public function delete()
+    {
+        foreach ($this->event->images as $img) {
+            Storage::disk('public')->delete('event_gallery/' . $img->image_url);
+        }
+        $this->event->images()->delete();
+
+        if ($this->event->image_url) {
+            Storage::disk('public')->delete('events/' . $this->event->image_url);
+        }
+
+        $this->event->delete();
+
+        return redirect()->route('admin.event')->with('success', 'Event berhasil dihapus permanen.');
     }
 }

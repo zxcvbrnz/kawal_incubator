@@ -40,7 +40,7 @@
                 <button wire:click="update"
                     class="w-full py-4 bg-amber-500 text-white rounded-2xl font-black shadow-xl shadow-amber-200 uppercase tracking-widest text-xs">Update
                     Cerita</button>
-                <button wire:click="delete" wire:confirm="Hapus cerita ini selamanya?"
+                <button type="button" onclick="confirmDelete({{ $post->id }})"
                     class="w-full py-4 bg-white border-2 border-red-50 text-red-400 rounded-2xl font-black uppercase text-[10px] tracking-widest hover:bg-red-50">Hapus
                     Cerita</button>
             </div>

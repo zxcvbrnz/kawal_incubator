@@ -73,10 +73,17 @@
                     </div>
                 </div>
 
-                <button wire:click="update"
-                    class="w-full mt-10 py-4 bg-amber-500 text-white rounded-2xl font-black shadow-xl shadow-amber-200 transition active:scale-95 uppercase tracking-widest text-xs">
-                    Simpan Perubahan Utama
-                </button>
+                <div class="grid grid-cols-1 gap-4 mt-10">
+                    <button wire:click="update"
+                        class="py-4 bg-amber-500 text-white rounded-2xl font-black shadow-xl shadow-amber-200 transition active:scale-95 uppercase tracking-widest text-xs">
+                        Simpan Perubahan
+                    </button>
+
+                    <button type="button" onclick="confirmDelete({{ $event->id }})"
+                        class="py-4 bg-white border-2 border-red-50 text-red-400 rounded-2xl font-black uppercase text-[10px] tracking-widest hover:bg-red-50 transition-all">
+                        Hapus Event
+                    </button>
+                </div>
             </div>
 
             {{-- Galeri Foto --}}
