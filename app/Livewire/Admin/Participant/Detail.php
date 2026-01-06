@@ -3,9 +3,11 @@
 namespace App\Livewire\Admin\Participant;
 
 use App\Models\Participant;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Hash;
 use Livewire\Attributes\On;
 
 class Detail extends Component
@@ -14,7 +16,8 @@ class Detail extends Component
 
     public Participant $participant;
     public $form = [];
-    public $new_photo; // Properti untuk upload foto baru
+    public $new_photo;
+    public $new_pdf;
 
     public function mount($id)
     {
@@ -28,46 +31,36 @@ class Detail extends Component
     protected function rules()
     {
         return [
-            // Identitas Utama
             'form.business_name' => 'required|string|min:3|max:255',
             'form.owner_name'    => 'required|string|max:255',
             'form.business_field' => 'required|string',
             'form.contact'       => 'required|numeric|digits_between:10,15',
-
-            // Alamat
             'form.province'      => 'required|string|max:255',
             'form.city'          => 'required|string|max:255',
             'form.district'      => 'required|string|max:255',
             'form.village'       => 'required|string|max:255',
             'form.address_detail' => 'required|string|max:255',
             'form.postal_code'   => 'required|numeric|digits:5',
-
-            // Operasional
             'form.omset'         => 'required|string|max:255',
             'form.market_reach'  => 'required|string|max:255',
-
-            // Media Sosial
             'form.ig'            => 'nullable|string|max:50',
             'form.tiktok'        => 'nullable|string|max:50',
             'form.fb'            => 'nullable|string|max:50',
             'form.website'       => 'nullable|string|max:50',
             'form.wa'            => 'nullable|string|max:50',
-
-            // Inkubasi
             'form.has_incubated' => 'boolean',
             'form.incubation_institution' => 'required_if:has_incubated,true|nullable|string|max:255',
             'form.incubation_start'       => 'required_if:has_incubated,true|nullable|date',
             'form.incubation_end'         => 'required_if:has_incubated,true|nullable|date|after_or_equal:incubation_start',
-
-            // Lainnya
             'form.description'   => 'nullable|string',
             'form.status'        => 'boolean',
-            'form.display'        => 'boolean',
-
-            'form.business_profile_file' => 'nullable|mimes:pdf|max:5120',
-
-            // Validasi Foto
+            'form.display'       => 'boolean',
+            'form.legalitas'     => 'nullable|string',
+            'form.legalitas_other' => 'nullable|string',
+            'form.certification'   => 'nullable|string',
+            'form.certification_other' => 'nullable|string',
             'new_photo'          => 'nullable|image|max:2048',
+            'new_pdf'            => 'nullable|mimes:pdf|max:5120',
         ];
     }
 
@@ -75,23 +68,29 @@ class Detail extends Component
     {
         $this->validate();
 
-        // Cek jika ada upload foto baru
+        // Foto Profil
         if ($this->new_photo) {
-            // Hapus foto lama jika ada
             if ($this->participant->profile_photo) {
                 Storage::disk('public')->delete('participant/image/' . $this->participant->profile_photo);
             }
-
-            // Simpan foto baru
-            $filename = time() . '_' . $this->participant->id . '.' . $this->new_photo->getClientOriginalExtension();
+            $filename = time() . '_photo.' . $this->new_photo->getClientOriginalExtension();
             $this->new_photo->storeAs('participant/image', $filename, 'public');
-
-            // Masukkan nama file ke array form
             $this->form['profile_photo'] = $filename;
         }
 
+        // Berkas PDF
+        if ($this->new_pdf) {
+            if ($this->participant->business_profile_file) {
+                Storage::disk('public')->delete('participant/' . $this->participant->business_profile_file);
+            }
+            $pdfName = time() . '_profile.pdf';
+            $this->new_pdf->storeAs('participant', $pdfName, 'public');
+            $this->form['business_profile_file'] = $pdfName;
+        }
+
         $this->participant->update($this->form);
-        $this->new_photo = null; // Reset input file
+        $this->reset(['new_photo', 'new_pdf']);
+        $this->participant = $this->participant->fresh();
 
         $this->dispatch('swal', [
             'type'    => 'success',
@@ -105,20 +104,31 @@ class Detail extends Component
         $this->form['display'] = !$this->form['display'];
     }
 
-    // #[On('delete')]
-    // public function delete()
-    // {
-    //     // Hapus file fisik
-    //     if ($this->participant->profile_photo) {
-    //         Storage::disk('public')->delete('participant/image/' . $this->participant->profile_photo);
-    //     }
-    //     if ($this->participant->business_profile_file) {
-    //         Storage::disk('public')->delete('participant/' . $this->participant->business_profile_file);
-    //     }
+    #[On('delete')]
+    public function delete($data)
+    {
+        $password = $data['password'] ?? null;
 
-    //     $this->participant->delete();
-    //     return redirect()->route('dashboard')->with('success', 'Data partisipan telah dihapus.');
-    // }
+        // Verifikasi Password Admin
+        if (!$password || !Hash::check($password, Auth::user()->password)) {
+            $this->dispatch('swal', [
+                'type'    => 'error',
+                'title'   => 'Akses Ditolak!',
+                'message' => 'Password admin salah. Penghapusan dibatalkan.'
+            ]);
+            return;
+        }
+
+        if ($this->participant->profile_photo) {
+            Storage::disk('public')->delete('participant/image/' . $this->participant->profile_photo);
+        }
+        if ($this->participant->business_profile_file) {
+            Storage::disk('public')->delete('participant/' . $this->participant->business_profile_file);
+        }
+
+        $this->participant->delete();
+        return redirect()->route('dashboard')->with('success', 'Data partisipan telah dihapus.');
+    }
 
     public function render()
     {

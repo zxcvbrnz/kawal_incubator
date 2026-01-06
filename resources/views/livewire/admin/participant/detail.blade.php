@@ -16,11 +16,11 @@
         </div>
         <div class="flex flex-col items-end gap-2">
             <div class="flex gap-3">
-                {{-- Tombol Hapus --}}
-                {{-- <button type="button" onclick="confirmDelete({{ $participant->id }})"
+                {{-- Tombol Hapus - Memanggil Global JS --}}
+                <button type="button" onclick="confirmDeleteWithPassword({{ $participant->id }})"
                     class="px-6 py-4 bg-white border-2 border-red-50 text-red-400 rounded-2xl font-black uppercase text-[10px] tracking-widest hover:bg-red-50 transition-all">
                     Hapus
-                </button> --}}
+                </button>
 
                 {{-- Tombol Simpan --}}
                 <button wire:click="save" wire:loading.attr="disabled"
@@ -43,7 +43,6 @@
                 <div class="relative w-40 h-40 mx-auto mb-6 group">
                     <div
                         class="w-full h-full bg-amber-50 rounded-[2.5rem] flex items-center justify-center border-4 border-white shadow-lg overflow-hidden">
-                        {{-- Preview New Photo OR Old Photo OR Initial --}}
                         @if ($new_photo)
                             <img src="{{ $new_photo->temporaryUrl() }}" class="w-full h-full object-cover">
                         @elseif ($participant->profile_photo)
@@ -54,7 +53,6 @@
                                 class="text-5xl font-black text-amber-500 uppercase">{{ substr($form['business_name'], 0, 1) }}</span>
                         @endif
 
-                        {{-- Loading Overlay --}}
                         <div wire:loading wire:target="new_photo"
                             class="absolute inset-0 bg-white/80 flex items-center justify-center">
                             <div
@@ -63,7 +61,6 @@
                         </div>
                     </div>
 
-                    {{-- Input File Hidden --}}
                     <label
                         class="absolute -bottom-2 -right-2 p-3 bg-gray-900 text-white rounded-2xl cursor-pointer hover:scale-110 transition shadow-xl border-4 border-white">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -82,10 +79,6 @@
                     class="inline-block px-4 py-1 bg-amber-100 text-amber-600 text-[10px] font-black uppercase rounded-full tracking-widest mb-6">
                     {{ $form['business_field'] }}
                 </div>
-
-                @error('new_photo')
-                    <p class="text-red-500 text-[9px] font-black uppercase mb-4">{{ $message }}</p>
-                @enderror
 
                 <div class="p-4 bg-gray-50 rounded-3xl border border-gray-100 text-left">
                     <label class="text-[10px] font-black text-gray-400 uppercase ml-1">Status Publikasi</label>
@@ -151,7 +144,7 @@
                 </div>
             </div>
 
-            {{-- Alamat --}}
+            {{-- Alamat, Legalitas, Operasional (Singkat untuk penghematan ruang) --}}
             <div class="bg-white p-8 rounded-[3rem] shadow-sm border border-gray-100">
                 <h3 class="text-amber-500 text-xs font-black uppercase tracking-widest mb-8 flex items-center gap-2">
                     <span class="w-8 h-px bg-amber-200"></span> Lokasi & Alamat
@@ -190,7 +183,6 @@
                 </div>
             </div>
 
-            {{-- Legalitas --}}
             <div class="bg-white p-8 rounded-[3rem] shadow-sm border border-gray-100">
                 <h3 class="text-amber-500 text-xs font-black uppercase tracking-widest mb-8 flex items-center gap-2">
                     <span class="w-8 h-px bg-amber-200"></span> Legalitas & Sertifikasi
@@ -215,7 +207,6 @@
                 </div>
             </div>
 
-            {{-- Inkubasi & Berkas --}}
             <div class="bg-white p-8 rounded-[3rem] shadow-sm border border-gray-100">
                 <h3 class="text-amber-500 text-xs font-black uppercase tracking-widest mb-8 flex items-center gap-2">
                     <span class="w-8 h-px bg-amber-200"></span> Operasional & Inkubasi
@@ -260,6 +251,7 @@
                 </div>
             </div>
 
+            {{-- Bagian Berkas PDF Editable --}}
             <div class="bg-gray-100 p-8 rounded-[3rem] border border-gray-200">
                 <h3 class="text-gray-500 text-xs font-black uppercase tracking-widest mb-6">Berkas Profil Bisnis</h3>
                 <div class="flex flex-col md:flex-row items-center justify-between gap-4 p-6 bg-white rounded-[2rem]">
@@ -275,15 +267,33 @@
                         <div>
                             <p class="text-sm font-bold text-gray-900">Dokumen Profil Bisnis (PDF)</p>
                             <p class="text-[10px] text-gray-400">
-                                {{ $participant->business_profile_file ?? 'Belum diunggah' }}</p>
+                                @if ($new_pdf)
+                                    <span class="text-amber-600 font-bold animate-pulse">SIAP SIMPAN:
+                                        {{ $new_pdf->getClientOriginalName() }}</span>
+                                @else
+                                    {{ $participant->business_profile_file ?? 'Belum diunggah' }}
+                                @endif
+                            </p>
                         </div>
                     </div>
-                    @if ($participant->business_profile_file)
-                        <a href="{{ asset('storage/participant/' . $participant->business_profile_file) }}"
-                            target="_blank"
-                            class="px-6 py-3 bg-gray-900 text-white text-[10px] font-black uppercase rounded-xl hover:bg-black transition">Buka</a>
-                    @endif
+
+                    <div class="flex gap-2">
+                        <label
+                            class="px-6 py-3 bg-white border border-gray-200 text-gray-900 text-[10px] font-black uppercase rounded-xl hover:bg-gray-50 cursor-pointer transition">
+                            {{ $participant->business_profile_file ? 'Ganti File' : 'Tambah PDF' }}
+                            <input type="file" wire:model="new_pdf" class="hidden" accept="application/pdf">
+                        </label>
+
+                        @if ($participant->business_profile_file)
+                            <a href="{{ asset('storage/participant/' . $participant->business_profile_file) }}"
+                                target="_blank"
+                                class="px-6 py-3 bg-gray-900 text-white text-[10px] font-black uppercase rounded-xl hover:bg-black transition">Buka</a>
+                        @endif
+                    </div>
                 </div>
+                @error('new_pdf')
+                    <p class="text-red-500 text-[9px] font-black uppercase mt-2 ml-4">{{ $message }}</p>
+                @enderror
             </div>
         </div>
     </div>

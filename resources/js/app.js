@@ -9,7 +9,6 @@ document.addEventListener('livewire:init', () => {
         showSwal(data.type, data.title, data.message);
     });
 
-    // Listener Global untuk Konfirmasi Hapus
     Livewire.on('confirm-delete', (event) => {
         const data = event[0];
         confirmDelete(data.id, data.method || 'delete');
@@ -22,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (flash.error) showSwal('error', 'Oops...', flash.error);
 });
 
-// 1. Fungsi Helper Alert Biasa
 function showSwal(type, title, message) {
     Swal.fire({
         icon: type,
@@ -33,22 +31,34 @@ function showSwal(type, title, message) {
     });
 }
 
-// 2. Fungsi Helper Konfirmasi (Tambahkan Ini)
-window.confirmDelete = function (id, method = 'delete') {
+// Fungsi Baru: Konfirmasi Hapus dengan Input Password
+window.confirmDeleteWithPassword = function (id, method = 'delete') {
     Swal.fire({
-        title: 'APAKAH ANDA YAKIN?',
-        text: "Data yang dihapus tidak dapat dikembalikan!",
+        title: 'VERIFIKASI KEAMANAN',
+        text: "Masukkan password admin untuk menghapus data ini secara permanen:",
         icon: 'warning',
+        input: 'password',
+        inputPlaceholder: 'Password Admin',
+        inputAttributes: {
+            autocapitalize: 'off',
+            autocorrect: 'off'
+        },
         showCancelButton: true,
-        confirmButtonColor: '#f59e0b',
-        cancelButtonColor: '#ef4444',
-        confirmButtonText: 'YA, HAPUS!',
+        confirmButtonColor: '#ef4444',
+        cancelButtonColor: '#6b7280',
+        confirmButtonText: 'YA, HAPUS DATA',
         cancelButtonText: 'BATAL',
         showClass: { popup: 'animate__animated animate__bounceIn animate__faster' },
+        preConfirm: (password) => {
+            if (!password) {
+                Swal.showValidationMessage('Password wajib diisi!');
+            }
+            return password;
+        }
     }).then((result) => {
         if (result.isConfirmed) {
-            // Memanggil fungsi di Livewire secara dinamis
-            Livewire.dispatch(method, { id: id });
+            // Mengirim ke Livewire dengan payload id dan password
+            Livewire.dispatch(method, { data: { id: id, password: result.value } });
         }
     });
 }
