@@ -18,10 +18,11 @@
         {{-- Preview Gambar --}}
         <div class="lg:col-span-4">
             <div class="bg-white p-6 rounded-[2.5rem] shadow-sm border border-gray-100 text-center">
-                <label class="text-[10px] font-black text-gray-400 uppercase block mb-4">Gambar Saat Ini</label>
+                <label class="text-[10px] font-black text-gray-400 uppercase block mb-4">Gambar Produk</label>
                 <div class="relative group">
                     <div
-                        class="w-full aspect-square bg-gray-50 rounded-[2rem] overflow-hidden border-4 border-white shadow-md">
+                        class="w-full aspect-square bg-gray-50 rounded-[2rem] overflow-hidden border-4 border-white shadow-md relative">
+                        {{-- Gambar Produk --}}
                         @if ($image)
                             <img src="{{ $image->temporaryUrl() }}" class="w-full h-full object-cover">
                             <div
@@ -31,16 +32,34 @@
                         @else
                             <img src="{{ asset('storage/product/' . $old_image) }}" class="w-full h-full object-cover">
                         @endif
+
+                        <div wire:loading wire:target="image"
+                            class="absolute inset-0 z-10 bg-gray-900/60 backdrop-blur-sm flex flex-col items-center justify-center">
+                            <div class="w-full h-full flex flex-col items-center justify-center">
+
+                                <svg class="animate-spin h-10 w-10 text-amber-500 mb-3"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10"
+                                        stroke="currentColor" stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor"
+                                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                                    </path>
+                                </svg>
+                                <span
+                                    class="text-[10px] font-black uppercase tracking-widest text-white">Mengunggah...</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
                 <div class="mt-6">
                     <label
-                        class="cursor-pointer inline-block px-6 py-3 bg-gray-900 text-white text-[10px] font-black uppercase rounded-xl hover:bg-black transition">
-                        Ganti Foto
-                        <input type="file" wire:model="image" class="hidden">
+                        class="block w-full py-3 bg-amber-50 text-center text-amber-600 rounded-xl font-black text-[10px] uppercase cursor-pointer border border-amber-100 hover:bg-amber-100 transition shadow-sm active:scale-95">
+                        Ubah Gambar
+                        <input type="file" wire:model="image" class="hidden" accept="image/*">
                     </label>
                     @error('image')
-                        <p class="text-red-500 text-[10px] mt-2">{{ $message }}</p>
+                        <p class="text-red-500 text-[10px] mt-2 font-bold">{{ $message }}</p>
                     @enderror
                 </div>
             </div>
@@ -96,8 +115,10 @@
                 <div class="mt-10 pt-6 border-t border-gray-50 space-y-4">
                     <button wire:click="update" wire:loading.attr="disabled"
                         class="w-full flex items-center justify-center gap-2 py-4 bg-amber-500 hover:bg-amber-600 text-white rounded-2xl font-black shadow-xl shadow-amber-200 transition-all active:scale-95 disabled:opacity-50">
-                        <span wire:loading.remove>SIMPAN PERUBAHAN</span>
-                        <span wire:loading>MENYIMPAN...</span>
+                        <span wire:loading.remove wire:target="update">SIMPAN PERUBAHAN</span>
+                        <span wire:loading wire:target="update">MENYIMPAN...</span>
+                        {{-- Loading saat upload belum selesai tapi user tekan simpan --}}
+                        <span wire:loading wire:target="image">MENUNGGU UPLOAD...</span>
                     </button>
 
                     <button type="button" onclick="confirmDelete({{ $product->id }})"
