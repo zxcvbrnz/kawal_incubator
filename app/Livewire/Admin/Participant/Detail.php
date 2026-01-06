@@ -35,37 +35,39 @@ class Detail extends Component
             'form.contact'       => 'required|numeric|digits_between:10,15',
 
             // Alamat
-            'form.province'      => 'required|string',
-            'form.city'          => 'required|string',
-            'form.district'      => 'required|string',
-            'form.village'       => 'required|string',
-            'form.address_detail' => 'required|string|min:10',
+            'form.province'      => 'required|string|max:255',
+            'form.city'          => 'required|string|max:255',
+            'form.district'      => 'required|string|max:255',
+            'form.village'       => 'required|string|max:255',
+            'form.address_detail' => 'required|string|max:255',
             'form.postal_code'   => 'required|numeric|digits:5',
 
             // Operasional
-            'form.omset'         => 'required|string',
-            'form.market_reach'  => 'required|in:Lokal,Nasional,Ekspor',
+            'form.omset'         => 'required|string|max:255',
+            'form.market_reach'  => 'required|string|max:255',
 
             // Media Sosial
             'form.ig'            => 'nullable|string|max:50',
             'form.tiktok'        => 'nullable|string|max:50',
             'form.fb'            => 'nullable|string|max:50',
-            'form.website'       => 'nullable|url',
-            'form.wa'            => 'nullable|numeric|digits_between:10,15',
+            'form.website'       => 'nullable|string|max:50',
+            'form.wa'            => 'nullable|string|max:50',
 
             // Inkubasi
             'form.has_incubated' => 'boolean',
-            'form.incubation_institution' => 'required_if:form.has_incubated,true',
-            'form.incubation_start'       => 'nullable|date',
-            'form.incubation_end'         => 'nullable|date|after_or_equal:form.incubation_start',
+            'form.incubation_institution' => 'required_if:has_incubated,true|nullable|string|max:255',
+            'form.incubation_start'       => 'required_if:has_incubated,true|nullable|date',
+            'form.incubation_end'         => 'required_if:has_incubated,true|nullable|date|after_or_equal:incubation_start',
 
             // Lainnya
-            'form.description'   => 'nullable|string|min:20',
+            'form.description'   => 'nullable|string',
             'form.status'        => 'boolean',
             'form.display'        => 'boolean',
 
+            'form.business_profile_file' => 'nullable|mimes:pdf|max:5120',
+
             // Validasi Foto
-            'new_photo'          => 'nullable|image|max:2048', // Max 2MB
+            'new_photo'          => 'nullable|image|max:2048',
         ];
     }
 

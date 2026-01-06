@@ -2,7 +2,7 @@
     <div class="flex flex-col md:flex-row md:items-center justify-between gap-5 mb-10">
         <div class="flex items-center gap-5">
             <div>
-                <h1 class="text-3xl font-black text-gray-900 tracking-tight uppercase">Daftar Cerita</h1>
+                <h1 class="text-3xl font-black text-gray-900 tracking-tight uppercase">Daftar Berita</h1>
                 <p class="text-sm text-gray-400">Kelola konten artikel dan berita</p>
             </div>
         </div>

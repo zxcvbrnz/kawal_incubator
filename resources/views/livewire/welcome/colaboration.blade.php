@@ -1,8 +1,7 @@
 <div class="bg-white py-20 overflow-hidden">
     <div class="max-w-7xl mx-auto px-6">
 
-        <!-- Heading -->
-        <div class="text-center max-w-2xl mx-auto mb-8">
+        <div class="text-center max-w-2xl mx-auto mb-12">
             <h2 class="text-xl font-semibold text-gray-900">
                 Jejaring Strategis Kami
             </h2>
@@ -12,48 +11,39 @@
             </p>
         </div>
 
-        <!-- Carousel -->
         <div
-            class="inline-flex w-full flex-nowrap overflow-hidden bg-white [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-200px),transparent_100%)]">
-            <ul class="brands-wrapper">
-                <li>
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png" width="150" height="100" />
-                </li>
-                <li>
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png" width="150"
-                        height="100" />
-                </li>
-                <li><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png" width="150"
-                        height="100" /></li>
-                <li><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png" width="150"
-                        height="100" /></li>
-                <li><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png" width="150"
-                        height="100" /></li>
-                <li><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" width="150"
-                        height="100" /></li>
-                <li><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png" width="150"
-                        height="100" /></li>
-            </ul>
-            <ul class="brands-wrapper" aria-hidden="true">
-                <li>
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png" width="150"
-                        height="100" />
-                </li>
-                <li>
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png" width="150"
-                        height="100" />
-                </li>
-                <li><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png" width="150"
-                        height="100" /></li>
-                <li><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png" width="150"
-                        height="100" /></li>
-                <li><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png" width="150"
-                        height="100" /></li>
-                <li><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" width="150"
-                        height="100" /></li>
-                <li><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png" width="150"
-                        height="100" /></li>
-            </ul>
+            class="flex overflow-hidden space-x-12 bg-white [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-200px),transparent_100%)]">
+
+            <div class="flex flex-none animate-infinite-scroll items-center gap-12 py-4">
+                @php
+                    $logos = [
+                        'Coat_of_arms_of_South_Kalimantan.svg.png',
+                        'Jelonesia showcase.png',
+                        'kkf.png',
+                        'Logo BSH.png',
+                        'LOGO KOTA BANJARMASIN - 328 KB.jpg',
+                        'LOGO_akukreatif_Tag_PNG 1500x1500 px.png',
+                        'logo_big.png',
+                        'LOGO_karasminsei__HD-removebg-preview.png',
+                        'Logo_right.jpg',
+                    ];
+                @endphp
+
+                @foreach ($logos as $logo)
+                    <div class="flex-none w-32 h-28 flex items-center justify-center">
+                        <img src="{{ asset('jejaring/' . $logo) }}" class="max-h-full max-w-full object-contain" />
+                    </div>
+                @endforeach
+            </div>
+
+            <div class="flex flex-none animate-infinite-scroll items-center gap-12 py-4" aria-hidden="true">
+                @foreach ($logos as $logo)
+                    <div class="flex-none w-32 h-28 flex items-center justify-center">
+                        <img src="{{ asset('jejaring/' . $logo) }}" class="max-h-full max-w-full object-contain" />
+                    </div>
+                @endforeach
+            </div>
+
         </div>
     </div>
 </div>

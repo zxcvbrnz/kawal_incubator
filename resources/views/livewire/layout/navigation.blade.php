@@ -39,7 +39,7 @@ new class extends Component {
                         {{ __('Event') }}
                     </x-nav-link>
                     <x-nav-link :href="route('admin.news')" :active="request()->routeIs('admin.news')" wire:navigate>
-                        {{ __('Cerita/BLog') }}
+                        {{ __('Berita/BLog') }}
                     </x-nav-link>
                     <x-nav-link :href="route('admin.program')" :active="request()->routeIs('admin.program')" wire:navigate>
                         {{ __('Program') }}
@@ -111,7 +111,7 @@ new class extends Component {
                 {{ __('Event') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('admin.news')" :active="request()->routeIs('admin.news')" wire:navigate>
-                {{ __('Cerita/BLog') }}
+                {{ __('Berita/BLog') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('admin.program')" :active="request()->routeIs('admin.program')" wire:navigate>
                 {{ __('Program') }}

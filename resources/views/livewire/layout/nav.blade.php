@@ -29,7 +29,7 @@
                     {{ __('Event') }}
                 </x-nav-link-2>
                 <x-nav-link-2 :href="route('new')" :active="request()->routeIs('new', 'new.*')" wire:navigate>
-                    {{ __('Cerita') }}
+                    {{ __('Berita') }}
                 </x-nav-link-2>
                 <x-nav-link-2 :href="route('toko')" :active="request()->routeIs('toko')" wire:navigate>
                     {{ __('Toko') }}
@@ -79,7 +79,7 @@
             {{ __('Event') }}
         </x-nav-link-2>
         <x-nav-link-2 :href="route('new')" class="block" :active="request()->routeIs('new', 'new.*')" wire:navigate>
-            {{ __('Cerita') }}
+            {{ __('Berita') }}
         </x-nav-link-2>
         <x-nav-link-2 :href="route('toko')" :active="request()->routeIs('toko')" wire:navigate>
             {{ __('Toko') }}

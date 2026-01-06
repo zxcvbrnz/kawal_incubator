@@ -8,8 +8,8 @@
             </svg>
         </a>
         <div>
-            <h1 class="text-3xl font-black text-gray-900 tracking-tight uppercase">Edit Cerita</h1>
-            <p class="text-sm text-gray-400">Perbarui konten cerita Anda</p>
+            <h1 class="text-3xl font-black text-gray-900 tracking-tight uppercase">Edit Berita</h1>
+            <p class="text-sm text-gray-400">Perbarui konten Berita Anda</p>
         </div>
     </div>
 
@@ -18,7 +18,7 @@
             <div class="bg-white p-8 rounded-[3rem] shadow-sm border border-gray-100">
                 <div class="space-y-6">
                     <div>
-                        <label class="text-[10px] font-black text-gray-400 uppercase ml-2">Judul Cerita</label>
+                        <label class="text-[10px] font-black text-gray-400 uppercase ml-2">Judul Berita</label>
                         <input type="text" wire:model="title"
                             class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-amber-500 font-bold">
                         @error('title')
@@ -26,7 +26,7 @@
                         @enderror
                     </div>
                     <div>
-                        <label class="text-[10px] font-black text-gray-400 uppercase ml-2">Isi Cerita</label>
+                        <label class="text-[10px] font-black text-gray-400 uppercase ml-2">Isi Berita</label>
                         <textarea wire:model="content" rows="12"
                             class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-amber-500"></textarea>
                         @error('content')
@@ -39,10 +39,10 @@
             <div class="flex flex-col gap-4">
                 <button wire:click="update"
                     class="w-full py-4 bg-amber-500 text-white rounded-2xl font-black shadow-xl shadow-amber-200 uppercase tracking-widest text-xs">Update
-                    Cerita</button>
+                    Berita</button>
                 <button type="button" onclick="confirmDelete({{ $post->id }})"
                     class="w-full py-4 bg-white border-2 border-red-50 text-red-400 rounded-2xl font-black uppercase text-[10px] tracking-widest hover:bg-red-50">Hapus
-                    Cerita</button>
+                    Berita</button>
             </div>
         </div>
 

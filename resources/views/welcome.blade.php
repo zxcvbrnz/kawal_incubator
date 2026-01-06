@@ -36,8 +36,9 @@
                     </div>
                 </div>
                 <div class="relative">
-                    <div class="aspect-square rounded-3xl bg-amber-500/10 flex items-center justify-center">
-                        <span class="text-7xl">💡</span>
+                    <div
+                        class="aspect-square rounded-3xl bg-amber-500/10 flex items-center justify-center overflow-hidden">
+                        <img src="{{ asset('IMG_3322.JPG') }}" alt="Thumbnail" class="w-full h-full object-cover">
                     </div>
                 </div>
             </div>
