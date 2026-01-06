@@ -143,8 +143,8 @@ class Form extends Component
         }
 
         // Handle Uploads
-        $photoPath = $this->profile_photo ? $this->profile_photo->store('participant/image', 'public') : null;
-        $filePath = $this->business_profile_file ? $this->business_profile_file->store('participant', 'public') : null;
+        $this->profile_photo ? $this->profile_photo->store('participant/image', 'public') : null;
+        $this->business_profile_file ? $this->business_profile_file->store('participant', 'public') : null;
 
         // Simpan ke Database menggunakan data dari properti langsung atau merge
         Participant::create([
