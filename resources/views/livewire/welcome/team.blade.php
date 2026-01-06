@@ -2,7 +2,7 @@
     <div class="max-w-7xl mx-auto px-6">
 
         <div class="text-center max-w-2xl mx-auto mb-14">
-            <h2 class="text-xl font-semibold text-gray-900 uppercase tracking-wider">
+            <h2 class="text-xl font-semibold text-gray-900 tracking-wider">
                 Tim Mentor & Penggerak
             </h2>
             <p class="mt-4 text-gray-500">
