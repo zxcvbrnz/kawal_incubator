@@ -188,6 +188,14 @@ class Form extends Component
                     '<br>' . 'www.kawalincubator.com',
             ],
             [
+                'phone' => '085103326061',
+                'message' => 'Halo *Admin*' . '<br><br>' .
+                    'Terdapat pendaftaran Participant untuk Kawal Incubator <br><br>' .
+                    'Nama Bisnis : ' . $this->business_name . '<br>' .
+                    'Nama Pemilik : ' . $this->owner_name .  '<br>' .
+                    '<br>' . 'www.kawalincubator.com',
+            ],
+            [
                 'phone' => $this->contact,
                 'message' => 'Halo *' . $this->owner_name . '*' . '<br>' .
                     'Pendaftaranmu sedang diproses, <br>' .
