@@ -22,10 +22,9 @@
                         'kkf.png',
                         'Logo BSH.png',
                         'LOGO KOTA BANJARMASIN - 328 KB.jpg',
-                        'LOGO_akukreatif_Tag_PNG 1500x1500 px.png',
+                        'IMG_20260106_134224.png',
                         'logo_big.png',
-                        'LOGO_karasminsei__HD-removebg-preview.png',
-                        'Logo_right.jpg',
+                        'IMG_20260106_134751.png',
                     ];
                 @endphp
 
