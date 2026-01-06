@@ -41,8 +41,8 @@
                             <div class="flex-1 relative" data-aos="fade-left">
                                 <div
                                     class="aspect-video rounded-3xl overflow-hidden shadow-2xl shadow-amber-100 border-8 border-white relative z-10">
-                                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80"
-                                        class="w-full h-full object-cover" alt="Tim Kami">
+                                    <img src="{{ asset('IMG_3830.JPG') }}" class="w-full h-full object-cover"
+                                        alt="Tim Kami">
                                 </div>
                                 <div
                                     class="absolute -bottom-6 -right-6 w-64 h-64 bg-amber-100 rounded-full -z-0 opacity-50 blur-3xl">
