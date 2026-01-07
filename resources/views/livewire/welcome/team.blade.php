@@ -35,7 +35,7 @@
                     [
                         'name' => 'Arafat Alhally, S.Si.,M.M',
                         'role' => 'Bidang Pendanaan',
-                        'img' => 'ARAFAT.png',
+                        'img' => 'ARAFAT (1).png',
                         'socials' => ['linkedin' => '#', 'instagram' => '#'],
                     ],
                     [
