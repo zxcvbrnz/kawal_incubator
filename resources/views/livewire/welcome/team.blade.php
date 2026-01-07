@@ -2,7 +2,7 @@
     <div class="max-w-7xl mx-auto px-6">
 
         <div class="text-center max-w-2xl mx-auto mb-14">
-            <h2 class="text-xl font-semibold text-gray-900 tracking-wider">
+            <h2 class="text-xl font-semibold text-gray-900">
                 Tim Mentor & Penggerak
             </h2>
             <p class="mt-4 text-gray-500">
@@ -23,7 +23,7 @@
                     [
                         'name' => 'DONNY KURNIAWAN, S. KOM',
                         'role' => 'Manager',
-                        'img' => 'DONNY KURNIAWAN, S. KOM.png',
+                        'img' => 'IMG-20240614-WA0022.png',
                         'socials' => ['linkedin' => '#', 'instagram' => '#'],
                     ],
                     [
@@ -35,13 +35,13 @@
                     [
                         'name' => 'Arafat Alhally, S.Si.,M.M',
                         'role' => 'Bidang Pendanaan',
-                        'img' => 'ARAFAT.jpeg',
+                        'img' => 'ARAFAT.png',
                         'socials' => ['linkedin' => '#', 'instagram' => '#'],
                     ],
                     [
                         'name' => 'Qolbiatul Fitria, S.Sos.',
                         'role' => 'Komersialisasi Produk',
-                        'img' => 'QOLBIATUL FITRIA.jpg',
+                        'img' => 'QOLBIATUL FITRIA.png',
                         'socials' => ['linkedin' => '#', 'instagram' => '#'],
                     ],
                 ];

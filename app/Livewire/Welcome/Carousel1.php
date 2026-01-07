@@ -12,8 +12,12 @@ class Carousel1 extends Component
         return view('livewire.welcome.carousel1', [
             'products' => Product::with('participant')
                 ->where('display', true)
-                ->latest() // (Opsional) Menampilkan produk terbaru lebih dulu
-                ->take(10) // Membatasi maksimal 10 item
+                // Hanya ambil produk yang participant-nya memiliki status true
+                ->whereHas('participant', function ($query) {
+                    $query->where('status', true);
+                })
+                ->latest()
+                ->take(10)
                 ->get()
                 ->map(function ($product) {
                     return [

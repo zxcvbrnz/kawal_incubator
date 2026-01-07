@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('image_url');
             $table->foreignId('participant_id')->constrained()->onDelete('cascade');
             $table->boolean('display')->default(false);
-
             $table->timestamps();
         });
     }

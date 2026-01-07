@@ -63,7 +63,6 @@
                     <div class="h-6 w-1 bg-amber-500 rounded-full"></div>
                     <h2 class="text-sm font-black text-gray-900 uppercase tracking-widest">Alamat Lengkap</h2>
                 </div>
-
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div class="flex flex-col gap-1">
                         <label class="required text-[10px] font-bold text-gray-400 uppercase ml-2">Provinsi</label>
@@ -78,7 +77,6 @@
                             <span class="text-[10px] text-red-500 font-bold uppercase ml-2">{{ $message }}</span>
                         @enderror
                     </div>
-
                     <div class="flex flex-col gap-1">
                         <label
                             class="required text-[10px] font-bold text-gray-400 uppercase ml-2">Kota/Kabupaten</label>
@@ -93,7 +91,6 @@
                             <span class="text-[10px] text-red-500 font-bold uppercase ml-2">{{ $message }}</span>
                         @enderror
                     </div>
-
                     <div class="flex flex-col gap-1">
                         <label class="required text-[10px] font-bold text-gray-400 uppercase ml-2">Kecamatan</label>
                         <select wire:model.live="district_id" {{ empty($districtList) ? 'disabled' : '' }}
@@ -107,7 +104,6 @@
                             <span class="text-[10px] text-red-500 font-bold uppercase ml-2">{{ $message }}</span>
                         @enderror
                     </div>
-
                     <div class="flex flex-col gap-1">
                         <label class="required text-[10px] font-bold text-gray-400 uppercase ml-2">Kelurahan</label>
                         <select wire:model.live="village_id" {{ empty($villageList) ? 'disabled' : '' }}
@@ -121,7 +117,6 @@
                             <span class="text-[10px] text-red-500 font-bold uppercase ml-2">{{ $message }}</span>
                         @enderror
                     </div>
-
                     <div class="md:col-span-2 flex flex-col gap-1">
                         <label class="required text-[10px] font-bold text-gray-400 uppercase ml-2">Nama Jalan, No. Rumah
                             / Gedung</label>
@@ -131,7 +126,6 @@
                             <span class="text-[10px] text-red-500 font-bold uppercase ml-2">{{ $message }}</span>
                         @enderror
                     </div>
-
                     <div class="md:col-span-2 flex flex-col gap-1">
                         <label class="required text-[10px] font-bold text-gray-400 uppercase ml-2">Kodepos</label>
                         <input type="text" wire:model="postal_code" placeholder="Masukkan Kodepos"
@@ -185,36 +179,87 @@
                     <h2 class="text-sm font-black text-gray-900 uppercase tracking-widest">Media Promosi</h2>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="relative">
-                        <span
-                            class="absolute inset-y-0 left-4 flex items-center text-gray-400 text-xs font-bold">IG</span>
-                        <input type="text" wire:model="ig" placeholder="Username Instagram"
+                    <div class="relative"><span
+                            class="absolute inset-y-0 left-4 flex items-center text-gray-400 text-xs font-bold">IG</span><input
+                            type="text" wire:model="ig" placeholder="Username Instagram"
                             class="pl-12 w-full bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-amber-500">
                     </div>
-                    <div class="relative">
-                        <span
-                            class="absolute inset-y-0 left-4 flex items-center text-gray-400 text-xs font-bold">TT</span>
-                        <input type="text" wire:model="tiktok" placeholder="Username Tiktok"
+                    <div class="relative"><span
+                            class="absolute inset-y-0 left-4 flex items-center text-gray-400 text-xs font-bold">TT</span><input
+                            type="text" wire:model="tiktok" placeholder="Username Tiktok"
                             class="pl-12 w-full bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-amber-500">
                     </div>
-                    <div class="relative">
-                        <span
-                            class="absolute inset-y-0 left-4 flex items-center text-gray-400 text-xs font-bold">FB</span>
-                        <input type="text" wire:model="fb" placeholder="Nama Facebook"
+                    <div class="relative"><span
+                            class="absolute inset-y-0 left-4 flex items-center text-gray-400 text-xs font-bold">FB</span><input
+                            type="text" wire:model="fb" placeholder="Nama Facebook"
                             class="pl-12 w-full bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-amber-500">
                     </div>
-                    <div class="relative">
-                        <span
-                            class="absolute inset-y-0 left-4 flex items-center text-gray-400 text-xs font-bold">WEB</span>
-                        <input type="text" wire:model="website" placeholder="www.website.com"
+                    <div class="relative"><span
+                            class="absolute inset-y-0 left-4 flex items-center text-gray-400 text-xs font-bold">WEB</span><input
+                            type="text" wire:model="website" placeholder="www.website.com"
                             class="pl-12 w-full bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-amber-500">
                     </div>
-                    <div class="md:col-span-2 relative">
-                        <span
-                            class="absolute inset-y-0 left-4 flex items-center text-gray-400 text-xs font-bold">WA</span>
-                        <input type="text" wire:model="wa" placeholder="Whatsapp Bisnis"
+                    <div class="md:col-span-2 relative"><span
+                            class="absolute inset-y-0 left-4 flex items-center text-gray-400 text-xs font-bold">WA</span><input
+                            type="text" wire:model="wa" placeholder="Whatsapp Bisnis"
                             class="pl-12 w-full bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-amber-500">
                     </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 md:p-8 rounded-[2rem] shadow-md border border-gray-100">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="h-6 w-1 bg-amber-500 rounded-full"></div>
+                    <h2 class="text-sm font-black text-gray-900 uppercase tracking-widest">Produk Unggulan (Isi minimal
+                        1 Produk)
+                    </h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    @for ($i = 1; $i <= 2; $i++)
+                        <div class="space-y-4 p-5 bg-gray-50 rounded-[1.5rem] border border-gray-100">
+                            <div class="flex justify-between items-center">
+                                <span class="text-[9px] font-black text-amber-500 uppercase tracking-widest">Produk
+                                    0{{ $i }}</span>
+                            </div>
+                            <div>
+                                <label
+                                    class="block text-[10px] font-black uppercase text-gray-400 mb-1 tracking-widest">Nama
+                                    Produk</label>
+                                <input type="text" wire:model="product_name_{{ $i }}"
+                                    class="w-full bg-white border-none rounded-xl text-sm focus:ring-2 focus:ring-amber-500">
+                                @error('product_name_' . $i)
+                                    <span class="text-[10px] text-red-500 font-bold uppercase">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div>
+                                <label
+                                    class="block text-[10px] font-black uppercase text-gray-400 mb-2 tracking-widest">Foto
+                                    Produk</label>
+                                <div
+                                    class="relative h-32 flex items-center justify-center border-2 border-dashed border-gray-200 rounded-2xl bg-white overflow-hidden group">
+                                    @if (${'product_image_' . $i})
+                                        <img src="{{ ${'product_image_' . $i}->temporaryUrl() }}"
+                                            class="w-full h-full object-cover">
+                                    @else
+                                        <svg class="w-8 h-8 text-gray-200" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path d="M12 4v16m8-8H4" stroke-width="2" stroke-linecap="round" />
+                                        </svg>
+                                    @endif
+                                    <div wire:loading wire:target="product_image_{{ $i }}"
+                                        class="absolute inset-0 bg-white/60 flex items-center justify-center">
+                                        <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-amber-500">
+                                        </div>
+                                    </div>
+                                    <input type="file" wire:model="product_image_{{ $i }}"
+                                        class="absolute inset-0 opacity-0 cursor-pointer" accept="image/*">
+                                </div>
+                                @error('product_image_' . $i)
+                                    <span class="text-[10px] text-red-500 font-bold uppercase">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                    @endfor
                 </div>
             </div>
 
@@ -240,9 +285,6 @@
                         @if ($legalitas == 'Lainnya')
                             <input type="text" wire:model="legalitas_other" placeholder="Sebutkan..."
                                 class="mt-2 w-full bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-amber-500 text-sm">
-                            @error('legalitas_other')
-                                <span class="text-[10px] text-red-500 font-bold uppercase">{{ $message }}</span>
-                            @enderror
                         @endif
                     </div>
                     <div>
@@ -262,9 +304,6 @@
                         @if ($certification == 'Lainnya')
                             <input type="text" wire:model="certification_other" placeholder="Sebutkan..."
                                 class="mt-2 w-full bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-amber-500 text-sm">
-                            @error('certification_other')
-                                <span class="text-[10px] text-red-500 font-bold uppercase">{{ $message }}</span>
-                            @enderror
                         @endif
                     </div>
                 </div>
@@ -274,21 +313,16 @@
                 <div class="flex items-center justify-between mb-6">
                     <h2 class="required text-xs font-black uppercase tracking-widest">Pernah Ikut Inkubasi?</h2>
                     <div class="flex gap-4">
-                        <label class="flex items-center gap-2 cursor-pointer">
-                            <input type="radio" wire:model.live="has_incubated" value="1"
-                                class="text-amber-500 focus:ring-amber-500"> <span class="text-xs font-bold">Ya</span>
-                        </label>
-                        <label class="flex items-center gap-2 cursor-pointer">
-                            <input type="radio" wire:model.live="has_incubated" value="0"
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio"
+                                wire:model.live="has_incubated" value="1"
                                 class="text-amber-500 focus:ring-amber-500"> <span
-                                class="text-xs font-bold">Tidak</span>
-                        </label>
+                                class="text-xs font-bold">Ya</span></label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio"
+                                wire:model.live="has_incubated" value="0"
+                                class="text-amber-500 focus:ring-amber-500"> <span
+                                class="text-xs font-bold">Tidak</span></label>
                     </div>
                 </div>
-                @error('has_incubated')
-                    <span class="text-[10px] text-red-400 font-bold uppercase mb-4 block">{{ $message }}</span>
-                @enderror
-
                 @if ($has_incubated == '1')
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-gray-800 animate-fade-in">
                         <div class="md:col-span-2">
@@ -296,27 +330,18 @@
                                 Instansi Apa?</label>
                             <input type="text" wire:model="incubation_institution"
                                 class="w-full bg-gray-800 border-none rounded-xl focus:ring-2 focus:ring-amber-500">
-                            @error('incubation_institution')
-                                <span class="text-[10px] text-red-400 font-bold uppercase">{{ $message }}</span>
-                            @enderror
                         </div>
                         <div>
                             <label class="required text-[9px] uppercase text-gray-500 font-bold mb-1">Tanggal
                                 Inkubasi</label>
                             <input type="date" wire:model="incubation_start"
                                 class="w-full bg-gray-800 border-none rounded-xl focus:ring-2 focus:ring-amber-500 text-xs">
-                            @error('incubation_start')
-                                <span class="text-[10px] text-red-400 font-bold uppercase">{{ $message }}</span>
-                            @enderror
                         </div>
                         <div>
                             <label class="required text-[9px] uppercase text-gray-500 font-bold mb-1">Tanggal
                                 Lulus</label>
                             <input type="date" wire:model="incubation_end"
                                 class="w-full bg-gray-800 border-none rounded-xl focus:ring-2 focus:ring-amber-500 text-xs">
-                            @error('incubation_end')
-                                <span class="text-[10px] text-red-400 font-bold uppercase">{{ $message }}</span>
-                            @enderror
                         </div>
                     </div>
                 @endif
@@ -330,11 +355,7 @@
                             Usaha</label>
                         <textarea wire:model="description" rows="4" placeholder="Ceritakan singkat mengenai bisnis Anda..."
                             class="w-full bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-amber-500 placeholder:text-gray-300"></textarea>
-                        @error('description')
-                            <span class="text-[10px] text-red-500 mt-1 font-bold uppercase">{{ $message }}</span>
-                        @enderror
                     </div>
-
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="relative group">
                             <div
@@ -366,13 +387,7 @@
                                 <input id="profile_photo" type="file" wire:model="profile_photo" accept="image/*"
                                     class="hidden">
                                 <label for="profile_photo"
-                                    class="px-4 py-2 bg-amber-50 text-amber-700 text-[10px] font-black uppercase rounded-full cursor-pointer hover:bg-amber-100 transition-colors">
-                                    {{ $profile_photo ? 'Change Photo' : 'Choose Photo' }}
-                                </label>
-                                @error('profile_photo')
-                                    <span
-                                        class="text-[10px] text-red-500 mt-2 font-bold uppercase">{{ $message }}</span>
-                                @enderror
+                                    class="px-4 py-2 bg-amber-50 text-amber-700 text-[10px] font-black uppercase rounded-full cursor-pointer hover:bg-amber-100 transition-colors">{{ $profile_photo ? 'Change Photo' : 'Choose Photo' }}</label>
                             </div>
                         </div>
 
@@ -393,9 +408,7 @@
                                                     clip-rule="evenodd"></path>
                                             </svg>
                                             <span
-                                                class="text-[8px] font-black text-amber-600 uppercase mt-1 px-2 text-center truncate w-full">
-                                                {{ $business_profile_file->getClientOriginalName() }}
-                                            </span>
+                                                class="text-[8px] font-black text-amber-600 uppercase mt-1 px-2 text-center truncate w-full">{{ $business_profile_file->getClientOriginalName() }}</span>
                                         @else
                                             <svg class="w-10 h-10 text-gray-200" fill="none" stroke="currentColor"
                                                 viewBox="0 0 24 24">
@@ -414,13 +427,7 @@
                                 <input id="business_profile_file" type="file" wire:model="business_profile_file"
                                     accept="application/pdf" class="hidden">
                                 <label for="business_profile_file"
-                                    class="px-4 py-2 bg-amber-50 text-amber-700 text-[10px] font-black uppercase rounded-full cursor-pointer hover:bg-amber-100 transition-colors">
-                                    {{ $business_profile_file ? 'Change File' : 'Choose File' }}
-                                </label>
-                                @error('business_profile_file')
-                                    <span
-                                        class="text-[10px] text-red-500 mt-2 font-bold uppercase">{{ $message }}</span>
-                                @enderror
+                                    class="px-4 py-2 bg-amber-50 text-amber-700 text-[10px] font-black uppercase rounded-full cursor-pointer hover:bg-amber-100 transition-colors">{{ $business_profile_file ? 'Change File' : 'Choose File' }}</label>
                             </div>
                         </div>
                     </div>
@@ -431,12 +438,10 @@
                 <label
                     class="block text-[10px] font-black uppercase text-gray-400 tracking-widest text-center">Verifikasi
                     Keamanan</label>
-
                 <div class="flex items-center gap-3 bg-gray-50 p-3 rounded-2xl border border-gray-100 shadow-inner">
                     @if ($captcha_image)
                         <img src="{{ $captcha_image }}" alt="Captcha" class="rounded-lg h-10 select-none">
                     @endif
-
                     <button type="button" wire:click="generateCaptcha"
                         class="p-2 text-amber-500 hover:bg-amber-100 rounded-xl transition-all active:scale-95">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -449,6 +454,7 @@
                 <input type="text" wire:model="captcha_code" placeholder="Ketik kode di atas"
                     class="w-full max-w-[200px] text-center bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-amber-500 uppercase font-black tracking-[0.2em] placeholder:tracking-normal placeholder:font-normal">
             </div>
+
             <button type="submit" wire:loading.attr="disabled"
                 class="w-full bg-amber-500 hover:bg-amber-600 text-white font-black py-5 rounded-[2rem] transition-all uppercase tracking-widest shadow-xl shadow-amber-200">
                 <span wire:loading.remove wire:target="save">Simpan Data Pendaftaran</span>

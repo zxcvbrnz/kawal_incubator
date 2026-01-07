@@ -12,6 +12,10 @@ class Content extends Component
         return view('livewire.product.content', [
             'products' => Product::with('participant')
                 ->where('display', true)
+                // Menambahkan filter berdasarkan status di tabel participant
+                ->whereHas('participant', function ($query) {
+                    $query->where('status', true);
+                })
                 ->latest()
                 ->paginate(24)
         ]);

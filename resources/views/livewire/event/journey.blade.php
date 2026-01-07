@@ -1,9 +1,8 @@
 <div class="min-h-screen bg-white pb-20">
     <div class="max-w-5xl mx-auto px-6">
         <div class="space-y-8">
-            @foreach ($events as $event)
+            @forelse ($events as $event)
                 <div class="flex flex-col lg:flex-row gap-10 items-center" data-aos="fade-up">
-
                     <div class="w-full lg:w-3/5 grid grid-cols-12 gap-3">
                         <div class="col-span-8 overflow-hidden rounded-[1.5rem] shadow-sm bg-gray-100">
                             <img src="{{ asset('storage/event/' . $event->image_url) }}"
@@ -20,7 +19,6 @@
                                 </div>
                             @endforeach
 
-                            {{-- Placeholder jika gambar dokumentasi kurang dari 2 --}}
                             @if ($event->images->count() < 1)
                                 <div
                                     class="h-[154px] bg-gray-50 rounded-[1.2rem] border border-dashed border-gray-200 flex items-center justify-center text-gray-300">
@@ -63,16 +61,51 @@
                         </div>
                     </div>
                 </div>
-            @endforeach
+            @empty
+                <div class="py-32 flex flex-col items-center justify-center text-center">
+                    <div class="relative mb-10">
+                        <div class="absolute inset-0 bg-amber-400 opacity-10 blur-[80px] rounded-full"></div>
+
+                        <div
+                            class="relative flex items-center justify-center w-32 h-32 bg-white rounded-full border border-amber-50 shadow-inner">
+                            <svg class="w-12 h-12 text-amber-500/50" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                                    d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z">
+                                </path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                                    d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <div
+                                class="absolute inset-0 border-2 border-dashed border-amber-100 rounded-full animate-[spin_20s_linear_infinite]">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="max-w-lg px-6">
+                        <h3 class="text-2xl font-black text-gray-900 uppercase tracking-[0.2em] mb-4">
+                            Jejak Belum <span class="text-amber-500">Terukir</span>
+                        </h3>
+                        <p class="text-gray-400 leading-relaxed text-sm italic mb-12">
+                            "Setiap perjalanan besar dimulai dengan satu langkah. Saat ini kami sedang mengumpulkan
+                            kepingan memori untuk diceritakan kepada Anda."
+                        </p>
+
+                        <a href="/" wire:navigate class="group inline-flex items-center gap-4 text-gray-900">
+                            <span
+                                class="text-[10px] font-black uppercase tracking-[0.3em] group-hover:text-amber-600 transition-colors">Kembali
+                                Beranda</span>
+                            <div class="w-12 h-px bg-amber-500 group-hover:w-20 transition-all duration-500"></div>
+                        </a>
+                    </div>
+                </div>
+            @endforelse
         </div>
 
-        @if ($events->isEmpty())
-            <div class="text-center py-20">
-                <p class="text-gray-400 italic">No memories found yet.</p>
+        @if ($events->isNotEmpty())
+            <div class="mt-20">
+                {{ $events->links('vendor.pagination.custom-amber') }}
             </div>
         @endif
-    </div>
-    <div class="mt-20">
-        {{ $events->links('vendor.pagination.custom-amber') }}
     </div>
 </div>

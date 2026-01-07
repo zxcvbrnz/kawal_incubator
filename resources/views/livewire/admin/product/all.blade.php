@@ -6,6 +6,7 @@
         </div>
 
         <div class="flex flex-col md:flex-row gap-4 items-center">
+            {{-- Input Search --}}
             <div class="relative group w-full md:w-72">
                 <input type="text" wire:model.live.debounce.300ms="search" placeholder="Cari produk atau pemilik..."
                     class="w-full pl-12 pr-6 py-3 bg-white border border-gray-100 rounded-2xl focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all font-bold text-sm shadow-sm">
@@ -26,8 +27,35 @@
 
     <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
         @if ($products->isEmpty())
-            <div class="p-20 text-center">
-                <p class="text-gray-400 font-bold uppercase tracking-widest italic">Tidak ada produk ditemukan...</p>
+            {{-- Enhanced Empty State --}}
+            <div class="p-20 text-center flex flex-col items-center">
+                <div
+                    class="w-20 h-20 bg-amber-50 rounded-3xl flex items-center justify-center mb-6 border border-amber-100">
+                    <svg class="w-10 h-10 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                    </svg>
+                </div>
+
+                <h3 class="text-gray-900 font-black uppercase tracking-tight text-lg">
+                    {{ $search ? 'Pencarian Tidak Ditemukan' : 'Katalog Produk Kosong' }}
+                </h3>
+
+                <p class="text-gray-400 text-sm mt-2 font-medium max-w-xs mx-auto uppercase tracking-widest italic">
+                    @if ($search)
+                        Tidak ada produk atau pemilik yang cocok dengan kata kunci <span
+                            class="text-amber-500">"{{ $search }}"</span>
+                    @else
+                        Belum ada data produk yang terdaftar di sistem.
+                    @endif
+                </p>
+
+                @if ($search)
+                    <button wire:click="$set('search', '')"
+                        class="mt-8 px-6 py-2 bg-gray-900 text-white rounded-xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-amber-600 transition-colors">
+                        Bersihkan Pencarian
+                    </button>
+                @endif
             </div>
         @else
             <table class="w-full text-left border-collapse">

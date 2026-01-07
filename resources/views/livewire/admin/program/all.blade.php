@@ -25,8 +25,35 @@
     </div>
 
     @if ($programs->isEmpty())
-        <div class="bg-white rounded-[2.5rem] p-20 text-center border border-dashed border-gray-200">
-            <p class="text-gray-400 font-black uppercase tracking-widest italic text-xs">Program tidak ditemukan</p>
+        {{-- Enhanced Empty State Program --}}
+        <div
+            class="bg-white rounded-[2.5rem] py-24 px-6 text-center border-2 border-dashed border-gray-100 flex flex-col items-center">
+            <div class="mb-6 p-5 bg-amber-50 rounded-full">
+                <svg class="w-10 h-10 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                        d="M9.663 17h4.674M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z">
+                    </path>
+                </svg>
+            </div>
+
+            <h3 class="text-gray-900 font-black uppercase tracking-tight text-lg mb-2">
+                {{ $search ? 'Program Tidak Ditemukan' : 'Belum Ada Program' }}
+            </h3>
+
+            <p class="text-gray-400 font-bold uppercase tracking-widest italic text-[10px] max-w-xs mx-auto">
+                @if ($search)
+                    Pencarian <span class="text-amber-500">"{{ $search }}"</span> tidak membuahkan hasil.
+                @else
+                    Klik tombol tambah untuk membuat program pelatihan pertama Anda.
+                @endif
+            </p>
+
+            @if ($search)
+                <button wire:click="$set('search', '')"
+                    class="mt-8 text-[10px] font-black text-amber-600 uppercase tracking-[0.2em] border-b-2 border-amber-100 hover:border-amber-500 transition-all pb-1">
+                    Bersihkan Pencarian
+                </button>
+            @endif
         </div>
     @else
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -37,13 +64,14 @@
                         <img src="{{ asset('storage/program/' . $program->image_url) }}"
                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                     </div>
-                    <div class="p-8">
+                    <div class="p-8 flex-1 flex flex-col">
                         <h3 class="font-black text-gray-900 uppercase text-lg mb-3 line-clamp-1">{{ $program->name }}
                         </h3>
                         <p class="text-gray-500 text-sm line-clamp-3 mb-6">{{ $program->description }}</p>
-                        <div class="flex justify-between items-center pt-5 border-t border-gray-50">
-                            <span
-                                class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">{{ $program->created_at->format('d M Y') }}</span>
+                        <div class="flex justify-between items-center mt-auto pt-5 border-t border-gray-50">
+                            <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">
+                                {{ $program->created_at->format('d M Y') }}
+                            </span>
                             <a href="{{ route('admin.program.edit', $program->id) }}" wire:navigate
                                 class="text-amber-500 font-black text-xs uppercase hover:underline">Edit Detail</a>
                         </div>
@@ -51,6 +79,8 @@
                 </div>
             @endforeach
         </div>
-        <div class="mt-10">{{ $programs->links('vendor.pagination.custom-amber') }}</div>
+        <div class="mt-10">
+            {{ $programs->links('vendor.pagination.custom-amber') }}
+        </div>
     @endif
 </div>

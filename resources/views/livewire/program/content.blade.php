@@ -1,5 +1,5 @@
 <div class="min-h-screen bg-white pt-4 pb-16">
-    <div class="max-w-7xl mx-auto">
+    <div class="max-w-7xl mx-auto px-6">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             @forelse ($programs as $program)
                 <div class="group bg-white rounded-3xl border border-gray-100 shadow-sm hover:shadow-2xl hover:shadow-amber-100/50 transition-all duration-500 flex flex-col overflow-hidden"
@@ -25,15 +25,54 @@
                     </div>
                 </div>
             @empty
-                <div class="col-span-full text-center py-20">
-                    <p class="text-gray-500 italic">No programs found...</p>
+                {{-- Empty State Program --}}
+                <div class="col-span-full py-32 flex flex-col items-center justify-center text-center">
+                    <div class="relative mb-8">
+                        {{-- Background Glow --}}
+                        <div class="absolute inset-0 bg-amber-400 opacity-20 blur-[60px] rounded-full"></div>
+
+                        {{-- Icon Box --}}
+                        <div
+                            class="relative flex items-center justify-center w-28 h-28 bg-gradient-to-br from-amber-50 to-white rounded-[2.5rem] border border-amber-100 shadow-sm">
+                            <svg class="w-12 h-12 text-amber-500" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M13 10V3L4 14h7v7l9-11h-7z">
+                                </path>
+                            </svg>
+                            {{-- Decorative Shine --}}
+                            <div
+                                class="absolute top-0 right-0 -mr-2 -mt-2 w-8 h-8 bg-amber-100 rounded-full blur-xl opacity-70">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="max-w-md px-6">
+                        <h3 class="text-2xl font-black text-gray-900 uppercase tracking-tight mb-3">
+                            Belum Ada <span class="text-amber-500">Program</span>
+                        </h3>
+                        <p class="text-gray-500 leading-relaxed text-sm mb-10 uppercase tracking-[0.1em]">
+                            Kami sedang merancang inisiatif baru untuk Anda. Nantikan pembaruan selanjutnya di halaman
+                            ini.
+                        </p>
+
+                        <a href="/" wire:navigate
+                            class="inline-flex items-center gap-3 px-10 py-4 bg-gray-900 text-white rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] transition-all hover:bg-amber-600 hover:shadow-xl hover:shadow-amber-200 active:scale-95">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 19l-7-7 7-7"></path>
+                            </svg>
+                            Kembali ke Beranda
+                        </a>
+                    </div>
                 </div>
             @endforelse
         </div>
 
-        <div class="mt-16 flex justify-center">
-            {{ $programs->links('vendor.pagination.custom-amber') }}
-        </div>
-
+        @if ($programs->isNotEmpty())
+            <div class="mt-16 flex justify-center">
+                {{ $programs->links('vendor.pagination.custom-amber') }}
+            </div>
+        @endif
     </div>
 </div>

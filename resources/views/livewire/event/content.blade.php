@@ -1,6 +1,6 @@
 <div class="min-h-screen bg-white pb-16">
-    <div class="max-w-7xl mx-auto px-6"> {{-- Tambah px-6 agar tidak mepet layar --}}
-
+    <div class="max-w-7xl mx-auto px-6">
+        {{-- Header Section --}}
         <div class="mb-10">
             <h1 class="text-2xl font-black text-gray-900 tracking-tight uppercase">
                 Event <span class="text-amber-500">Mendatang</span>
@@ -11,14 +11,14 @@
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            @foreach ($events as $event)
+            @forelse ($events as $event)
                 <div
                     class="w-full group bg-white rounded-[2rem] border border-gray-100 shadow-sm hover:shadow-xl hover:shadow-amber-100/50 transition-all duration-500 overflow-hidden">
-
                     <div class="relative h-48 overflow-hidden">
                         <img src="{{ asset('storage/event/' . $event->image_url) }}" alt="{{ $event->name }}"
                             class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
 
+                        {{-- Date Badge --}}
                         <div
                             class="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-xl text-center shadow-lg border border-white/50">
                             <span class="block text-xl font-black text-gray-900 leading-none">
@@ -34,14 +34,12 @@
                         <div class="flex items-center gap-2 text-amber-600 mb-2">
                             <i class="bi bi-geo-alt-fill text-[12px]"></i>
                             <span class="text-[10px] font-bold uppercase tracking-widest truncate">
-                                {{-- truncate agar teks lokasi tidak merusak layout --}}
                                 {{ $event->location }}
                             </span>
                         </div>
 
                         <h3
                             class="text-lg font-bold text-gray-900 group-hover:text-amber-600 transition duration-300 leading-tight line-clamp-1">
-                            {{-- line-clamp-1 agar tinggi kartu tetap simetris --}}
                             {{ $event->name }}
                         </h3>
 
@@ -49,30 +47,65 @@
                             {{ $event->description }}
                         </p>
 
-                        <div class="mt-4 border-t border-gray-50 flex items-center justify-between">
-                            <div class="flex items-center text-gray-400">
+                        <div class="mt-4 border-t border-gray-50 flex items-center justify-between pt-4">
+                            <div class="flex items-center text-gray-400 gap-2">
                                 <i class="bi bi-clock text-[12px]"></i>
                                 <span class="text-xs font-medium">
                                     {{ $event->start_at->format('H:i') }} - {{ $event->end_at->format('H:i') }}
                                 </span>
                             </div>
-
-                            {{-- <a href="" wire:navigate
-                                class="p-1.5 bg-gray-900 text-white rounded-lg group-hover:bg-amber-500 transition-colors duration-300">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd"
-                                        d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
-                                </svg>
-                            </a> --}}
                         </div>
                     </div>
                 </div>
-            @endforeach
+            @empty
+                {{-- Empty State --}}
+                <div class="col-span-full py-32 flex flex-col items-center justify-center text-center">
+                    <div class="relative mb-8">
+                        {{-- Background Glow --}}
+                        <div class="absolute inset-0 bg-amber-400 opacity-20 blur-[60px] rounded-full"></div>
+
+                        {{-- Icon Box --}}
+                        <div
+                            class="relative flex items-center justify-center w-28 h-28 bg-gradient-to-br from-amber-50 to-white rounded-[2.5rem] border border-amber-100 shadow-sm">
+                            <svg class="w-12 h-12 text-amber-500" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                                </path>
+                            </svg>
+                            {{-- Decorative Dot --}}
+                            <div
+                                class="absolute -top-1 -right-1 w-4 h-4 bg-amber-500 rounded-full border-4 border-white">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="max-w-md px-6">
+                        <h3 class="text-2xl font-black text-gray-900 uppercase tracking-tight mb-3">
+                            Belum Ada <span class="text-amber-500">Event</span>
+                        </h3>
+                        <p class="text-gray-500 leading-relaxed text-sm mb-10 uppercase tracking-[0.1em]">
+                            Jadwal kami sedang disusun kembali. Pastikan Anda kembali lagi nanti untuk informasi menarik
+                            lainnya.
+                        </p>
+
+                        <a href="/" wire:navigate
+                            class="inline-flex items-center gap-3 px-10 py-4 bg-gray-900 text-white rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] transition-all hover:bg-amber-600 hover:shadow-xl hover:shadow-amber-200 active:scale-95">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 19l-7-7 7-7"></path>
+                            </svg>
+                            Eksplorasi Beranda
+                        </a>
+                    </div>
+                </div>
+            @endforelse
         </div>
 
-        <div class="mt-20">
-            {{ $events->links('vendor.pagination.custom-amber') }}
-        </div>
+        @if ($events->isNotEmpty())
+            <div class="mt-20">
+                {{ $events->links('vendor.pagination.custom-amber') }}
+            </div>
+        @endif
     </div>
 </div>
