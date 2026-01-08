@@ -16,6 +16,10 @@ class Show extends Component
         // Ambil event berdasarkan slug beserta relasi gambarnya
         $this->event = Event::where('slug', $slug)->with('images')->firstOrFail();
 
+        if (!$this->event) {
+            abort(response()->view('errors.404-event', [], 404));
+        }
+
         // Gabungkan image utama (jika ada kolom image_url di events) dengan image dari gallery
         $gallery = $this->event->images->pluck('image_url')->toArray();
 

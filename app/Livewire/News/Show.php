@@ -12,6 +12,9 @@ class Show extends Component
     public function mount($slug)
     {
         $this->post = Post::where('slug', $slug)->firstOrFail();
+        if (!$this->post) {
+            abort(response()->view('errors.404-news', [], 404));
+        }
     }
     public function render()
     {
