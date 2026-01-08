@@ -22,7 +22,13 @@
                 <div class="space-y-6">
                     {{-- Nama Event --}}
                     <div>
-                        <label class="text-[10px] font-black text-gray-400 uppercase ml-2">Nama Event</label>
+                        <div class="flex justify-between items-end px-2">
+                            <label class="text-[10px] font-black text-gray-400 uppercase">Nama Event</label>
+                            {{-- Info Tambahan untuk Slug --}}
+                            <span class="text-[9px] font-bold text-amber-600 uppercase tracking-tight">
+                                * Hindari simbol seperti / , ? , # , & , " untuk keamanan link
+                            </span>
+                        </div>
                         <input type="text" wire:model="name"
                             class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-amber-500 font-bold text-gray-700 placeholder-gray-300"
                             placeholder="Contoh: Workshop Digital Marketing">

@@ -16,12 +16,21 @@ class Add extends Component
     public function save()
     {
         $this->validate([
-            'name' => 'required|min:5|max:255',
+            // Menambahkan regex untuk keamanan slug pada nama event
+            'name' => [
+                'required',
+                'min:5',
+                'max:255',
+                'regex:/^[^?\/#&"\'<>]+$/u'
+            ],
             'description' => 'nullable|max:255',
             'start_at' => 'required|date',
             'end_at' => 'required|date|after:start_at',
             'location' => 'required|max:255',
             'image' => 'required|image|max:2048',
+        ], [
+            // Custom message agar user mengerti batasan karakter
+            'name.regex' => 'Nama event tidak boleh mengandung simbol khusus seperti / , ? , # , & , atau tanda kutip.',
         ]);
 
         $imageName = time() . '_cover.' . $this->image->extension();
@@ -41,6 +50,7 @@ class Add extends Component
         session()->flash('success', 'Event berhasil dibuat!');
         return redirect()->route('admin.event');
     }
+
     public function render()
     {
         return view('livewire.admin.event.add');

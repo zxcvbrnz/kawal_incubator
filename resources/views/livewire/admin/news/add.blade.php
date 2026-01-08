@@ -18,7 +18,13 @@
             <div class="bg-white p-8 rounded-[3rem] shadow-sm border border-gray-100">
                 <div class="space-y-6">
                     <div>
-                        <label class="text-[10px] font-black text-gray-400 uppercase ml-2">Judul Berita</label>
+                        <div class="flex justify-between items-end px-2">
+                            <label class="text-[10px] font-black text-gray-400 uppercase">Judul Berita</label>
+                            {{-- Info Tambahan untuk Slug --}}
+                            <span class="text-[9px] font-bold text-amber-600 uppercase tracking-tight">
+                                * Hindari simbol seperti / , ? , # , & , " untuk keamanan link
+                            </span>
+                        </div>
                         <input type="text" wire:model="title"
                             class="w-full mt-1 px-5 py-3 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-amber-500 font-bold">
                         @error('title')

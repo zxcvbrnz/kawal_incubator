@@ -4,6 +4,7 @@ namespace App\Livewire\Admin\News;
 
 use App\Models\Post;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str; // Pastikan ini di-import
 use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -25,12 +26,25 @@ class Edit extends Component
     public function update()
     {
         $this->validate([
-            'title' => 'required|min:5|max:255',
+            // Menambahkan regex untuk keamanan slug
+            'title' => [
+                'required',
+                'min:5',
+                'max:255',
+                'regex:/^[^?\/#&"\'<>]+$/u'
+            ],
             'content' => 'required',
             'new_image' => 'nullable|image|max:2048',
+        ], [
+            'title.regex' => 'Judul tidak boleh mengandung simbol khusus seperti / , ? , # , & , atau tanda kutip.',
         ]);
 
-        $data = ['title' => $this->title, 'content' => $this->content];
+        // Tambahkan slug ke dalam data agar URL diperbarui saat judul berubah
+        $data = [
+            'title' => $this->title,
+            'slug' => Str::slug($this->title),
+            'content' => $this->content
+        ];
 
         if ($this->new_image) {
             Storage::disk('public')->delete('new/' . $this->post->image_url);
@@ -48,7 +62,6 @@ class Edit extends Component
     }
 
     #[On('delete')]
-
     public function delete()
     {
         Storage::disk('public')->delete('new/' . $this->post->image_url);
@@ -56,6 +69,7 @@ class Edit extends Component
         session()->flash('success', 'Cerita berhasil dihapus!');
         return redirect()->route('admin.news');
     }
+
     public function render()
     {
         return view('livewire.admin.news.edit');

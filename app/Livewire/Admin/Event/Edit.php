@@ -6,6 +6,7 @@ use App\Models\Event;
 use App\Models\EventImages;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str; // Tambahkan import Str
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\Attributes\On;
@@ -32,16 +33,25 @@ class Edit extends Component
     public function update()
     {
         $this->validate([
-            'name' => 'required|min:5|max:255',
+            // Tambahkan regex untuk keamanan slug
+            'name' => [
+                'required',
+                'min:5',
+                'max:255',
+                'regex:/^[^?\/#&"\'<>]+$/u'
+            ],
             'description' => 'nullable|max:255',
             'start_at' => 'required|date',
             'end_at' => 'required|date|after:start_at',
             'location' => 'required|max:255',
             'new_cover' => 'nullable|image|max:2048',
+        ], [
+            'name.regex' => 'Nama event tidak boleh mengandung simbol khusus seperti / , ? , # , & , atau tanda kutip.',
         ]);
 
         $data = [
             'name' => $this->name,
+            'slug' => Str::slug($this->name), // Tambahkan update slug
             'description' => $this->description,
             'start_at' => $this->start_at,
             'end_at' => $this->end_at,
@@ -89,6 +99,7 @@ class Edit extends Component
         Storage::disk('public')->delete('event/' . $image->image_url);
         $image->delete();
     }
+
     public function render()
     {
         return view('livewire.admin.event.edit');
