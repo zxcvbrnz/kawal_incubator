@@ -94,137 +94,136 @@ class Form extends Component
     }
 
     public function save()
-    {
-        $validatedData = $this->validate([
-            'business_name' => 'required|string|max:255',
-            'owner_name'    => 'required|string|max:255',
-            'contact'       => 'required|numeric|digits_between:10,13',
-            'province'      => 'required|string|max:255',
-            'city'          => 'required|string|max:255',
-            'district'      => 'required|string|max:255',
-            'village'       => 'required|string|max:255',
-            'address_detail' => 'required|string|max:255',
-            'omset'         => 'required|string|max:255',
-            'description'   => 'required|string|max:255',
-            'business_field' => 'required|string|max:255',
-            'postal_code'   => 'required|numeric|digits:5',
-            'market_reach'  => 'required|string|max:255',
-            'ig'            => 'nullable|string|max:255',
-            'tiktok'        => 'nullable|string|max:255',
-            'fb'            => 'nullable|string|max:255',
-            'website'       => 'nullable|string|max:255',
-            'wa'            => 'nullable|string|max:255',
-            'has_incubated' => 'boolean',
-            'incubation_institution' => 'required_if:has_incubated,true|nullable|string|max:255',
-            'incubation_start'       => 'required_if:has_incubated,true|nullable|date',
-            'incubation_end'         => 'required_if:has_incubated,true|nullable|date|after_or_equal:incubation_start',
-            'profile_photo'          => 'nullable|image|max:2048',
-            'business_profile_file'  => 'nullable|mimes:pdf|max:5120',
-            'captcha_code'           => 'required',
-            // Validasi Produk Baru
-            'product_name_1'         => 'nullable|string|max:255',
-            'product_image_1'        => 'nullable|image|max:2048',
-            'product_name_2'         => 'nullable|string|max:255',
-            'product_image_2'        => 'nullable|image|max:2048',
-        ]);
+{
+    // Validasi tetap sama sesuai permintaan Anda
+    $validatedData = $this->validate([
+        'business_name' => 'required|string|max:255',
+        'owner_name'    => 'required|string|max:255',
+        'contact'       => 'required|numeric|digits_between:10,13',
+        'province'      => 'required|string|max:255',
+        'city'          => 'required|string|max:255',
+        'district'      => 'required|string|max:255',
+        'village'       => 'required|string|max:255',
+        'address_detail' => 'required|string|max:255',
+        'omset'         => 'required|string|max:255',
+        'description'   => 'required|string|max:255',
+        'business_field' => 'required|string|max:255',
+        'postal_code'   => 'required|numeric|digits:5',
+        'market_reach'  => 'required|string|max:255',
+        'ig'            => 'nullable|string|max:255',
+        'tiktok'        => 'nullable|string|max:255',
+        'fb'            => 'nullable|string|max:255',
+        'website'       => 'nullable|string|max:255',
+        'wa'            => 'nullable|string|max:255',
+        'has_incubated' => 'boolean',
+        'incubation_institution' => 'required_if:has_incubated,true|nullable|string|max:255',
+        'incubation_start'       => 'required_if:has_incubated,true|nullable|date',
+        'incubation_end'         => 'required_if:has_incubated,true|nullable|date|after_or_equal:incubation_start',
+        'profile_photo'          => 'nullable|image|max:2048',
+        'business_profile_file'  => 'nullable|mimes:pdf|max:5120',
+        'captcha_code'           => 'required',
+        'product_name_1'         => 'nullable|string|max:255',
+        'product_image_1'        => 'nullable|image|max:2048',
+        'product_name_2'         => 'nullable|string|max:255',
+        'product_image_2'        => 'nullable|image|max:2048',
+    ]);
 
-        if (strtoupper($this->captcha_code) !== session('custom_captcha')) {
-            $this->addError('captcha_code', 'Kode verifikasi salah.');
-            $this->generateCaptcha();
-            return;
-        }
-
-        // Handle Uploads Participant
-        $this->profile_photo ? $this->profile_photo->store('participant/image', 'public') : null;
-        $this->business_profile_file ? $this->business_profile_file->store('participant', 'public') : null;
-
-        $participant = Participant::create([
-            'business_name' => $this->business_name,
-            'owner_name'    => $this->owner_name,
-            'contact'       => $this->contact,
-            'business_field' => $this->business_field,
-            'province'      => $this->province,
-            'city'          => $this->city,
-            'district'      => $this->district,
-            'village'       => $this->village,
-            'address_detail' => $this->address_detail,
-            'postal_code'   => $this->postal_code,
-            'omset'         => $this->omset,
-            'market_reach'  => $this->market_reach,
-            'ig'            => $this->ig,
-            'tiktok'        => $this->tiktok,
-            'fb'            => $this->fb,
-            'website'       => $this->website,
-            'wa'            => $this->wa,
-            'legalitas'     => $this->legalitas === 'Lainnya' ? $this->legalitas_other : $this->legalitas,
-            'certification' => $this->certification === 'Lainnya' ? $this->certification_other : $this->certification,
-            'has_incubated' => $this->has_incubated,
-            'incubation_institution' => $this->incubation_institution,
-            'incubation_start'       => $this->incubation_start,
-            'incubation_end'         => $this->incubation_end,
-            'description'   => $this->description,
-            'profile_photo'  => $this->profile_photo,
-            'business_profile_file' => $this->business_profile_file,
-        ]);
-
-        // Simpan Produk (Relasi ke tabel products)
-        $this->product_image_2->store('product', 'public');
-        $this->product_image_1->store('product', 'public');
-        if ($this->product_name_1 && $this->product_image_1) {
-            $participant->products()->create([
-                'name'      => $this->product_name_1,
-                'image_url' => $this->product_image_1,
-                'display'   => $this->product_display_1,
-            ]);
-        }
-
-        if ($this->product_name_2 && $this->product_image_2) {
-            $participant->products()->create([
-                'name'      => $this->product_name_2,
-                'image_url' => $this->product_image_2,
-                'display'   => $this->product_display_2,
-            ]);
-        }
-
-        $send = new Message();
-        $wa = [
-            [
-                'phone' => '089691884833',
-                'message' => 'Halo *Admin*' . '<br><br>' .
-                    'Terdapat pendaftaran Participant untuk Kawal Incubator <br><br>' .
-                    'Nama Bisnis : ' . $this->business_name . '<br>' .
-                    'Nama Pemilik : ' . $this->owner_name .  '<br>' .
-                    '<br>' . 'www.kawalincubator.com',
-            ],
-            // [
-            //     'phone' => '085103326061',
-            //     'message' => 'Halo *Admin*' . '<br><br>' .
-            //         'Terdapat pendaftaran Participant untuk Kawal Incubator <br><br>' .
-            //         'Nama Bisnis : ' . $this->business_name . '<br>' .
-            //         'Nama Pemilik : ' . $this->owner_name .  '<br>' .
-            //         '<br>' . 'www.kawalincubator.com',
-            // ],
-            [
-                'phone' => $this->contact,
-                'message' => 'Halo *' . $this->owner_name . '*' . '<br>' .
-                    'Pendaftaranmu sedang diproses, <br>' .
-                    'harap tunggu informasi selanjutnya. <br>' .
-                    '<br>' . 'www.kawalincubator.com',
-            ],
-            [
-                'phone' => $this->wa,
-                'message' => 'Halo *' . $this->business_name . '*' . '<br>' .
-                    'Pendaftaranmu sedang diproses, <br>' .
-                    'harap tunggu informasi selanjutnya. <br>' .
-                    '<br>' . 'www.kawalincubator.com',
-            ],
-        ];
-        $send->multiple_text($wa);
-
-        session()->forget('custom_captcha');
-        session()->flash('success', 'Pendaftaran berhasil disimpan!');
-        return redirect()->to('/participants');
+    // Verifikasi Captcha
+    if (strtoupper($this->captcha_code) !== session('custom_captcha')) {
+        $this->addError('captcha_code', 'Kode verifikasi salah.');
+        $this->generateCaptcha();
+        return;
     }
+
+    // --- PROSES UPLOAD FILE PARTICIPANT ---
+    $profilePhotoName = null;
+    if ($this->profile_photo) {
+        $this->profile_photo->store('participant/image', 'public');
+        $profilePhotoName = $this->profile_photo->hashName(); // Ambil nama saja
+    }
+
+    $businessFileName = null;
+    if ($this->business_profile_file) {
+        $this->business_profile_file->store('participant', 'public');
+        $businessFileName = $this->business_profile_file->hashName(); // Ambil nama saja
+    }
+
+    // Simpan Data Participant
+    $participant = Participant::create([
+        'business_name' => $this->business_name,
+        'owner_name'    => $this->owner_name,
+        'contact'       => $this->contact,
+        'business_field' => $this->business_field,
+        'province'      => $this->province,
+        'city'          => $this->city,
+        'district'      => $this->district,
+        'village'       => $this->village,
+        'address_detail' => $this->address_detail,
+        'postal_code'   => $this->postal_code,
+        'omset'         => $this->omset,
+        'market_reach'  => $this->market_reach,
+        'ig'            => $this->ig,
+        'tiktok'        => $this->tiktok,
+        'fb'            => $this->fb,
+        'website'       => $this->website,
+        'wa'            => $this->wa,
+        'legalitas'     => $this->legalitas === 'Lainnya' ? $this->legalitas_other : $this->legalitas,
+        'certification' => $this->certification === 'Lainnya' ? $this->certification_other : $this->certification,
+        'has_incubated' => $this->has_incubated,
+        'incubation_institution' => $this->incubation_institution,
+        'incubation_start'       => $this->incubation_start,
+        'incubation_end'         => $this->incubation_end,
+        'description'   => $this->description,
+        'profile_photo' => $profilePhotoName,        // Simpan hanya nama
+        'business_profile_file' => $businessFileName, // Simpan hanya nama
+    ]);
+
+    // --- PROSES SIMPAN PRODUK (Relasi) ---
+    if ($this->product_name_1 && $this->product_image_1) {
+        $this->product_image_1->store('product', 'public');
+        $participant->products()->create([
+            'name'      => $this->product_name_1,
+            'image_url' => $this->product_image_1->hashName(), // Simpan hanya nama
+            'display'   => $this->product_display_1,
+        ]);
+    }
+
+    if ($this->product_name_2 && $this->product_image_2) {
+        $this->product_image_2->store('product', 'public');
+        $participant->products()->create([
+            'name'      => $this->product_name_2,
+            'image_url' => $this->product_image_2->hashName(), // Simpan hanya nama
+            'display'   => $this->product_display_2,
+        ]);
+    }
+
+    // --- KIRIM NOTIFIKASI WHATSAPP ---
+    $send = new Message();
+    $wa = [
+        [
+            'phone' => '089691884833',
+            'message' => "Halo *Admin*\n\nTerdapat pendaftaran Participant baru.\n\nNama Bisnis : {$this->business_name}\nNama Pemilik : {$this->owner_name}\n\nwww.kawalincubator.com",
+        ],
+        [
+            'phone' => $this->contact,
+            'message' => "Halo *{$this->owner_name}*\n\nPendaftaranmu sedang diproses, harap tunggu informasi selanjutnya.\n\nwww.kawalincubator.com",
+        ],
+    ];
+
+    // Opsional: Kirim ke WA bisnis jika berbeda dengan kontak pemilik
+    if ($this->wa && $this->wa !== $this->contact) {
+        $wa[] = [
+            'phone' => $this->wa,
+            'message' => "Halo *{$this->business_name}*\n\nPendaftaran sedang kami proses.\n\nwww.kawalincubator.com",
+        ];
+    }
+
+    $send->multiple_text($wa);
+
+    session()->forget('custom_captcha');
+    session()->flash('success', 'Pendaftaran berhasil disimpan!');
+    return redirect()->to('/participants');
+}
 
     public function render()
     {
