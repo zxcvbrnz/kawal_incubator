@@ -22,7 +22,7 @@
             </p>
 
             <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="{{ route('news') }}"
+                <a href="{{ route('new') }}"
                     class="px-8 py-4 bg-amber-500 text-white rounded-3xl font-black uppercase text-xs tracking-widest shadow-xl shadow-amber-200 hover:bg-amber-600 transition-all">
                     Lihat Berita Lainnya
                 </a>
