@@ -23,7 +23,7 @@ class All extends Component
             'posts' => Post::query()
                 ->where('title', 'like', '%' . $this->search . '%')
                 ->latest()
-                ->paginate(9)
+                ->paginate(10)
         ]);
     }
     public function updatedPaginators()
