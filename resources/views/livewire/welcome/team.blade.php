@@ -24,7 +24,7 @@
                         'name' => 'DONNY KURNIAWAN, S. KOM',
                         'role' => 'Manager',
                         'img' => 'IMG-20240614-WA0022 (1).png',
-                        'socials' => ['linkedin' => '#', 'instagram' => '#'],
+                        'socials' => ['linkedin' => 'omdons', 'instagram' => 'omdons'],
                     ],
                     [
                         'name' => 'Dr. SRI HIDAYAH, S.PD., MSc.',
