@@ -13,32 +13,34 @@ class Show extends Component
 
     public function mount($slug)
     {
-        // Ambil event berdasarkan slug beserta relasi gambarnya
+        // 1. Ambil data dengan first()
         $this->event = Event::where('slug', $slug)->with('images')->first();
 
+        // 2. Jika tidak ditemukan, langsung hentikan proses dan tampilkan view 404 custom
         if (!$this->event) {
             abort(response()->view('errors.404-event', [], 404));
         }
 
-        // Gabungkan image utama (jika ada kolom image_url di events) dengan image dari gallery
+        // 3. Logika pengolahan gambar (Hanya jalan jika event ditemukan)
         $gallery = $this->event->images->pluck('image_url')->toArray();
 
-        // Asumsi image utama ada di table event, jika tidak, cukup gunakan gallery
         if ($this->event->image_url) {
             array_unshift($gallery, $this->event->image_url);
         }
 
         $this->allImages = $gallery;
 
-        // Ambil 2 event lain untuk sidebar
+        // 4. Ambil memori lain
         $this->otherMemories = Event::where('id', '!=', $this->event->id)
             ->where('status', true)
             ->latest()
             ->take(2)
             ->get();
     }
+
     public function render()
     {
+        // Berikan perlindungan tambahan: jika mount gagal, render tidak akan memproses data null
         return view('livewire.journey.show');
     }
 }

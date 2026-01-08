@@ -19,7 +19,9 @@ class Show extends Component
     public function render()
     {
         return view('livewire.news.show', [
-            'recentPosts' => Post::where('id', '!=', $this->post->id)->latest()->take(5)->get()
+            'recentPosts' => $this->post
+                ? Post::where('id', '!=', $this->post->id)->latest()->take(5)->get()
+                : Post::latest()->take(5)->get()
         ]);
     }
 }
