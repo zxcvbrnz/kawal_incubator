@@ -22,7 +22,7 @@
 
             <a href="{{ route('admin.news.create') }}" wire:navigate
                 class="px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white rounded-2xl font-black shadow-lg shadow-amber-200 transition-all uppercase text-xs tracking-widest flex-shrink-0">
-                + Tambah
+                + Buat Cerita
             </a>
         </div>
     </div>

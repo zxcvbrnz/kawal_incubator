@@ -19,7 +19,7 @@
 
             <a href="{{ route('admin.program.create') }}" wire:navigate
                 class="px-6 py-3 bg-amber-500 text-white rounded-2xl font-black shadow-lg shadow-amber-200 uppercase text-xs tracking-widest">
-                + Tambah
+                + Tambah Program
             </a>
         </div>
     </div>
