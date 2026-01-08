@@ -17,9 +17,10 @@
                         <div class="hidden lg:flex items-center gap-4 mb-6">
                             <span
                                 class="bg-amber-100 text-amber-700 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
-                                {{ $post->category ?? 'Update' }}
+                                {{ $post->category ?? 'Pembaruan' }}
                             </span>
-                            <span class="text-gray-400 text-sm italic">{{ $post->created_at->format('d F Y') }}</span>
+                            <span
+                                class="text-gray-400 text-sm italic">{{ $post->created_at->translatedFormat('d F Y') }}</span>
                         </div>
 
                         <h1 class="text-xl lg:text-2xl font-extrabold text-gray-900 leading-tight mb-8">
@@ -38,7 +39,7 @@
                 <div class="sticky top-8">
                     <div class="flex items-center gap-3 mb-8">
                         <div class="h-8 w-1.5 bg-amber-500 rounded-full"></div>
-                        <h2 class="text-xl font-bold text-gray-900">Another News</h2>
+                        <h2 class="text-xl font-bold text-gray-900">Berita Lainnya</h2>
                     </div>
                     <div class="space-y-2">
                         @foreach ($recentPosts as $recent)

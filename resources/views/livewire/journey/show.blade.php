@@ -22,10 +22,8 @@
                             class="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white/80 backdrop-blur-md p-3 rounded-full shadow-lg text-gray-900 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-amber-500 hover:text-white">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
-
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M15 19l-7-7 7-7" />
-
                             </svg>
                         </button>
 
@@ -45,10 +43,8 @@
                             class="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white/80 backdrop-blur-md p-3 rounded-full shadow-lg text-gray-900 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-amber-500 hover:text-white">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
-
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M9 5l7 7-7 7" />
-
                             </svg>
                         </button>
 
@@ -64,7 +60,7 @@
                     <div class="space-y-8">
                         <div class="space-y-2">
                             <span class="text-amber-500 font-bold text-[10px] uppercase tracking-[0.3em] italic">
-                                Archive: {{ $event->start_at->format('d M Y') }}
+                                Arsip: {{ $event->start_at->format('d M Y') }}
                             </span>
                             <h1 class="text-4xl lg:text-5xl font-black text-gray-900 leading-none uppercase">
                                 {{ Str::beforeLast($event->name, ' ') }} <br>
@@ -73,8 +69,9 @@
                         </div>
 
                         <div class="prose prose-amber max-w-none">
-                            <h2 class="text-xl font-bold text-gray-900 uppercase tracking-tight">The Story Behind The
-                                Event</h2>
+                            <h2 class="text-xl font-bold text-gray-900 uppercase tracking-tight">
+                                Cerita Dibalik Acara
+                            </h2>
                             <p class="text-gray-500 leading-relaxed italic text-lg">
                                 "{{ $event->description }}"
                             </p>
@@ -85,7 +82,7 @@
 
             <aside class="lg:w-1/3 space-y-12">
                 <div class="bg-gray-50 p-8 rounded-[2.5rem] border border-gray-100 space-y-6">
-                    <h3 class="text-[10px] font-black text-gray-400 uppercase tracking-widest">Event Details</h3>
+                    <h3 class="text-[10px] font-black text-gray-400 uppercase tracking-widest">Detail Acara</h3>
                     <ul class="space-y-4">
                         <li class="flex items-center gap-4 text-xs font-bold text-gray-700 uppercase">
                             <i class="bi bi-geo-alt text-amber-500 text-lg"></i>
@@ -101,7 +98,7 @@
                 <div class="sticky top-8">
                     <div class="flex items-center gap-3 mb-8">
                         <div class="h-6 w-1 bg-amber-500 rounded-full"></div>
-                        <h2 class="text-sm font-black text-gray-900 uppercase tracking-widest">Other Memories</h2>
+                        <h2 class="text-sm font-black text-gray-900 uppercase tracking-widest">Kenangan Lainnya</h2>
                     </div>
 
                     <div class="space-y-4">
