@@ -6,7 +6,7 @@
                 <h2 class="text-xl font-semibold text-gray-900">{{ __('Karya Unggulan Partisipan') }}</h2>
                 <a href="{{ route('product') }}"
                     class="inline-flex items-center gap-2 text-sm font-semibold text-amber-600 hover:text-amber-700 transition">
-                    {{ __('View More') }} →
+                    {{ __('Lihat Selengkapnya') }} →
                 </a>
             </div>
             <p class="mt-4 text-gray-500">
