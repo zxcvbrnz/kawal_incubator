@@ -13,6 +13,7 @@ Route::view('/products', 'products')->name('product');
 Route::view('/programs', 'programs')->name('program');
 
 Route::view('/events', 'events')->name('event');
+Route::view('/events/{slug}', 'journey_show')->name('event.show');
 Route::view('/events/journey', 'events')->name('event.journey');
 Route::view('/events/journey/{slug}', 'journey_show')->name('event.journey.show');
 

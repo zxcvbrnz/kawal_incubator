@@ -54,6 +54,15 @@
                                     {{ $event->start_at->format('H:i') }} - {{ $event->end_at->format('H:i') }}
                                 </span>
                             </div>
+
+                            {{-- Tombol Detail Baru --}}
+                            <a href="{{ route('event.show', $event->id) }}" wire:navigate
+                                class="inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-widest text-amber-600 hover:text-amber-700 transition-colors group/btn">
+                                Detail
+                                <svg class="w-3.5 h-3.5 transform group-hover/btn:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                                </svg>
+                            </a>
                         </div>
                     </div>
                 </div>

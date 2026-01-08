@@ -3,6 +3,7 @@
         <div class="flex flex-col lg:flex-row gap-16">
             <main class="lg:w-2/3">
                 <article>
+                    {{-- Slider Section --}}
                     <div x-data="{
                         active: 0,
                         total: {{ count($allImages) }},
@@ -59,9 +60,21 @@
 
                     <div class="space-y-8">
                         <div class="space-y-2">
-                            <span class="text-amber-500 font-bold text-[10px] uppercase tracking-[0.3em] italic">
-                                Arsip: {{ $event->start_at->format('d M Y') }}
-                            </span>
+                            {{-- Penyesuaian Status Badge --}}
+                            <div class="flex items-center gap-3">
+                                <span @class([
+                                    'px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest',
+                                    'bg-amber-100 text-amber-600' => $event->status == 0,
+                                    'bg-gray-100 text-gray-500' => $event->status == 1,
+                                ])>
+                                    {{ $event->status == 0 ? 'Mendatang' : 'Selesai' }}
+                                </span>
+                                <span class="text-gray-400 font-bold text-[10px] uppercase tracking-[0.3em] italic">
+                                    {{ $event->status == 0 ? 'Jadwal' : 'Arsip' }}:
+                                    {{ $event->start_at->format('d M Y') }}
+                                </span>
+                            </div>
+
                             <h1 class="text-4xl lg:text-5xl font-black text-gray-900 leading-none uppercase">
                                 {{ Str::beforeLast($event->name, ' ') }} <br>
                                 <span class="text-amber-500 italic">{{ Str::afterLast($event->name, ' ') }}</span>
@@ -70,7 +83,7 @@
 
                         <div class="prose prose-amber max-w-none">
                             <h2 class="text-xl font-bold text-gray-900 uppercase tracking-tight">
-                                Cerita Dibalik Acara
+                                {{ $event->status == 0 ? 'Tentang Acara Ini' : 'Cerita Dibalik Acara' }}
                             </h2>
                             <p class="text-gray-500 leading-relaxed italic text-lg">
                                 "{{ $event->description }}"
@@ -82,7 +95,7 @@
 
             <aside class="lg:w-1/3 space-y-12">
                 <div class="bg-gray-50 p-8 rounded-[2.5rem] border border-gray-100 space-y-6">
-                    <h3 class="text-[10px] font-black text-gray-400 uppercase tracking-widest">Detail Acara</h3>
+                    <h3 class="text-[10px] font-black text-gray-400 uppercase tracking-widest">Detail Informasi</h3>
                     <ul class="space-y-4">
                         <li class="flex items-center gap-4 text-xs font-bold text-gray-700 uppercase">
                             <i class="bi bi-geo-alt text-amber-500 text-lg"></i>
@@ -92,13 +105,30 @@
                             <i class="bi bi-calendar-check text-amber-500 text-lg"></i>
                             {{ $event->start_at->format('d F Y') }}
                         </li>
+                        {{-- Tambahan Jam untuk Event Mendatang --}}
+                        <li class="flex items-center gap-4 text-xs font-bold text-gray-700 uppercase">
+                            <i class="bi bi-clock text-amber-500 text-lg"></i>
+                            {{ $event->start_at->format('H:i') }} - {{ $event->end_at->format('H:i') }}
+                        </li>
                     </ul>
+
+                    {{-- Tombol Aksi Khusus Event Mendatang (Optional) --}}
+                    @if ($event->status == 0)
+                        <div class="pt-4">
+                            <button
+                                class="w-full py-4 bg-gray-900 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-amber-600 transition duration-300">
+                                Simpan Ke Kalender
+                            </button>
+                        </div>
+                    @endif
                 </div>
 
                 <div class="sticky top-8">
                     <div class="flex items-center gap-3 mb-8">
                         <div class="h-6 w-1 bg-amber-500 rounded-full"></div>
-                        <h2 class="text-sm font-black text-gray-900 uppercase tracking-widest">Kenangan Lainnya</h2>
+                        <h2 class="text-sm font-black text-gray-900 uppercase tracking-widest">
+                            {{ $event->status == 0 ? 'Event Lainnya' : 'Kenangan Lainnya' }}
+                        </h2>
                     </div>
 
                     <div class="space-y-4">
