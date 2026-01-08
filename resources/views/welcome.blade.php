@@ -25,9 +25,9 @@
                         berkelanjutan.
                     </p>
                     <div class="mt-8 flex flex-wrap gap-4">
-                        <a wire:navigate href="{{ route('contact') }}"
+                        <a wire:navigate href="{{ route('about') }}"
                             class="px-6 py-3 rounded-xl bg-amber-500 text-white font-semibold hover:bg-amber-600 transition">
-                            Hubungi Kami
+                            Tentang Kami
                         </a>
                         <a wire:navigate href="{{ route('participant') }}"
                             class="px-6 py-3 rounded-xl border border-amber-500 text-amber-600 font-semibold hover:bg-amber-500/10 transition">
