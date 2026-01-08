@@ -1,12 +1,5 @@
 <div class="min-h-screen bg-white pb-24">
     <div class="pt-20 max-w-7xl mx-auto px-6">
-
-        <a href="{{ route('event.journey') }}" wire:navigate
-            class="group flex items-center gap-2 text-gray-400 hover:text-amber-500 transition-colors mb-10">
-            <i class="bi bi-arrow-left text-lg"></i>
-            <span class="text-[10px] font-black uppercase tracking-[0.2em]">Back to Journey</span>
-        </a>
-
         <div class="flex flex-col lg:flex-row gap-16">
             <main class="lg:w-2/3">
                 <article>
