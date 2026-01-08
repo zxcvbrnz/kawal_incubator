@@ -62,6 +62,7 @@
 
                                 @if (isset($member['socials']['linkedin']))
                                     <a href="https://id.linkedin.com/in/{{ $member['socials']['linkedin'] }}/en"
+                                        target="_blank"
                                         class="p-2.5 bg-white/10 backdrop-blur-md rounded-full text-white hover:bg-blue-600 transition-all shadow-lg"
                                         title="LinkedIn">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor"
@@ -74,6 +75,7 @@
 
                                 @if (isset($member['socials']['instagram']))
                                     <a href="https://www.instagram.com/{{ $member['socials']['instagram'] }}/"
+                                        target="_blank"
                                         class="p-2.5 bg-white/10 backdrop-blur-md rounded-full text-white hover:bg-pink-600 transition-all shadow-lg"
                                         title="Instagram">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor"
