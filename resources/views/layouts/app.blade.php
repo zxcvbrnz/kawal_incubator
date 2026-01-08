@@ -8,7 +8,7 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <link rel="icon" href="logo kawal.png" type="image/x-icon">
+    <link rel="icon" href="{{ asset('logo kawal.png') }}" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
