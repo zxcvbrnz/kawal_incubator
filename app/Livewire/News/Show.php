@@ -11,7 +11,7 @@ class Show extends Component
 
     public function mount($slug)
     {
-        $this->post = Post::where('slug', $slug)->firstOrFail();
+        $this->post = Post::where('slug', $slug)->first();
         if (!$this->post) {
             abort(response()->view('errors.404-news', [], 404));
         }

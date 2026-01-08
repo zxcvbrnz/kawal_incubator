@@ -14,7 +14,7 @@ class Show extends Component
     public function mount($slug)
     {
         // Ambil event berdasarkan slug beserta relasi gambarnya
-        $this->event = Event::where('slug', $slug)->with('images')->firstOrFail();
+        $this->event = Event::where('slug', $slug)->with('images')->first();
 
         if (!$this->event) {
             abort(response()->view('errors.404-event', [], 404));
