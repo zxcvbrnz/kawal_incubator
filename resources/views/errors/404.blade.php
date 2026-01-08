@@ -3,7 +3,7 @@
         Halaman Tidak Ditemukan
     </x-slot>
 
-    <div class="min-h-[80vh] flex items-center justify-center px-4">
+    <div class="min-h-[80vh] flex items-center justify-center px-4 py-20">
         <div class="max-w-2xl w-full text-center">
             {{-- Animasi Angka 404 --}}
             <div class="relative inline-block">
