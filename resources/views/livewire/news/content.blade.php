@@ -18,7 +18,7 @@
                         </h3>
                         <div
                             class="mt-4 flex items-center gap-2 text-amber-400 text-sm opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500">
-                            Read Article
+                            Baca Artikel
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
