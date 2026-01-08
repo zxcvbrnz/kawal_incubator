@@ -43,12 +43,24 @@
                             "{{ Str::limit($event->description, 150) }}"
                         </p>
 
+                        {{-- BAGIAN TOMBOL YANG DIUBAH --}}
                         <div class="pb-2">
                             <a href="{{ route('event.journey.show', $event->slug) }}" wire:navigate
-                                class="group/link inline-flex items-center gap-3">
-                                <span class="text-[10px] font-black uppercase tracking-[0.2em] text-gray-900">Explore
-                                    Memories</span>
-                                <div class="h-px w-8 bg-amber-500 group-hover/link:w-12 transition-all duration-500">
+                                class="group/link inline-flex items-center gap-4 py-2 px-4 -ml-4 rounded-full transition-all duration-300 hover:bg-amber-50">
+                                <span
+                                    class="text-[10px] font-black uppercase tracking-[0.2em] text-gray-900 group-hover/link:text-amber-600 transition-colors">
+                                    Jelajahi Kenangan
+                                </span>
+                                <div class="relative flex items-center">
+                                    <div
+                                        class="h-px w-8 bg-amber-500 group-hover/link:w-12 transition-all duration-500">
+                                    </div>
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="h-3 w-3 text-amber-500 opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-500"
+                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                            d="M9 5l7 7-7 7" />
+                                    </svg>
                                 </div>
                             </a>
                         </div>
@@ -62,10 +74,10 @@
                     </div>
                 </div>
             @empty
+                {{-- Bagian Empty State tetap sama --}}
                 <div class="py-32 flex flex-col items-center justify-center text-center">
                     <div class="relative mb-10">
                         <div class="absolute inset-0 bg-amber-400 opacity-10 blur-[80px] rounded-full"></div>
-
                         <div
                             class="relative flex items-center justify-center w-32 h-32 bg-white rounded-full border border-amber-50 shadow-inner">
                             <svg class="w-12 h-12 text-amber-500/50" fill="none" stroke="currentColor"
@@ -81,7 +93,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="max-w-lg px-6">
                         <h3 class="text-2xl font-black text-gray-900 uppercase tracking-[0.2em] mb-4">
                             Jejak Belum <span class="text-amber-500">Terukir</span>
@@ -90,7 +101,6 @@
                             "Setiap perjalanan besar dimulai dengan satu langkah. Saat ini kami sedang mengumpulkan
                             kepingan memori untuk diceritakan kepada Anda."
                         </p>
-
                         <a href="/" wire:navigate class="group inline-flex items-center gap-4 text-gray-900">
                             <span
                                 class="text-[10px] font-black uppercase tracking-[0.3em] group-hover:text-amber-600 transition-colors">Kembali
