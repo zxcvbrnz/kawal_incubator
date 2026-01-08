@@ -18,7 +18,7 @@
                         'name' => 'FARID FATHURRAHMAN, S.T., M.E.',
                         'role' => 'Ketua',
                         'img' => 'FARID FATHURRAHMAN, S.T., M.E.png',
-                        'socials' => ['linkedin' => '#', 'instagram' => '#'],
+                        'socials' => ['linkedin' => 'faridcenari', 'instagram' => 'faridcenari'],
                     ],
                     [
                         'name' => 'DONNY KURNIAWAN, S. KOM',
@@ -61,7 +61,7 @@
                                 class="flex gap-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
 
                                 @if (isset($member['socials']['linkedin']))
-                                    <a href="{{ $member['socials']['linkedin'] }}"
+                                    <a href="https://id.linkedin.com/in/{{ $member['socials']['linkedin'] }}/en"
                                         class="p-2.5 bg-white/10 backdrop-blur-md rounded-full text-white hover:bg-blue-600 transition-all shadow-lg"
                                         title="LinkedIn">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor"
@@ -73,7 +73,7 @@
                                 @endif
 
                                 @if (isset($member['socials']['instagram']))
-                                    <a href="{{ $member['socials']['instagram'] }}"
+                                    <a href="https://www.instagram.com/{{ $member['socials']['instagram'] }}/"
                                         class="p-2.5 bg-white/10 backdrop-blur-md rounded-full text-white hover:bg-pink-600 transition-all shadow-lg"
                                         title="Instagram">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor"
