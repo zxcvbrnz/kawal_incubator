@@ -60,7 +60,6 @@
 
                     <div class="space-y-8">
                         <div class="space-y-2">
-                            {{-- Penyesuaian Status Badge --}}
                             <div class="flex items-center gap-3">
                                 <span @class([
                                     'px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest',
@@ -105,34 +104,24 @@
                             <i class="bi bi-calendar-check text-amber-500 text-lg"></i>
                             {{ $event->start_at->format('d F Y') }}
                         </li>
-                        {{-- Tambahan Jam untuk Event Mendatang --}}
                         <li class="flex items-center gap-4 text-xs font-bold text-gray-700 uppercase">
                             <i class="bi bi-clock text-amber-500 text-lg"></i>
                             {{ $event->start_at->format('H:i') }} - {{ $event->end_at->format('H:i') }}
                         </li>
                     </ul>
-
-                    {{-- Tombol Aksi Khusus Event Mendatang (Optional) --}}
-                    @if ($event->status == 0)
-                        <div class="pt-4">
-                            <button
-                                class="w-full py-4 bg-gray-900 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-amber-600 transition duration-300">
-                                Simpan Ke Kalender
-                            </button>
-                        </div>
-                    @endif
                 </div>
 
                 <div class="sticky top-8">
                     <div class="flex items-center gap-3 mb-8">
                         <div class="h-6 w-1 bg-amber-500 rounded-full"></div>
                         <h2 class="text-sm font-black text-gray-900 uppercase tracking-widest">
-                            {{ $event->status == 0 ? 'Event Lainnya' : 'Kenangan Lainnya' }}
+                            {{ $event->status == 0 ? 'Event Mendatang Lainnya' : 'Kenangan Lainnya' }}
                         </h2>
                     </div>
 
                     <div class="space-y-4">
-                        @foreach ($otherMemories as $memory)
+                        {{-- Logika filter: Jika event aktif status 0, tampilkan status 0. Jika status 1, tampilkan status 1 --}}
+                        @foreach ($otherMemories->where('status', $event->status) as $memory)
                             <a href="{{ route('event.journey.show', $memory->slug) }}" wire:navigate
                                 class="group flex gap-4 items-center">
                                 <div class="w-20 h-20 flex-none rounded-2xl overflow-hidden shadow-sm bg-gray-200">
