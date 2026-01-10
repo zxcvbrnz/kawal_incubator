@@ -11,7 +11,6 @@ class Show extends Component
 
     public function mount($id)
     {
-        // Mencari program berdasarkan ID atau Slug
         $this->program = Program::findOrFail($id);
     }
 

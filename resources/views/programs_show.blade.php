@@ -3,6 +3,6 @@
         {{ str($name)->replace('-', ' ')->title() }}
     </x-slot>
     <section>
-        <livewire:news.show :id="$id" />
+        <livewire:program.show :id="$id" />
     </section>
 </x-main-layout>
