@@ -29,7 +29,7 @@
 
                         <div
                             class="prose prose-amber prose-lg max-w-none text-gray-600 leading-relaxed whitespace-pre-wrap">
-                            {!! $post->content !!}
+                            {!! trim($post->content) !!}
                         </div>
                     </div>
                 </article>

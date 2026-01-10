@@ -84,9 +84,10 @@
                             <h2 class="text-xl font-bold text-gray-900 uppercase tracking-tight">
                                 {{ $event->status == 0 ? 'Tentang Acara Ini' : 'Cerita Dibalik Acara' }}
                             </h2>
-                            <p class="text-gray-500 leading-relaxed italic text-lg">
-                                "{{ $event->description }}"
-                            </p>
+                            <div
+                                class="prose prose-amber prose-lg max-w-none text-gray-600 leading-relaxed whitespace-pre-wrap">
+                                {!! trim($event->description) !!}
+                            </div>
                         </div>
                     </div>
                 </article>

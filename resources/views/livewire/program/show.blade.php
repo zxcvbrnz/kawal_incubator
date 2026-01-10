@@ -31,7 +31,7 @@
 
                         <div
                             class="prose prose-amber prose-lg max-w-none text-gray-600 leading-relaxed whitespace-pre-wrap">
-                            {!! $program->description !!}
+                            {!! trim($program->description) !!}
                         </div>
 
                         {{-- <div class="mt-12 pt-8 border-t border-gray-100">
