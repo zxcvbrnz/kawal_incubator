@@ -11,6 +11,7 @@ Route::view('/participants/join-participant', 'participant_form')->name('partici
 Route::view('/products', 'products')->name('product');
 
 Route::view('/programs', 'programs')->name('program');
+Route::view('/programs/{id}/{name}', 'programs_show')->name('program.show');
 
 Route::view('/events', 'events')->name('event');
 Route::view('/events/upcoming/{slug}', 'journey_show')->name('event.show');

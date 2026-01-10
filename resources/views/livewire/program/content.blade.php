@@ -14,24 +14,37 @@
                     </div>
 
                     <div class="p-6 flex flex-col flex-1">
-                        <h3 class="text-xl font-bold text-gray-900 group-hover:text-amber-600 transition duration-300">
-                            {{ $program->name }}
-                        </h3>
+                        <a href="{{ route('program.show', ['id' => $program->id, 'name' => str($program->name)->slug()]) }}"
+                            wire:navigate>
+                            <h3
+                                class="text-xl font-bold text-gray-900 group-hover:text-amber-600 transition duration-300">
+                                {{ $program->name }}
+                            </h3>
+                        </a>
 
-                        {{-- Deskripsi dibatasi 3 baris agar tinggi kartu tetap konsisten --}}
                         <p class="mt-3 text-gray-500 text-sm leading-relaxed line-clamp-3">
                             {{ $program->description }}
                         </p>
+
+                        <div class="mt-auto pt-6">
+                            <a href="{{ route('program.show', ['id' => $program->id, 'name' => str($program->name)->slug()]) }}"
+                                wire:navigate
+                                class="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-amber-600 hover:text-amber-700 transition-all">
+                                Lihat Detail
+                                <svg class="w-3 h-3 transform group-hover:translate-x-1 transition-transform"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14 5l7 7-7 7M3 12h18"></path>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
             @empty
-                {{-- Empty State Program --}}
                 <div class="col-span-full py-32 flex flex-col items-center justify-center text-center">
                     <div class="relative mb-8">
-                        {{-- Background Glow --}}
                         <div class="absolute inset-0 bg-amber-400 opacity-20 blur-[60px] rounded-full"></div>
 
-                        {{-- Icon Box --}}
                         <div
                             class="relative flex items-center justify-center w-28 h-28 bg-gradient-to-br from-amber-50 to-white rounded-[2.5rem] border border-amber-100 shadow-sm">
                             <svg class="w-12 h-12 text-amber-500" fill="none" stroke="currentColor"
@@ -40,7 +53,6 @@
                                     d="M13 10V3L4 14h7v7l9-11h-7z">
                                 </path>
                             </svg>
-                            {{-- Decorative Shine --}}
                             <div
                                 class="absolute top-0 right-0 -mr-2 -mt-2 w-8 h-8 bg-amber-100 rounded-full blur-xl opacity-70">
                             </div>
