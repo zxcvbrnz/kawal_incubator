@@ -81,11 +81,8 @@
         <x-nav-link-2 :href="route('new')" class="block" :active="request()->routeIs('new', 'new.*')" wire:navigate>
             {{ __('Berita') }}
         </x-nav-link-2>
-        <x-nav-link-2 :href="route('toko')" :active="request()->routeIs('toko')" wire:navigate>
+        <x-nav-link-2 :href="route('toko')" class="block" :active="request()->routeIs('toko')" wire:navigate>
             {{ __('Toko') }}
         </x-nav-link-2>
-        {{-- <a href="{{ route('contact') }}" class="block text-center px-4 py-2 rounded-lg bg-amber-500 text-white">
-            Contact Us
-        </a> --}}
     </div>
 </nav>
