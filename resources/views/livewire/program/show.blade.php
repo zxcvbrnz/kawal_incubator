@@ -29,10 +29,8 @@
                             {{ $program->name }}
                         </h1>
 
-                        <div
-                            class="prose prose-amber prose-lg max-w-none text-gray-600 leading-relaxed whitespace-pre-wrap">
-                            {!! trim($program->description) !!}
-                        </div>
+                        <div class="prose prose-amber prose-lg max-w-none text-gray-600 leading-relaxed whitespace-pre-wrap"
+                            style="text-indent: 0;">{!! trim($program->description) !!}</div>
 
                         {{-- <div class="mt-12 pt-8 border-t border-gray-100">
                             <a href="https://wa.me/628xxxxxxx" target="_blank"

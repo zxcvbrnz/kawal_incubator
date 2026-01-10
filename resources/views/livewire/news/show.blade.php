@@ -27,10 +27,8 @@
                             {{ $post->title }}
                         </h1>
 
-                        <div
-                            class="prose prose-amber prose-lg max-w-none text-gray-600 leading-relaxed whitespace-pre-wrap">
-                            {!! trim($post->content) !!}
-                        </div>
+                        <div class="prose prose-amber prose-lg max-w-none text-gray-600 leading-relaxed whitespace-pre-wrap"
+                            style="text-indent: 0;">{!! trim($post->content) !!}</div>
                     </div>
                 </article>
             </main>

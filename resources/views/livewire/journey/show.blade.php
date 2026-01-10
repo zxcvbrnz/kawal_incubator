@@ -84,10 +84,8 @@
                             <h2 class="text-xl font-bold text-gray-900 uppercase tracking-tight">
                                 {{ $event->status == 0 ? 'Tentang Acara Ini' : 'Cerita Dibalik Acara' }}
                             </h2>
-                            <div
-                                class="prose prose-amber prose-lg max-w-none text-gray-600 leading-relaxed whitespace-pre-wrap">
-                                {!! trim($event->description) !!}
-                            </div>
+                            <div class="prose prose-amber prose-lg max-w-none text-gray-600 leading-relaxed whitespace-pre-wrap"
+                                style="text-indent: 0;">{!! trim($event->description) !!}</div>
                         </div>
                     </div>
                 </article>
