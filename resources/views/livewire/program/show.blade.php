@@ -62,7 +62,8 @@
                                 class="group flex gap-4 bg-white p-3 rounded-2xl border border-transparent hover:border-amber-200 hover:shadow-md transition-all duration-300">
 
                                 <div class="w-24 h-24 flex-none rounded-xl overflow-hidden shadow-inner">
-                                    <img src="{{ asset('storage/' . $item->image_url) }}" alt="{{ $item->name }}"
+                                    <img src="{{ asset('storage/program/' . $item->image_url) }}"
+                                        alt="{{ $item->name }}"
                                         class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
                                 </div>
 
