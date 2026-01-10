@@ -58,7 +58,7 @@
 
                     <div class="space-y-4">
                         @foreach ($otherPrograms as $item)
-                            <a href="{{ route('program.show', $item->id) }}"
+                            <a href="{{ route('program.show', ['id' => $program->id, 'name' => str($program->name)->slug()]) }}"
                                 class="group flex gap-4 bg-white p-3 rounded-2xl border border-transparent hover:border-amber-200 hover:shadow-md transition-all duration-300">
 
                                 <div class="w-24 h-24 flex-none rounded-xl overflow-hidden shadow-inner">
