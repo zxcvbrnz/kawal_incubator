@@ -34,7 +34,7 @@
                             {!! $program->description !!}
                         </div>
 
-                        <div class="mt-12 pt-8 border-t border-gray-100">
+                        {{-- <div class="mt-12 pt-8 border-t border-gray-100">
                             <a href="https://wa.me/628xxxxxxx" target="_blank"
                                 class="inline-flex items-center justify-center gap-4 bg-amber-500 text-white px-8 py-4 rounded-2xl font-bold hover:bg-amber-600 transition-all shadow-lg shadow-amber-200">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
@@ -44,7 +44,7 @@
                                 </svg>
                                 Daftar Program Sekarang
                             </a>
-                        </div>
+                        </div> --}}
                     </div>
                 </article>
             </main>
