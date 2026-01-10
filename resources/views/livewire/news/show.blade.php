@@ -4,7 +4,8 @@
             <main class="lg:w-2/3">
                 <article class="bg-white rounded-3xl overflow-hidden shadow-sm border border-amber-100">
                     <div class="relative aspect-video">
-                        <img src="{{ $post->image_url }}" alt="{{ $post->title }}" class="w-full h-full object-cover">
+                        <img src="{{ asset('storage/new/' . $post->image_url) }}" alt="{{ $post->title }}"
+                            class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent lg:hidden"></div>
                         <div class="absolute bottom-6 left-6 lg:hidden">
                             <span class="bg-amber-500 text-white px-3 py-1 rounded-full text-xs font-bold uppercase">
@@ -44,7 +45,8 @@
                             <a href="{{ route('new.show', $recent->slug) }}"
                                 class="group flex gap-4 bg-white p-3 rounded-2xl border border-transparent hover:border-amber-200 hover:shadow-md transition-all duration-300">
                                 <div class="w-24 h-24 flex-none rounded-xl overflow-hidden shadow-inner">
-                                    <img src="{{ $recent->image_url }}" alt="{{ $recent->title }}"
+                                    <img src="{{ asset('storage/new/' . $recent->image_url) }}"
+                                        alt="{{ $recent->title }}"
                                         class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
                                 </div>
                                 <div class="flex flex-col justify-center">
