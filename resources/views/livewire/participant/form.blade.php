@@ -262,7 +262,7 @@
                             <div>
                                 <label
                                     class="block text-[10px] font-black uppercase text-gray-400 mb-2 tracking-widest">Foto
-                                    Produk</label>
+                                    Produk (max 2048kb)</label>
                                 <div
                                     class="relative h-32 flex items-center justify-center border-2 border-dashed border-gray-200 rounded-2xl bg-white overflow-hidden group">
                                     @if (${'product_image_' . $i})
@@ -392,7 +392,7 @@
                                 class="bg-white p-6 rounded-[2rem] border-2 border-dashed border-gray-200 hover:border-amber-300 transition-all flex flex-col items-center justify-center">
                                 <div
                                     class="block text-[10px] font-black uppercase text-gray-400 mb-4 tracking-widest text-center">
-                                    Foto Profil</div>
+                                    Foto Profil (max 2048kb)</div>
                                 <div class="mb-4 relative">
                                     <div
                                         class="w-24 h-24 rounded-2xl bg-gray-50 border border-gray-100 overflow-hidden flex items-center justify-center shadow-inner">
@@ -426,7 +426,7 @@
                                 class="bg-white p-6 rounded-[2rem] border-2 border-dashed border-gray-200 hover:border-amber-300 transition-all flex flex-col items-center justify-center">
                                 <div
                                     class="block text-[10px] font-black uppercase text-gray-400 mb-4 tracking-widest text-center">
-                                    Profil Usaha (PDF)</div>
+                                    Profil Usaha (PDF) (max 5120kb)</div>
                                 <div class="mb-4 relative">
                                     <div
                                         class="w-24 h-24 rounded-2xl bg-gray-50 border border-gray-100 flex flex-col items-center justify-center shadow-inner overflow-hidden">
