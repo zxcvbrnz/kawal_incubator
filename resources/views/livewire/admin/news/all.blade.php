@@ -27,7 +27,7 @@
         </div>
     </div>
 
-    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-x-auto">
         @if ($posts->isEmpty())
             {{-- Enhanced Empty State --}}
             <div class="p-20 text-center flex flex-col items-center">

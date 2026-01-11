@@ -25,7 +25,7 @@
         </div>
     </div>
 
-    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-x-auto">
         @if ($products->isEmpty())
             {{-- Enhanced Empty State --}}
             <div class="p-20 text-center flex flex-col items-center">
@@ -61,10 +61,12 @@
             <table class="w-full text-left border-collapse">
                 <thead>
                     <tr class="bg-gray-50 border-b border-gray-100">
-                        <th class="px-6 py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest">Produk</th>
+                        <th class="px-6 py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest">Produk
+                        </th>
                         <th class="px-6 py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest">Pemilik
                             (Bisnis)</th>
-                        <th class="px-6 py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest">Status</th>
+                        <th class="px-6 py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest">Status
+                        </th>
                         <th
                             class="px-6 py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest text-center">
                             Aksi</th>
@@ -84,7 +86,8 @@
                                 <div class="text-sm">
                                     <p class="font-bold text-gray-900">
                                         {{ $product->participant->business_name ?? 'N/A' }}</p>
-                                    <p class="text-xs text-gray-500">{{ $product->participant->owner_name ?? 'N/A' }}
+                                    <p class="text-xs text-gray-500">
+                                        {{ $product->participant->owner_name ?? 'N/A' }}
                                     </p>
                                 </div>
                             </td>
