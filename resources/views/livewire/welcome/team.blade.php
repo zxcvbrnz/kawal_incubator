@@ -11,7 +11,7 @@
             </p>
         </div>
 
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 justify-items-center gap-4">
             @php
                 $team = [
                     [
