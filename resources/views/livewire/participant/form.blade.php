@@ -47,12 +47,36 @@
                     </div>
                     <div class="md:col-span-2">
                         <label
-                            class="required block text-[10px] font-black uppercase text-gray-400 mb-1 tracking-widest">Bidang
-                            Usaha</label>
-                        <input type="text" wire:model="business_field"
+                            class="required block text-[10px] font-black uppercase text-gray-400 mb-1 tracking-widest">
+                            Bidang Usaha
+                        </label>
+
+                        <select wire:model="business_field"
                             class="w-full bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-amber-500">
+                            <option value="">Pilih Bidang Usaha</option>
+                            <option value="Pengembangan Permainan">Pengembangan Permainan</option>
+                            <option value="Arsitektur">Arsitektur</option>
+                            <option value="Desain Interior">Desain Interior</option>
+                            <option value="Musik">Musik</option>
+                            <option value="Seni Rupa">Seni Rupa</option>
+                            <option value="Desain Produk">Desain Produk</option>
+                            <option value="Fashion">Fashion</option>
+                            <option value="Kuliner">Kuliner</option>
+                            <option value="Film, Animasi dan Video">Film, Animasi dan Video</option>
+                            <option value="Fotografi">Fotografi</option>
+                            <option value="Desain Komunikasi Visual">Desain Komunikasi Visual</option>
+                            <option value="Televisi dan Radio">Televisi dan Radio</option>
+                            <option value="Kriya">Kriya</option>
+                            <option value="Periklanan">Periklanan</option>
+                            <option value="Seni Pertunjukan">Seni Pertunjukan</option>
+                            <option value="Penerbitan">Penerbitan</option>
+                            <option value="Aplikasi">Aplikasi</option>
+                        </select>
+
                         @error('business_field')
-                            <span class="text-[10px] text-red-500 font-bold uppercase">{{ $message }}</span>
+                            <span class="text-[10px] text-red-500 font-bold uppercase tracking-wider mt-1 block">
+                                {{ $message }}
+                            </span>
                         @enderror
                     </div>
                 </div>
