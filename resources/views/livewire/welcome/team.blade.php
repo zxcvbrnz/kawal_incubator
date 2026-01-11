@@ -11,7 +11,7 @@
             </p>
         </div>
 
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 justify-items-center gap-4">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 justify-items-center gap-4">
             @php
                 $team = [
                     [
@@ -43,6 +43,12 @@
                         'role' => 'Komersialisasi Produk',
                         'img' => 'QOLBIATUL FITRIA.png',
                         'socials' => ['linkedin' => '#', 'instagram' => '#'],
+                    ],
+                    [
+                        'name' => 'Muhammad Sabirin',
+                        'role' => 'Bidang IT dan Digitalisasi',
+                        'img' => 'Muhammad-Sabirin (2).png',
+                        'socials' => ['linkedin' => '#', 'instagram' => 'birinjenigo'],
                     ],
                 ];
             @endphp
