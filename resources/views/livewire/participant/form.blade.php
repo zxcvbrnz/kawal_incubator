@@ -302,6 +302,7 @@
                             <option value="PT">PT</option>
                             <option value="UD">UD</option>
                             <option value="Lainnya">Lainnya</option>
+                            <option value="Tidak Ada">Tidak Ada</option>
                         </select>
                         @error('legalitas')
                             <span class="text-[10px] text-red-500 font-bold uppercase">{{ $message }}</span>
@@ -321,6 +322,7 @@
                             <option value="BPOM">BPOM</option>
                             <option value="HKI">HKI</option>
                             <option value="Lainnya">Lainnya</option>
+                            <option value="Tidak Ada">Tidak Ada</option>
                         </select>
                         @error('certification')
                             <span class="text-[10px] text-red-500 font-bold uppercase">{{ $message }}</span>
