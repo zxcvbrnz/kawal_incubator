@@ -84,8 +84,9 @@
                             </svg>
                         </div>
                         <h4 class="text-gray-900 font-bold uppercase tracking-widest text-xs">Belum Ada Catatan</h4>
-                        <p class="text-gray-500 text-[10px] uppercase tracking-[0.2em] mt-2">Kisah inspiratif kami
-                            sedang dalam proses penulisan.</p>
+                        <div class="text-gray-500 text-[10px] uppercase tracking-[0.2em] mt-2 text-center">Kisah
+                            inspiratif kami
+                            sedang dalam proses penulisan.</div>
                     </div>
                 @endforelse
             </div>
