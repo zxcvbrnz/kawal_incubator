@@ -71,6 +71,10 @@
                             <option value="Seni Pertunjukan">Seni Pertunjukan</option>
                             <option value="Penerbitan">Penerbitan</option>
                             <option value="Aplikasi">Aplikasi</option>
+                            <option value="Konten Digital">Konten Digital</option>
+                            <option value="Web dan Kecerdasar Buatan (AI) Penggunaan Teknologi Baru">Web dan Kecerdasar
+                                Buatan (AI) Penggunaan Teknologi Baru</option>
+                            <option value="Jasa Teknologi Informasi/Komputer">Jasa Teknologi Informasi/Komputer</option>
                         </select>
 
                         @error('business_field')
