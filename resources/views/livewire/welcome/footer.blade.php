@@ -26,6 +26,12 @@
                             Instagram: <a href="https://www.instagram.com/kawalincubator" target="_blank"
                                 class="text-gray-300 hover:text-amber-400 transition underline decoration-gray-700">@kawalincubator</a>
                         </p>
+                        {{-- Tambahan Kontak WhatsApp --}}
+                        <p class="text-gray-400">
+                            WhatsApp: <a href="https://wa.me/6282158221148" target="_blank"
+                                class="text-gray-300 hover:text-amber-400 transition underline decoration-gray-700">+62
+                                821 5822 1148</a>
+                        </p>
                     </div>
                 </div>
             </div>
