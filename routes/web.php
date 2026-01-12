@@ -27,6 +27,8 @@ Route::view('/toko', 'toko')->name('toko');
 
 Route::view('/contact-us', 'contact')->name('contact');
 
+Route::view('/join-as-sponsorship', 'join_sponsor')->name('join_sponsor');
+
 Route::middleware(['auth'])->group(function () {
 
     // Dashboard (khusus verified)
@@ -52,6 +54,7 @@ Route::middleware(['auth'])->group(function () {
     Route::view('/admin/program/create', 'admin.program_create')->name('admin.program.create');
     Route::view('/admin/program/{id}/edit', 'admin.program_edit')->name('admin.program.edit');
 
+    Route::view('/admin/sponsorship-request', 'admin.sponsor')->name('admin.sponsor');
     // Profile
     Route::view('profile', 'profile')->name('profile');
 });

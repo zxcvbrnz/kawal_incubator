@@ -62,3 +62,23 @@ window.confirmDeleteWithPassword = function (id, method = 'delete') {
         }
     });
 }
+
+
+window.confirmDelete = function (id, method = 'delete') {
+    Swal.fire({
+        title: 'HAPUS DATA?',
+        text: "Data ini akan dihapus secara permanen dari sistem.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#f59e0b', // Warna Amber
+        cancelButtonColor: '#6b7280',
+        confirmButtonText: 'YA, HAPUS',
+        cancelButtonText: 'BATAL',
+        showClass: { popup: 'animate__animated animate__bounceIn animate__faster' },
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Mengirim ke Livewire hanya dengan payload id
+            Livewire.dispatch(method, { id: id });
+        }
+    });
+}

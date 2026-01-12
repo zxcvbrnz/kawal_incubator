@@ -50,6 +50,9 @@
     <section id="colaboration">
         <livewire:welcome.colaboration />
     </section>
+    <section id="join-sponsor">
+        <livewire:welcome.join-sponsor />
+    </section>
     <section id="program">
         <livewire:welcome.program />
     </section>
