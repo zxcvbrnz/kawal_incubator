@@ -25,11 +25,11 @@
                         'IMG_20260106_134224.png',
                         'logo_big.png',
                         'logo_cenari.png',
-                        'logo_srbjm.jpeg',
-                        'logo_tk.jpeg',
+                        'logo_srbjm.png',
+                        'logo_tk.png',
                         'IMG_20260106_134751.png',
-                        'WhatsApp Image 2026-01-12 at 15.03.18 (1).jpeg',
-                        'WhatsApp Image 2026-01-12 at 15.03.17 (1).jpeg',
+                        'WhatsApp Image 2026-01-12 at 15.03.18 (1).png',
+                        'WhatsApp Image 2026-01-12 at 15.03.17 (1).png',
                     ];
                 @endphp
 
