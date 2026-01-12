@@ -52,6 +52,8 @@
                                     class="text-gray-400 hover:text-amber-400 transition">Event</a></li>
                             <li><a href="{{ route('join_sponsor') }}"
                                     class="text-gray-400 hover:text-amber-400 transition">Sponsorship</a></li>
+                            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSdEI6cSHVfIbiRLNa8GEgr9k97cXFLXQ_vdHKIv-hZxRvPWLQ/viewform?usp=dialog"
+                                    class="text-gray-400 hover:text-amber-400 transition">Mentor</a></li>
                         </ul>
                     </div>
 
