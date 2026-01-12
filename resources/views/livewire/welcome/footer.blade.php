@@ -44,6 +44,8 @@
                                     class="text-gray-400 hover:text-amber-400 transition">Program</a></li>
                             <li><a href="{{ route('event') }}"
                                     class="text-gray-400 hover:text-amber-400 transition">Event</a></li>
+                            <li><a href="{{ route('join_sponsor') }}"
+                                    class="text-gray-400 hover:text-amber-400 transition">Sponsorship</a></li>
                         </ul>
                     </div>
 

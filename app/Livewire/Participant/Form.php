@@ -227,7 +227,7 @@ class Form extends Component
             $send->multiple_text([$singleWa]);
 
             // Jeda 10-20 detik sebelum mengirim 'kloter' berikutnya
-            sleep(rand(10, 20));
+            sleep(rand(3, 8));
         }
 
         session()->forget('custom_captcha');

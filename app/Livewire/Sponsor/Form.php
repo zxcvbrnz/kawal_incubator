@@ -63,7 +63,7 @@ class Form extends Component
             $send->multiple_text([$singleWa]);
 
             // Jeda 10 - 20 detik per pesan
-            sleep(rand(10, 20));
+            sleep(rand(5, 10));
         }
 
         $this->dispatch('swal', [
