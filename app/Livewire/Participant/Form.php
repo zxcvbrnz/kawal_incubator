@@ -201,16 +201,16 @@ class Form extends Component
         $send = new Message();
         $waData = [
             [
+                'phone' => $this->contact,
+                'message' => "Halo *{$this->owner_name}*\n\nPendaftaranmu sedang diproses, harap tunggu informasi selanjutnya.\n\nwww.kawalincubator.com",
+            ],
+            [
                 'phone' => '089691884833',
                 'message' => "Halo *Admin*\n\nTerdapat pendaftaran Participant baru.\n\nNama Bisnis : {$this->business_name}\nNama Pemilik : {$this->owner_name}\n\nwww.kawalincubator.com",
             ],
             [
                 'phone' => '085103326061',
                 'message' => "Halo *Admin*\n\nTerdapat pendaftaran Participant baru.\n\nNama Bisnis : {$this->business_name}\nNama Pemilik : {$this->owner_name}\n\nwww.kawalincubator.com",
-            ],
-            [
-                'phone' => $this->contact,
-                'message' => "Halo *{$this->owner_name}*\n\nPendaftaranmu sedang diproses, harap tunggu informasi selanjutnya.\n\nwww.kawalincubator.com",
             ],
         ];
 

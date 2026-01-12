@@ -22,21 +22,26 @@ class Request extends Component
 
         $send = new Message();
 
-        $wa = [
+        $wa_data = [
             [
                 'phone' => $participant->contact,
-                'message' => 'Halo *' . $participant->owner_name . '*, pendaftaran Anda telah *DISETUJUI* oleh Admin.' . '<br>' .
-                    'Sekarang data *' . $participant->business_name . '* sudah tayang di sistem kami. <br>' .
-                    '<br>' . 'Terima kasih, <br>' . 'www.kawalincubator.com',
+                'message' => "Halo *{$participant->owner_name}*, pendaftaran Anda telah *DISETUJUI* oleh Admin.\n" .
+                    "Sekarang data *{$participant->business_name}* sudah tayang di sistem kami.\n\n" .
+                    "Terima kasih,\nwww.kawalincubator.com",
             ],
             [
                 'phone' => $participant->wa,
-                'message' => 'Halo *' . $participant->business_name . '*, pendaftaran Anda telah *DISETUJUI* oleh Admin.' . '<br>' .
-                    'Sekarang data *' . $participant->business_name . '* sudah tayang di sistem kami. <br>' .
-                    '<br>' . 'Terima kasih, <br>' . 'www.kawalincubator.com',
+                'message' => "Halo *{$participant->business_name}*, pendaftaran Anda telah *DISETUJUI* oleh Admin.\n" .
+                    "Sekarang data *{$participant->business_name}* sudah tayang di sistem kami.\n\n" .
+                    "Terima kasih,\nwww.kawalincubator.com",
             ],
         ];
-        $send->multiple_text($wa);
+
+        foreach ($wa_data as $singleWa) {
+            $send->multiple_text([$singleWa]);
+
+            sleep(rand(10, 20));
+        }
 
         $this->dispatch('swal', [
             'type' => 'success',

@@ -5,6 +5,7 @@ namespace App\Livewire\Sponsor;
 use App\Models\Sponsor;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Silvanix\Wablas\Message;
 
 class Form extends Component
 {
@@ -27,14 +28,8 @@ class Form extends Component
         $fileName = null;
 
         if ($this->proposal_file) {
-            // 1. Simpan file ke storage (seperti biasa)
             $this->proposal_file->store('proposals', 'public');
-
-            // 2. Ambil hanya nama filenya saja (hash name agar unik)
             $fileName = $this->proposal_file->hashName();
-
-            // ATAU jika ingin nama asli file dari user:
-            // $fileName = $this->proposal_file->getClientOriginalName();
         }
 
         Sponsor::create([
@@ -45,13 +40,41 @@ class Form extends Component
             'proposal_file' => $fileName,
         ]);
 
+        $send = new Message();
+
+        // Pesan disesuaikan dengan data Sponsor
+        $waData = [
+            [
+                'phone' => $this->contact,
+                'message' => "Halo *{$this->name}*\n\nTerima kasih telah mengajukan penawaran sponsorship. Proposal Anda telah kami terima dan sedang dalam tahap review oleh tim kami.\n\nKami akan segera menghubungi Anda kembali.\n\nwww.kawalincubator.com",
+            ],
+            [
+                'phone' => '089691884833',
+                'message' => "Halo *Admin*\n\nTerdapat pengajuan *SPONSOR* baru.\n\nInstansi: {$this->name}\nEmail: {$this->email}\nDeskripsi: {$this->description}\n\nCek dashboard admin untuk detailnya.\nwww.kawalincubator.com",
+            ],
+            [
+                'phone' => '085103326061',
+                'message' => "Halo *Admin*\n\nTerdapat pengajuan *SPONSOR* baru.\n\nInstansi: {$this->name}\nEmail: {$this->email}\n\nwww.kawalincubator.com",
+            ],
+        ];
+
+        foreach ($waData as $singleWa) {
+            // Tetap menggunakan multiple_text sesuai struktur awal Anda
+            $send->multiple_text([$singleWa]);
+
+            // Jeda 10 - 20 detik per pesan
+            sleep(rand(10, 20));
+        }
+
         $this->dispatch('swal', [
             'type'    => 'success',
             'title'   => 'Berhasil!',
             'message' => 'Terima kasih! Tim kami akan segera menghubungi Anda.'
         ]);
+
         $this->reset();
     }
+
     public function render()
     {
         return view('livewire.sponsor.form');
