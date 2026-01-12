@@ -24,6 +24,7 @@
                         'LOGO KOTA BANJARMASIN - 328 KB.jpg',
                         'IMG_20260106_134224.png',
                         'logo_big.png',
+                        'logo_cenari.png',
                         'IMG_20260106_134751.png',
                     ];
                 @endphp
