@@ -28,6 +28,8 @@
                         'logo_srbjm.jpeg',
                         'logo_tk.jpeg',
                         'IMG_20260106_134751.png',
+                        'WhatsApp Image 2026-01-12 at 15.03.18 (1).jpeg',
+                        'WhatsApp Image 2026-01-12 at 15.03.17 (1).jpeg',
                     ];
                 @endphp
 
