@@ -25,6 +25,8 @@
                         'IMG_20260106_134224.png',
                         'logo_big.png',
                         'logo_cenari.png',
+                        'logo_srbjm.png',
+                        'logo_tk.png',
                         'IMG_20260106_134751.png',
                     ];
                 @endphp
