@@ -66,7 +66,7 @@
                     </svg>
                 </div>
                 <h3 class="text-gray-900 font-black uppercase tracking-tight text-lg mb-2">
-                    {{ $search ? 'Pencarian Tidak Ditemukan' : 'Katalog Produk Kosong' }}
+                    {{ $search ? 'Pencarian Tidak Ditemukan' : 'Belum ada Event' }}
                 </h3>
                 <p class="text-gray-400 font-bold uppercase tracking-widest italic text-[10px] max-w-xs mx-auto">
                     @if ($search)
