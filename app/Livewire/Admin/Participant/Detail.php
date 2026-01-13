@@ -3,6 +3,7 @@
 namespace App\Livewire\Admin\Participant;
 
 use App\Models\Participant;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -23,6 +24,14 @@ class Detail extends Component
     {
         $this->participant = Participant::findOrFail($id);
         $this->form = $this->participant->toArray();
+
+        $this->form['incubation_start'] = $this->participant->incubation_start
+            ? Carbon::parse($this->participant->incubation_start)->format('Y-m-d')
+            : null;
+
+        $this->form['incubation_end'] = $this->participant->incubation_end
+            ? Carbon::parse($this->participant->incubation_end)->format('Y-m-d')
+            : null;
 
         $this->form['display'] = (bool) $this->form['display'];
         $this->form['status'] = (bool) $this->form['status'];
