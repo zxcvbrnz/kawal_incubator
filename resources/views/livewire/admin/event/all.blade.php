@@ -57,7 +57,7 @@
             </div>
         @empty
             <div
-                class="bg-white rounded-[2.5rem] py-24 px-6 text-center border-2 border-dashed border-gray-100 flex flex-col items-center">
+                class="bg-white rounded-[2.5rem] py-24 px-6 text-center border-2 border-dashed border-gray-100 flex flex-col items-center w-full">
                 <div class="mb-6 p-5 bg-amber-50 rounded-full">
                     <svg class="w-10 h-10 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
