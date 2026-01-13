@@ -57,18 +57,20 @@
             </div>
         @empty
             <div
-                class="col-span-full py-24 bg-white rounded-[3rem] border-2 border-dashed border-gray-100 flex flex-col items-center justify-center text-center">
-                <div class="p-5 bg-amber-50 rounded-full mb-4">
+                class="bg-white rounded-[2.5rem] py-24 px-6 text-center border-2 border-dashed border-gray-100 flex flex-col items-center">
+                <div class="mb-6 p-5 bg-amber-50 rounded-full">
                     <svg class="w-10 h-10 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                             d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
                         </path>
                     </svg>
                 </div>
-                <h3 class="text-lg font-black text-gray-900 uppercase tracking-tight">Data Tidak Ditemukan</h3>
-                <p class="text-sm text-gray-400 mt-1 uppercase font-bold tracking-widest italic px-6">
+                <h3 class="text-gray-900 font-black uppercase tracking-tight text-lg mb-2">
+                    {{ $search ? 'Pencarian Tidak Ditemukan' : 'Katalog Produk Kosong' }}
+                </h3>
+                <p class="text-gray-400 font-bold uppercase tracking-widest italic text-[10px] max-w-xs mx-auto">
                     @if ($search)
-                        Tidak ada event dengan kata kunci <span class="text-amber-600">"{{ $search }}"</span>
+                        Tidak ada event dengan kata kunci <span class="text-amber-500">"{{ $search }}"</span>
                     @else
                         Belum ada daftar event yang ditambahkan
                     @endif
@@ -76,7 +78,7 @@
 
                 @if ($search)
                     <button wire:click="$set('search', '')"
-                        class="mt-6 text-[10px] font-black text-amber-600 uppercase tracking-[0.2em] border-b-2 border-amber-200 hover:border-amber-500 transition-all">
+                        class="mt-8 text-[10px] font-black text-amber-600 uppercase tracking-[0.2em] border-b-2 border-amber-100 hover:border-amber-500 transition-all pb-1">
                         Bersihkan Pencarian
                     </button>
                 @endif

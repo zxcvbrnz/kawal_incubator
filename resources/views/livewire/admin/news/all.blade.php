@@ -30,23 +30,21 @@
     <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-x-auto">
         @if ($posts->isEmpty())
             {{-- Enhanced Empty State --}}
-            <div class="p-20 text-center flex flex-col items-center">
-                <div class="relative mb-6">
-                    <div class="absolute inset-0 bg-amber-100 blur-2xl opacity-50 rounded-full"></div>
-                    <div class="relative p-6 bg-amber-50 rounded-full border border-amber-100">
-                        <svg class="w-12 h-12 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z">
-                            </path>
-                        </svg>
-                    </div>
+            <div
+                class="bg-white rounded-[2.5rem] py-24 px-6 text-center border-2 border-dashed border-gray-100 flex flex-col items-center">
+                <div class="mb-6 p-5 bg-amber-50 rounded-full">
+                    <svg class="w-10 h-10 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z">
+                        </path>
+                    </svg>
                 </div>
 
-                <h3 class="text-gray-900 font-black uppercase tracking-tight text-lg">
+                <h3 class="text-gray-900 font-black uppercase tracking-tight text-lg mb-2">
                     {{ $search ? 'Pencarian Tidak Ditemukan' : 'Belum Ada Berita' }}
                 </h3>
 
-                <p class="text-gray-400 text-sm mt-2 font-medium max-w-xs mx-auto uppercase tracking-widest italic">
+                <p class="text-gray-400 font-bold uppercase tracking-widest italic text-[10px] max-w-xs mx-auto">
                     @if ($search)
                         Tidak ada cerita yang cocok dengan kata kunci <span
                             class="text-amber-500">"{{ $search }}"</span>
@@ -57,7 +55,7 @@
 
                 @if ($search)
                     <button wire:click="$set('search', '')"
-                        class="mt-8 px-6 py-2 bg-gray-900 text-white rounded-xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-amber-600 transition-colors">
+                        class="mt-8 text-[10px] font-black text-amber-600 uppercase tracking-[0.2em] border-b-2 border-amber-100 hover:border-amber-500 transition-all pb-1">
                         Bersihkan Pencarian
                     </button>
                 @endif

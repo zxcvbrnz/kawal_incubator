@@ -28,20 +28,20 @@
     <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-x-auto">
         @if ($products->isEmpty())
             {{-- Enhanced Empty State --}}
-            <div class="p-20 text-center flex flex-col items-center">
-                <div
-                    class="w-20 h-20 bg-amber-50 rounded-3xl flex items-center justify-center mb-6 border border-amber-100">
+            <div
+                class="bg-white rounded-[2.5rem] py-24 px-6 text-center border-2 border-dashed border-gray-100 flex flex-col items-center">
+                <div class="mb-6 p-5 bg-amber-50 rounded-full">
                     <svg class="w-10 h-10 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                             d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                     </svg>
                 </div>
 
-                <h3 class="text-gray-900 font-black uppercase tracking-tight text-lg">
+                <h3 class="text-gray-900 font-black uppercase tracking-tight text-lg mb-2">
                     {{ $search ? 'Pencarian Tidak Ditemukan' : 'Katalog Produk Kosong' }}
                 </h3>
 
-                <p class="text-gray-400 text-sm mt-2 font-medium max-w-xs mx-auto uppercase tracking-widest italic">
+                <p class="text-gray-400 font-bold uppercase tracking-widest italic text-[10px] max-w-xs mx-auto">
                     @if ($search)
                         Tidak ada produk atau pemilik yang cocok dengan kata kunci <span
                             class="text-amber-500">"{{ $search }}"</span>
@@ -52,7 +52,7 @@
 
                 @if ($search)
                     <button wire:click="$set('search', '')"
-                        class="mt-8 px-6 py-2 bg-gray-900 text-white rounded-xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-amber-600 transition-colors">
+                        class="mt-8 text-[10px] font-black text-amber-600 uppercase tracking-[0.2em] border-b-2 border-amber-100 hover:border-amber-500 transition-all pb-1">
                         Bersihkan Pencarian
                     </button>
                 @endif
