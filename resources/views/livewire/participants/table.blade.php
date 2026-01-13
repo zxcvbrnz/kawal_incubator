@@ -91,7 +91,7 @@
                                             {{ $person->business_name }}
                                         </span>
                                         <span class="text-[10px] font-mono text-gray-400 uppercase">
-                                            #{{ str_pad($person->id, 3, '0', STR_PAD_LEFT) }}
+                                            {{-- #{{ str_pad($person->id, 3, '0', STR_PAD_LEFT) }} --}}
                                         </span>
                                     </div>
                                 </div>
