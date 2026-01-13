@@ -27,24 +27,32 @@
     <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
         @if ($sponsors->isEmpty())
             {{-- Empty State --}}
-            <div class="p-20 text-center flex flex-col items-center">
-                <div class="relative mb-6">
-                    <div class="absolute inset-0 bg-amber-100 blur-2xl opacity-50 rounded-full"></div>
-                    <div class="relative p-6 bg-amber-50 rounded-full border border-amber-100">
-                        <svg class="w-12 h-12 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
-                            </path>
-                        </svg>
-                    </div>
+            <div
+                class="bg-white rounded-[2.5rem] py-24 px-6 text-center border-2 border-dashed border-gray-100 flex flex-col items-center">
+                <div class="mb-6 p-5 bg-amber-50 rounded-full">
+                    <svg class="w-10 h-10 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                        </path>
+                    </svg>
                 </div>
-                <h3 class="text-gray-900 font-black uppercase tracking-tight text-lg">
+                <h3 class="text-gray-900 font-black uppercase tracking-tight text-lg mb-2">
                     {{ $search ? 'Pencarian Tidak Ditemukan' : 'Belum Ada Pengajuan' }}
                 </h3>
-                <p
-                    class="text-gray-400 text-sm mt-2 font-medium max-w-xs mx-auto uppercase tracking-widest italic leading-relaxed">
-                    {{ $search ? 'Tidak ada instansi yang cocok dengan kata kunci "' . $search . '"' : 'Belum ada pengajuan sponsorship yang masuk ke sistem.' }}
+                <p class="text-gray-400 font-bold uppercase tracking-widest italic text-[10px] max-w-xs mx-auto">
+                    @if ($search)
+                        Tidak ada instansi yang cocok dengan kata kunci <span
+                            class="text-amber-500">"{{ $search }}"</span>
+                    @else
+                        Belum ada pengajuan sponsorship yang masuk ke sistem.
+                    @endif
                 </p>
+                @if ($search)
+                    <button wire:click="$set('search', '')"
+                        class="mt-8 text-[10px] font-black text-amber-600 uppercase tracking-[0.2em] border-b-2 border-amber-100 hover:border-amber-500 transition-all pb-1">
+                        Bersihkan Pencarian
+                    </button>
+                @endif
             </div>
         @else
             <div class="overflow-x-auto">
