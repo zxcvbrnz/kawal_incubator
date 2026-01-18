@@ -16,11 +16,11 @@
                         🚀 Akselerator Bisnis Masa Depan
                     </span>
                     <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-gray-900">
-                        Kawal
+                        KAWAL
                         <span class="block text-amber-500">Incubator</span>
                     </h1>
                     <p class="mt-6 text-lg text-gray-600 max-w-xl">
-                        Kawal Incubator hadir untuk memberdayakan inovator lokal melalui pendampingan intensif, akses
+                        KAWAL Incubator hadir untuk memberdayakan inovator lokal melalui pendampingan intensif, akses
                         jaringan strategis, dan sumber daya terpadu untuk mengakselerasi ide Anda menjadi bisnis yang
                         berkelanjutan.
                     </p>
