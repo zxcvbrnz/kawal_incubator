@@ -35,7 +35,8 @@
 
                             @foreach ($allImages as $img)
                                 <div class="flex-none w-full snap-center aspect-video">
-                                    <img src="{{ asset('storage/event/' . $img) }}" class="w-full h-full object-cover">
+                                    <img src="{{ asset('storage/event/' . $img) }}"
+                                        class="w-full h-full object-contain">
                                 </div>
                             @endforeach
                         </div>
