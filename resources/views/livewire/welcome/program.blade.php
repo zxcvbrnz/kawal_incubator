@@ -33,8 +33,14 @@
 
                         <div class="mt-auto pt-4">
                             <a href="{{ route('program.show', ['id' => $program->id, 'name' => str($program->name)->slug()]) }}"
-                                class="text-xs font-bold text-amber-500 group-hover:underline uppercase tracking-wider">
-                                Learn More →
+                                wire:navigate
+                                class="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-amber-600 hover:text-amber-700 transition-all">
+                                Lihat Detail
+                                <svg class="w-3 h-3 transform group-hover:translate-x-1 transition-transform"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14 5l7 7-7 7M3 12h18"></path>
+                                </svg>
                             </a>
                         </div>
                     </div>
