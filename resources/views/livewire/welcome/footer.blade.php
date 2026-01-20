@@ -19,7 +19,7 @@
                     </p>
                     <div class="pt-2 space-y-2 text-sm">
                         <p class="text-gray-400">
-                            Email <a href="mailto:inkubator@kalselkreatif.or.id"
+                            Email <a href="mailto:inkubator@kalselkreatif.or.id" target="_blank"
                                 class="text-gray-300 hover:text-amber-400 transition underline decoration-gray-700">inkubator@kalselkreatif.or.id</a>
                         </p>
                         <p class="text-gray-400">
