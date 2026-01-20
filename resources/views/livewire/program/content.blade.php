@@ -1,6 +1,6 @@
 <div class="min-h-screen bg-white pt-4 pb-16">
     <div class="max-w-7xl mx-auto px-6">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             @forelse ($programs as $program)
                 <div class="group bg-white rounded-3xl border border-gray-100 shadow-sm hover:shadow-2xl hover:shadow-amber-100/50 transition-all duration-500 flex flex-col overflow-hidden"
                     data-aos="fade-up" data-aos-delay="{{ ($loop->index % 4) * 100 }}">
