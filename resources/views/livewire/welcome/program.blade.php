@@ -19,7 +19,7 @@
 
                     <div class="overflow-hidden aspect-square">
                         <img src="{{ asset('storage/program/' . $program->image_url) }}" alt="{{ $program->name }}"
-                            class="h-full w-full object-contain group-hover:scale-105 transition duration-500">
+                            class="h-full w-full object-cover group-hover:scale-105 transition duration-500">
                     </div>
 
                     <div class="p-6 flex flex-col flex-1">
