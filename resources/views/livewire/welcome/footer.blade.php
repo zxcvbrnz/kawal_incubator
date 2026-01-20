@@ -3,7 +3,7 @@
         <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
 
             <div class="md:col-span-6 lg:col-span-5">
-                <a href="/" class="inline-block mb-6 transition transform hover:opacity-90">
+                <a href="/" wire:navigate class="inline-block mb-6 transition transform hover:opacity-90">
                     <img src="{{ asset('logo kawal.png') }}" alt="Logo"
                         class="h-28 w-auto grayscale hover:grayscale-0 transition duration-500">
                 </a>
@@ -44,13 +44,13 @@
                     <div>
                         <h3 class="text-xs font-bold text-white uppercase tracking-[0.2em] mb-5">Layanan</h3>
                         <ul class="space-y-3 text-sm font-medium">
-                            <li><a href="{{ route('product') }}"
+                            <li><a href="{{ route('product') }}" wire:navigate
                                     class="text-gray-400 hover:text-amber-400 transition">Produk</a></li>
-                            <li><a href="{{ route('program') }}"
+                            <li><a href="{{ route('program') }}" wire:navigate
                                     class="text-gray-400 hover:text-amber-400 transition">Program</a></li>
-                            <li><a href="{{ route('event') }}"
+                            <li><a href="{{ route('event') }}" wire:navigate
                                     class="text-gray-400 hover:text-amber-400 transition">Event</a></li>
-                            <li><a href="{{ route('join_sponsor') }}"
+                            <li><a href="{{ route('join_sponsor') }}" wire:navigate
                                     class="text-gray-400 hover:text-amber-400 transition">Sponsorship</a></li>
                             <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSdEI6cSHVfIbiRLNa8GEgr9k97cXFLXQ_vdHKIv-hZxRvPWLQ/viewform?usp=dialog"
                                     target="_blank" class="text-gray-400 hover:text-amber-400 transition">Mentor</a>
@@ -61,7 +61,7 @@
                     <div>
                         <h3 class="text-xs font-bold text-white uppercase tracking-[0.2em] mb-5">Katalog</h3>
                         <ul class="space-y-3 text-sm font-medium">
-                            <li><a href="{{ route('participant') }}"
+                            <li><a href="{{ route('participant') }}" wire:navigate
                                     class="text-gray-400 hover:text-amber-400 transition">Partisipan</a></li>
                         </ul>
                     </div>
@@ -69,12 +69,12 @@
                     <div>
                         <h3 class="text-xs font-bold text-white uppercase tracking-[0.2em] mb-5">Informasi</h3>
                         <ul class="space-y-3 text-sm font-medium">
-                            <li><a href="{{ route('new') }}"
+                            <li><a href="{{ route('new') }}" wire:navigate
                                     class="text-gray-400 hover:text-amber-400 transition">Berita</a></li>
-                            <li><a href="{{ route('new') }}"
+                            <li><a href="{{ route('new') }}" wire:navigate
                                     class="text-gray-400 hover:text-amber-400 transition">Dokumentasi</a></li>
-                            <li><a href="" class="text-gray-400 hover:text-amber-400 transition">FAQ</a></li>
-                            <li><a href="" class="text-gray-400 hover:text-amber-400 transition">Kebijakan dan
+                            <li><a href="#" class="text-gray-400 hover:text-amber-400 transition">FAQ</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-amber-400 transition">Kebijakan dan
                                     Privasi</a></li>
                         </ul>
                     </div>
