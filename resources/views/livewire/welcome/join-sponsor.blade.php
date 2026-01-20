@@ -16,7 +16,7 @@
                 </p>
 
                 <div class="mt-10">
-                    <a href="{{ route('join_sponsor') }}"
+                    <a href="{{ route('join_sponsor') }}" wire:navigate
                         class="group relative inline-flex items-center gap-4 px-12 py-5 bg-amber-500 text-gray-900 text-[11px] font-black uppercase tracking-[0.25em] rounded-2xl 
                                transition-all duration-500 ease-out overflow-hidden
                                hover:bg-amber-400 hover:-translate-y-2 hover:shadow-[0_25px_50px_-12px_rgba(245,158,11,0.6)]
