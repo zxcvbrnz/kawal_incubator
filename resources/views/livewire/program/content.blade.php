@@ -5,7 +5,7 @@
                 <div class="group bg-white rounded-3xl border border-gray-100 shadow-sm hover:shadow-2xl hover:shadow-amber-100/50 transition-all duration-500 flex flex-col overflow-hidden"
                     data-aos="fade-up" data-aos-delay="{{ ($loop->index % 4) * 100 }}">
 
-                    <div class="relative aspect-video overflow-hidden">
+                    <div class="relative aspect-square overflow-hidden">
                         <img src="{{ asset('storage/program/' . $program->image_url) }}" alt="{{ $program->name }}"
                             class="w-full h-full object-contain transform group-hover:scale-110 transition-transform duration-700">
                         <div

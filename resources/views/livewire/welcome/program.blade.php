@@ -17,7 +17,7 @@
                 <div class="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition border border-amber-100 flex flex-col"
                     data-aos="fade-up" data-aos-delay="{{ $loop->iteration * 100 }}">
 
-                    <div class="overflow-hidden h-52">
+                    <div class="overflow-hidden aspect-square">
                         <img src="{{ asset('storage/program/' . $program->image_url) }}" alt="{{ $program->name }}"
                             class="h-full w-full object-contain group-hover:scale-105 transition duration-500">
                     </div>
