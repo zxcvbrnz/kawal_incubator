@@ -7,7 +7,7 @@
 
                     <div class="relative aspect-video overflow-hidden">
                         <img src="{{ asset('storage/program/' . $program->image_url) }}" alt="{{ $program->name }}"
-                            class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                            class="w-full h-full object-contain transform group-hover:scale-110 transition-transform duration-700">
                         <div
                             class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
                         </div>

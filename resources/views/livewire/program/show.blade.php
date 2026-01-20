@@ -6,7 +6,7 @@
                 <article class="bg-white rounded-[2.5rem] overflow-hidden shadow-sm border border-amber-100">
                     <div class="relative aspect-video">
                         <img src="{{ asset('storage/program/' . $program->image_url) }}" alt="{{ $program->name }}"
-                            class="w-full h-full object-cover">
+                            class="w-full h-full object-contain">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent lg:hidden"></div>
                         <div class="absolute bottom-6 left-6 lg:hidden">
                             <span
