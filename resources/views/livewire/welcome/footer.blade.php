@@ -9,7 +9,7 @@
                 </a>
                 <div class="space-y-4">
                     <p class="text-gray-400 text-sm leading-relaxed">
-                        <span class="font-semibold text-gray-200">KAWAL INCUBATOR: </span>Ruang tumbuh bagi inovasi dan
+                        KAWAL Incubator Ruang tumbuh bagi inovasi dan
                         pelaku industri kreatif. kami hadir untuk mengawal ide hebat Anda bertransformasi menjadi karya
                         dan bisnis yang berkelanjutan melalui ekosistem yang terintegrasi.
                     </p>
