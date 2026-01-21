@@ -63,6 +63,8 @@
                         <ul class="space-y-3 text-sm font-medium">
                             <li><a href="{{ route('participant') }}" wire:navigate
                                     class="text-gray-400 hover:text-amber-400 transition">Partisipan</a></li>
+                            <li><a href="{{ route('video') }}" wire:navigate
+                                    class="text-gray-400 hover:text-amber-400 transition">Video Pembelajaran</a></li>
                         </ul>
                     </div>
 

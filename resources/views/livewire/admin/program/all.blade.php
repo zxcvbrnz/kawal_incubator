@@ -7,7 +7,7 @@
 
         <div class="flex items-center gap-4">
             <div class="relative group w-full md:w-72">
-                <input type="text" wire:model.live.debounce.300ms="search" placeholder="Cari program..."
+                <input type="text" wire:model.live="search" placeholder="Cari program..."
                     class="w-full pl-12 pr-6 py-3 bg-white border border-gray-100 rounded-2xl focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all font-bold text-sm shadow-sm">
                 <div class="absolute left-4 top-3.5 text-gray-300 group-focus-within:text-amber-500 transition-colors">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

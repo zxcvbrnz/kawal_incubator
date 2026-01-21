@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\captchaController;
 use Illuminate\Support\Facades\Route;
+use App\Models\VideoPelajaran;
+
 
 Route::view('/', 'welcome')->name('home');
 
@@ -29,6 +31,17 @@ Route::view('/contact-us', 'contact')->name('contact');
 
 Route::view('/join-as-sponsorship', 'join_sponsor')->name('join_sponsor');
 
+Route::view('/video-pembelajaran', 'video_pembelajaran')->name('video');
+
+Route::get('/video-pembelajaran/{id}', function ($id) {
+    $video = VideoPelajaran::findOrFail($id);
+
+    return view('video_show', [
+        'id' => $id,
+        'judul' => $video->judul
+    ]);
+})->name('video.show');
+
 Route::middleware(['auth'])->group(function () {
 
     // Dashboard (khusus verified)
@@ -53,6 +66,10 @@ Route::middleware(['auth'])->group(function () {
     Route::view('/admin/program', 'admin.program')->name('admin.program');
     Route::view('/admin/program/create', 'admin.program_create')->name('admin.program.create');
     Route::view('/admin/program/{id}/edit', 'admin.program_edit')->name('admin.program.edit');
+
+    Route::view('/admin/video', 'admin.video')->name('admin.video');
+    Route::view('/admin/video/create', 'admin.video_create')->name('admin.video.create');
+    Route::view('/admin/video/{id}/edit', 'admin.video_edit')->name('admin.video.edit');
 
     Route::view('/admin/sponsorship-request', 'admin.sponsor')->name('admin.sponsor');
     // Profile

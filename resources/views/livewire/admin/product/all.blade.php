@@ -8,7 +8,7 @@
         <div class="flex flex-col md:flex-row gap-4 items-center">
             {{-- Input Search --}}
             <div class="relative group w-full md:w-72">
-                <input type="text" wire:model.live.debounce.300ms="search" placeholder="Cari produk atau pemilik..."
+                <input type="text" wire:model.live="search" placeholder="Cari produk atau pemilik..."
                     class="w-full pl-12 pr-6 py-3 bg-white border border-gray-100 rounded-2xl focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all font-bold text-sm shadow-sm">
                 <div class="absolute left-4 top-3.5 text-gray-300 group-focus-within:text-amber-500 transition-colors">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -25,96 +25,93 @@
         </div>
     </div>
 
-    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-x-auto">
-        @if ($products->isEmpty())
-            {{-- Enhanced Empty State --}}
-            <div
-                class="bg-white rounded-[2.5rem] py-24 px-6 text-center border-2 border-dashed border-gray-100 flex flex-col items-center">
-                <div class="mb-6 p-5 bg-amber-50 rounded-full">
-                    <svg class="w-10 h-10 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                            d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                    </svg>
-                </div>
+    @if ($products->isEmpty())
+        {{-- Enhanced Empty State --}}
+        <div
+            class="bg-white rounded-[2.5rem] py-24 px-6 text-center border-2 border-dashed border-gray-100 flex flex-col items-center">
+            <div class="mb-6 p-5 bg-amber-50 rounded-full">
+                <svg class="w-10 h-10 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                        d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                </svg>
+            </div>
 
-                <h3 class="text-gray-900 font-black uppercase tracking-tight text-lg mb-2">
-                    {{ $search ? 'Pencarian Tidak Ditemukan' : 'Katalog Produk Kosong' }}
-                </h3>
+            <h3 class="text-gray-900 font-black uppercase tracking-tight text-lg mb-2">
+                {{ $search ? 'Pencarian Tidak Ditemukan' : 'Katalog Produk Kosong' }}
+            </h3>
 
-                <p class="text-gray-400 font-bold uppercase tracking-widest italic text-[10px] max-w-xs mx-auto">
-                    @if ($search)
-                        Tidak ada produk atau pemilik yang cocok dengan kata kunci <span
-                            class="text-amber-500">"{{ $search }}"</span>
-                    @else
-                        Belum ada data produk yang terdaftar di sistem.
-                    @endif
-                </p>
-
+            <p class="text-gray-400 font-bold uppercase tracking-widest italic text-[10px] max-w-xs mx-auto">
                 @if ($search)
-                    <button wire:click="$set('search', '')"
-                        class="mt-8 text-[10px] font-black text-amber-600 uppercase tracking-[0.2em] border-b-2 border-amber-100 hover:border-amber-500 transition-all pb-1">
-                        Bersihkan Pencarian
-                    </button>
+                    Tidak ada produk atau pemilik yang cocok dengan kata kunci <span
+                        class="text-amber-500">"{{ $search }}"</span>
+                @else
+                    Belum ada data produk yang terdaftar di sistem.
                 @endif
-            </div>
-        @else
-            <table class="w-full text-left border-collapse">
-                <thead>
-                    <tr class="bg-gray-50 border-b border-gray-100">
-                        <th class="px-6 py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest">Produk
-                        </th>
-                        <th class="px-6 py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest">Pemilik
-                            (Bisnis)</th>
-                        <th class="px-6 py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest">Status
-                        </th>
-                        <th
-                            class="px-6 py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest text-center">
-                            Aksi</th>
+            </p>
+
+            @if ($search)
+                <button wire:click="$set('search', '')"
+                    class="mt-8 text-[10px] font-black text-amber-600 uppercase tracking-[0.2em] border-b-2 border-amber-100 hover:border-amber-500 transition-all pb-1">
+                    Bersihkan Pencarian
+                </button>
+            @endif
+        </div>
+    @else
+        <table class="w-full text-left border-collapse">
+            <thead>
+                <tr class="bg-gray-50 border-b border-gray-100">
+                    <th class="px-6 py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest">Produk
+                    </th>
+                    <th class="px-6 py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest">Pemilik
+                        (Bisnis)</th>
+                    <th class="px-6 py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest">Status
+                    </th>
+                    <th class="px-6 py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest text-center">
+                        Aksi</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-50">
+                @foreach ($products as $product)
+                    <tr wire:key="prod-{{ $product->id }}" class="hover:bg-amber-50/30 transition-colors">
+                        <td class="px-6 py-4">
+                            <div class="flex items-center gap-4">
+                                <img src="{{ asset('storage/product/' . $product->image_url) }}"
+                                    class="w-12 h-12 rounded-xl object-cover border border-gray-100">
+                                <span class="font-bold text-gray-800">{{ $product->name }}</span>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4">
+                            <div class="text-sm">
+                                <p class="font-bold text-gray-900">
+                                    {{ $product->participant->business_name ?? 'N/A' }}</p>
+                                <p class="text-xs text-gray-500">
+                                    {{ $product->participant->owner_name ?? 'N/A' }}
+                                </p>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4">
+                            <span
+                                class="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-tighter {{ $product->display ? 'bg-green-100 text-green-600' : 'bg-gray-100 text-gray-400' }}">
+                                {{ $product->display ? 'Ditampilkan' : 'Draft' }}
+                            </span>
+                        </td>
+                        <td class="px-6 py-4 text-center">
+                            <a wire:navigate href="{{ route('admin.product.edit', $product->id) }}"
+                                class="inline-block p-2 text-amber-500 hover:bg-amber-50 rounded-xl transition duration-300">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                </svg>
+                            </a>
+                        </td>
                     </tr>
-                </thead>
-                <tbody class="divide-y divide-gray-50">
-                    @foreach ($products as $product)
-                        <tr wire:key="prod-{{ $product->id }}" class="hover:bg-amber-50/30 transition-colors">
-                            <td class="px-6 py-4">
-                                <div class="flex items-center gap-4">
-                                    <img src="{{ asset('storage/product/' . $product->image_url) }}"
-                                        class="w-12 h-12 rounded-xl object-cover border border-gray-100">
-                                    <span class="font-bold text-gray-800">{{ $product->name }}</span>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="text-sm">
-                                    <p class="font-bold text-gray-900">
-                                        {{ $product->participant->business_name ?? 'N/A' }}</p>
-                                    <p class="text-xs text-gray-500">
-                                        {{ $product->participant->owner_name ?? 'N/A' }}
-                                    </p>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <span
-                                    class="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-tighter {{ $product->display ? 'bg-green-100 text-green-600' : 'bg-gray-100 text-gray-400' }}">
-                                    {{ $product->display ? 'Ditampilkan' : 'Draft' }}
-                                </span>
-                            </td>
-                            <td class="px-6 py-4 text-center">
-                                <a wire:navigate href="{{ route('admin.product.edit', $product->id) }}"
-                                    class="inline-block p-2 text-amber-500 hover:bg-amber-50 rounded-xl transition duration-300">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                                    </svg>
-                                </a>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-            <div class="p-6">
-                {{ $products->links('vendor.pagination.custom-amber') }}
-            </div>
-        @endif
-    </div>
+                @endforeach
+            </tbody>
+        </table>
+        <div class="p-6">
+            {{ $products->links('vendor.pagination.custom-amber') }}
+        </div>
+    @endif
 </div>

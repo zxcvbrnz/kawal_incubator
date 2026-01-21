@@ -31,6 +31,9 @@
                 <x-nav-link-2 :href="route('new')" :active="request()->routeIs('new', 'new.*')" wire:navigate>
                     {{ __('Berita') }}
                 </x-nav-link-2>
+                <x-nav-link-2 :href="route('video')" :active="request()->routeIs('video', 'video.*')" wire:navigate>
+                    {{ __('Video') }}
+                </x-nav-link-2>
                 <x-nav-link-2 :href="route('toko')" :active="request()->routeIs('toko')" wire:navigate>
                     {{ __('Toko') }}
                 </x-nav-link-2>
@@ -72,7 +75,7 @@
         <x-nav-link-2 :href="route('product')" class="block" :active="request()->routeIs('product')" wire:navigate>
             {{ __('Produk') }}
         </x-nav-link-2>
-        <x-nav-link-2 :href="route('program')" class="block" :active="request()->routeIs('program')" wire:navigate>
+        <x-nav-link-2 :href="route('program')" class="block" :active="request()->routeIs('program', 'program.*')" wire:navigate>
             {{ __('Program') }}
         </x-nav-link-2>
         <x-nav-link-2 :href="route('event')" class="block" :active="request()->routeIs('event', 'event.*')" wire:navigate>
@@ -80,6 +83,9 @@
         </x-nav-link-2>
         <x-nav-link-2 :href="route('new')" class="block" :active="request()->routeIs('new', 'new.*')" wire:navigate>
             {{ __('Berita') }}
+        </x-nav-link-2>
+        <x-nav-link-2 :href="route('video')" class="block" :active="request()->routeIs('video', 'video.*')" wire:navigate>
+            {{ __('Video') }}
         </x-nav-link-2>
         <x-nav-link-2 :href="route('toko')" class="block" :active="request()->routeIs('toko')" wire:navigate>
             {{ __('Toko') }}

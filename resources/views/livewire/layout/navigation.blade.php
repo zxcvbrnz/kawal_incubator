@@ -44,6 +44,9 @@ new class extends Component {
                     <x-nav-link :href="route('admin.program')" :active="request()->routeIs('admin.program')" wire:navigate>
                         {{ __('Program') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('admin.video')" :active="request()->routeIs('admin.video')" wire:navigate>
+                        {{ __('Video') }}
+                    </x-nav-link>
                     <x-nav-link :href="route('admin.sponsor')" :active="request()->routeIs('admin.sponsor')" wire:navigate>
                         {{ __('Sponsorship') }}
                     </x-nav-link>
@@ -118,6 +121,9 @@ new class extends Component {
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('admin.program')" :active="request()->routeIs('admin.program')" wire:navigate>
                 {{ __('Program') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.video')" :active="request()->routeIs('admin.video')" wire:navigate>
+                {{ __('Video') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('admin.sponsor')" :active="request()->routeIs('admin.sponsor')" wire:navigate>
                 {{ __('Sponsorship') }}
